@@ -44,7 +44,8 @@ namespace ICG_Inter
             Serie = this.dgv_q.CurrentRow.Cells[0].Value.ToString();
             NumDoc = int.Parse(this.dgv_q.CurrentRow.Cells[1].Value.ToString());
 
-            ListaDocDetalle MiObjDetalle = ObjProcDB.BuscarDocVentas(Serie, NumDoc);
+            ListaDocDetalle MiObjDetalle = ObjProcDB.BuscarDocVentasDetalle(Serie, NumDoc);
+
 
             dgv_factura.DataSource = MiObjDetalle;
 
@@ -73,7 +74,5 @@ namespace ICG_Inter
 
         }
 
-
-        
     }
 }
