@@ -78,11 +78,11 @@
             this.button13 = new System.Windows.Forms.Button();
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox21 = new System.Windows.Forms.TextBox();
+            this.txt_precioneto = new System.Windows.Forms.TextBox();
             this.txt_impuesto = new System.Windows.Forms.TextBox();
-            this.textBox19 = new System.Windows.Forms.TextBox();
+            this.txt_base = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
-            this.textBox17 = new System.Windows.Forms.TextBox();
+            this.txt_bruto = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -572,11 +572,11 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.textBox21);
+            this.panel2.Controls.Add(this.txt_precioneto);
             this.panel2.Controls.Add(this.txt_impuesto);
-            this.panel2.Controls.Add(this.textBox19);
+            this.panel2.Controls.Add(this.txt_base);
             this.panel2.Controls.Add(this.textBox18);
-            this.panel2.Controls.Add(this.textBox17);
+            this.panel2.Controls.Add(this.txt_bruto);
             this.panel2.Controls.Add(this.label23);
             this.panel2.Controls.Add(this.label22);
             this.panel2.Controls.Add(this.label21);
@@ -592,12 +592,12 @@
             this.panel2.Size = new System.Drawing.Size(346, 150);
             this.panel2.TabIndex = 57;
             // 
-            // textBox21
+            // txt_precioneto
             // 
-            this.textBox21.Location = new System.Drawing.Point(174, 118);
-            this.textBox21.Name = "textBox21";
-            this.textBox21.Size = new System.Drawing.Size(156, 20);
-            this.textBox21.TabIndex = 75;
+            this.txt_precioneto.Location = new System.Drawing.Point(174, 118);
+            this.txt_precioneto.Name = "txt_precioneto";
+            this.txt_precioneto.Size = new System.Drawing.Size(156, 20);
+            this.txt_precioneto.TabIndex = 75;
             // 
             // txt_impuesto
             // 
@@ -606,12 +606,12 @@
             this.txt_impuesto.Size = new System.Drawing.Size(156, 20);
             this.txt_impuesto.TabIndex = 74;
             // 
-            // textBox19
+            // txt_base
             // 
-            this.textBox19.Location = new System.Drawing.Point(174, 61);
-            this.textBox19.Name = "textBox19";
-            this.textBox19.Size = new System.Drawing.Size(156, 20);
-            this.textBox19.TabIndex = 73;
+            this.txt_base.Location = new System.Drawing.Point(174, 61);
+            this.txt_base.Name = "txt_base";
+            this.txt_base.Size = new System.Drawing.Size(156, 20);
+            this.txt_base.TabIndex = 73;
             // 
             // textBox18
             // 
@@ -620,12 +620,12 @@
             this.textBox18.Size = new System.Drawing.Size(156, 20);
             this.textBox18.TabIndex = 72;
             // 
-            // textBox17
+            // txt_bruto
             // 
-            this.textBox17.Location = new System.Drawing.Point(174, 2);
-            this.textBox17.Name = "textBox17";
-            this.textBox17.Size = new System.Drawing.Size(156, 20);
-            this.textBox17.TabIndex = 24;
+            this.txt_bruto.Location = new System.Drawing.Point(174, 2);
+            this.txt_bruto.Name = "txt_bruto";
+            this.txt_bruto.Size = new System.Drawing.Size(156, 20);
+            this.txt_bruto.TabIndex = 24;
             // 
             // label23
             // 
@@ -721,7 +721,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1028, 705);
+            this.ClientSize = new System.Drawing.Size(1166, 705);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox16);
             this.Controls.Add(this.button13);
@@ -814,10 +814,10 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox21;
+        private System.Windows.Forms.TextBox txt_precioneto;
         private System.Windows.Forms.TextBox txt_impuesto;
-        private System.Windows.Forms.TextBox textBox19;
+        private System.Windows.Forms.TextBox txt_base;
         private System.Windows.Forms.TextBox textBox18;
-        private System.Windows.Forms.TextBox textBox17;
+        private System.Windows.Forms.TextBox txt_bruto;
     }
 }

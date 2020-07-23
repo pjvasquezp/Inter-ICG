@@ -51,15 +51,20 @@ namespace ICG_Inter
             txtcliente.Text = MiObjCabecera.Cliente;
             txt_cliente2.Text = MiObjCabecera.Cliente;
             txt_direccion.Text = MiObjCabecera.Direccion;
-            txt_poblacion.Text = MiObjCabecera.Poblacion;
+            //txt_poblacion.Text = MiObjCabecera.Poblacion;
             txt_poblacion2.Text = MiObjCabecera.Poblacion;
-            txt_vendedor.Text = MiObjCabecera.Poblacion;
-            txt_vendedor2.Text = MiObjCabecera.Poblacion;
+            //txt_vendedor.Text = MiObjCabecera.Codigo_Cliente;
+            txt_vendedor2.Text = MiObjCabecera.Vendedor;
             txt_fecha.Text = MiObjCabecera.Fecha.ToString();
             txt_hora.Text = MiObjCabecera.Hora;
             txt_transporte.Text = MiObjCabecera.Transporte;
             txt_serie.Text = MiObjCabecera.Serie;
             txt_num.Text = MiObjCabecera.Numero.ToString();
+            txt_bruto.Text = MiObjCabecera.Total_BrutoImponible.ToString();
+            txt_base.Text = MiObjCabecera.Total_BrutoImponible.ToString();
+            txt_impuesto.Text = MiObjCabecera.Impuesto.ToString();
+            txt_precioneto.Text = MiObjCabecera.Total_Neto.ToString();
+
             //fecha inicio
             //tipo docu
 

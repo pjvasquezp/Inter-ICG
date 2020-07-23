@@ -82,15 +82,15 @@ namespace ICG_Inter.Datos
                     Documento_Detalle ObjDocDetalle = new Documento_Detalle();
 
                     var withBlock = ObjDocDetalle;
-                        withBlock.Serie = dr.GetString(14);
-                        withBlock.Numero = dr.GetInt32(15);
-                        withBlock.Referencia = dr.GetString(21);
-                        withBlock.Descripcion = dr.GetString(22);
-                        withBlock.Unidades = Int16.Parse(dr.GetDouble(25).ToString());
-                        withBlock.Precio = decimal.Parse(dr.GetString(26).ToString());
-                        withBlock.Descuento = int.Parse(dr.GetDouble(28).ToString());
-                        withBlock.Total = Decimal.Parse(dr.GetDouble(29).ToString());
-                        withBlock.Almacen = dr.GetString(34);
+                        withBlock.Serie = dr.GetString(10);
+                        withBlock.Numero = dr.GetInt32(11);
+                        withBlock.Referencia = dr.GetString(17);
+                        withBlock.Descripcion = dr.GetString(18);
+                        withBlock.Unidades = Int16.Parse(dr.GetDouble(21).ToString());
+                        withBlock.Precio = decimal.Parse(dr.GetString(22).ToString());
+                        withBlock.Descuento = int.Parse(dr.GetDouble(24).ToString());
+                        withBlock.Total = Decimal.Parse(dr.GetDouble(25).ToString());
+                        withBlock.Almacen = dr.GetString(30);
 
                     ObjListaDocDetalle.Add(ObjDocDetalle);
                 }
@@ -129,23 +129,28 @@ namespace ICG_Inter.Datos
                 {
                     
                     var withBlock = ObjDocumentoCabecera;
-                    withBlock.Serie = dr.GetString(14);
-                    withBlock.Numero = dr.GetInt32(15);
-                   // withBlock.Tipo_Documento = dr.GetString(14);
-                    withBlock.Cliente = dr.GetString(15);
-                    withBlock.Direccion = dr.GetString(15);
-                    withBlock.Fecha = DateTime.Parse(dr.GetDateTime(8).ToString());
+                    withBlock.Serie = dr.GetString(10);
+                    withBlock.Numero = dr.GetInt32(11);
+                   // withBlock.Tipo_Documento = dr.GetString(35);
+                    withBlock.Cliente = dr.GetString(7);
+                    withBlock.Direccion = dr.GetString(43);
+                    withBlock.Fecha = DateTime.Parse(dr.GetDateTime(4).ToString());
                     //withBlock.Fecha_Inicio = DateTime(dr.GetDateTime().ToString());
-                    withBlock.Hora = dr.GetString(9);
-                    withBlock.Impuesto = decimal.Parse(dr.GetDecimal(31).ToString());
-                    withBlock.Poblacion = dr.GetString(39);
-                    withBlock.Transporte = dr.GetString(39);
-                    withBlock.Vendedor = dr.GetString(39);                 
+                    withBlock.Hora = dr.GetString(5);
+                    withBlock.Impuesto = decimal.Parse(dr.GetDouble(27).ToString());
+                    withBlock.Poblacion = dr.GetString(36);
+                    //withBlock.Transporte = dr.GetString(39);
+                    withBlock.Vendedor = dr.GetString(38);      
+                    withBlock.Total_BrutoImponible = decimal.Parse(dr.GetDouble(26).ToString());
+                    withBlock.Impuesto = decimal.Parse(dr.GetDouble(27).ToString());
+                    withBlock.Total_Neto = decimal.Parse(dr.GetDouble(28).ToString());
+                    //withBlock.Codigo_Cliente = dr.GetString(6);
                 }
                 dr.Close();
             }
             catch (Exception ex)
             {
+                System.Windows.Forms.MessageBox.Show("Error" + ex.Message);
             }
 
             return ObjDocumentoCabecera ;
