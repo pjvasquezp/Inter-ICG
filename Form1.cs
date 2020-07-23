@@ -24,7 +24,7 @@ namespace ICG_Inter
 
         private void Btn_aceptar_Click(object sender, EventArgs e)
         {
-            string query = "exec [SP_GET_SeriesDocumentos]";
+            string query = "exec [SP_GET_DocumentoData]";
             SqlCommand comando = new SqlCommand(query, conexion);
             SqlDataAdapter data = new SqlDataAdapter(comando);
             DataTable tabla = new DataTable();

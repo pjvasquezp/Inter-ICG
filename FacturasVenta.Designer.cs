@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dgv_q = new System.Windows.Forms.DataGridView();
-            this.dgv_factura = new System.Windows.Forms.DataGridView();
+            this.txt_cliente = new System.Windows.Forms.DataGridView();
             this.btn_aceptar = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button12 = new System.Windows.Forms.Button();
@@ -45,31 +45,31 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txt_fechainicio = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txt_tipodoc = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.txt_poblacion2 = new System.Windows.Forms.TextBox();
+            this.txt_vendedor2 = new System.Windows.Forms.TextBox();
+            this.txt_vendedor = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txt_poblacion = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txt_direccion = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.txt_cliente2 = new System.Windows.Forms.TextBox();
+            this.txtcliente = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txt_transporte = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txt_hora = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txt_fecha = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txt_num = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txt_serie = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -79,7 +79,7 @@
             this.textBox16 = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox21 = new System.Windows.Forms.TextBox();
-            this.textBox20 = new System.Windows.Forms.TextBox();
+            this.txt_impuesto = new System.Windows.Forms.TextBox();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
@@ -94,7 +94,7 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_q)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_factura)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_cliente)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -111,13 +111,13 @@
             this.dgv_q.TabIndex = 46;
             this.dgv_q.DoubleClick += new System.EventHandler(this.Dgv_q_DoubleClick);
             // 
-            // dgv_factura
+            // txt_cliente
             // 
-            this.dgv_factura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_factura.Location = new System.Drawing.Point(203, 229);
-            this.dgv_factura.Name = "dgv_factura";
-            this.dgv_factura.Size = new System.Drawing.Size(960, 257);
-            this.dgv_factura.TabIndex = 47;
+            this.txt_cliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.txt_cliente.Location = new System.Drawing.Point(203, 229);
+            this.txt_cliente.Name = "txt_cliente";
+            this.txt_cliente.Size = new System.Drawing.Size(960, 257);
+            this.txt_cliente.TabIndex = 47;
             // 
             // btn_aceptar
             // 
@@ -275,22 +275,22 @@
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel5.Controls.Add(this.textBox2);
+            this.panel5.Controls.Add(this.txt_fechainicio);
             this.panel5.Controls.Add(this.label2);
-            this.panel5.Controls.Add(this.textBox1);
+            this.panel5.Controls.Add(this.txt_tipodoc);
             this.panel5.Controls.Add(this.label1);
             this.panel5.Location = new System.Drawing.Point(203, 44);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(960, 41);
             this.panel5.TabIndex = 53;
             // 
-            // textBox2
+            // txt_fechainicio
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox2.Location = new System.Drawing.Point(113, 16);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(65, 20);
-            this.textBox2.TabIndex = 3;
+            this.txt_fechainicio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_fechainicio.Location = new System.Drawing.Point(113, 16);
+            this.txt_fechainicio.Name = "txt_fechainicio";
+            this.txt_fechainicio.Size = new System.Drawing.Size(65, 20);
+            this.txt_fechainicio.TabIndex = 3;
             // 
             // label2
             // 
@@ -301,13 +301,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Fecha Inicio:";
             // 
-            // textBox1
+            // txt_tipodoc
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox1.Location = new System.Drawing.Point(41, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(33, 20);
-            this.textBox1.TabIndex = 1;
+            this.txt_tipodoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_tipodoc.Location = new System.Drawing.Point(41, 16);
+            this.txt_tipodoc.Name = "txt_tipodoc";
+            this.txt_tipodoc.Size = new System.Drawing.Size(33, 20);
+            this.txt_tipodoc.TabIndex = 1;
             // 
             // label1
             // 
@@ -321,55 +321,55 @@
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.textBox14);
-            this.panel6.Controls.Add(this.textBox13);
-            this.panel6.Controls.Add(this.textBox12);
+            this.panel6.Controls.Add(this.txt_poblacion2);
+            this.panel6.Controls.Add(this.txt_vendedor2);
+            this.panel6.Controls.Add(this.txt_vendedor);
             this.panel6.Controls.Add(this.label11);
-            this.panel6.Controls.Add(this.textBox11);
+            this.panel6.Controls.Add(this.txt_poblacion);
             this.panel6.Controls.Add(this.label10);
-            this.panel6.Controls.Add(this.textBox10);
+            this.panel6.Controls.Add(this.txt_direccion);
             this.panel6.Controls.Add(this.label9);
-            this.panel6.Controls.Add(this.textBox9);
-            this.panel6.Controls.Add(this.textBox8);
+            this.panel6.Controls.Add(this.txt_cliente2);
+            this.panel6.Controls.Add(this.txtcliente);
             this.panel6.Controls.Add(this.label8);
-            this.panel6.Controls.Add(this.textBox7);
+            this.panel6.Controls.Add(this.txt_transporte);
             this.panel6.Controls.Add(this.label7);
-            this.panel6.Controls.Add(this.textBox6);
+            this.panel6.Controls.Add(this.txt_hora);
             this.panel6.Controls.Add(this.label6);
-            this.panel6.Controls.Add(this.textBox5);
+            this.panel6.Controls.Add(this.txt_fecha);
             this.panel6.Controls.Add(this.label5);
-            this.panel6.Controls.Add(this.textBox4);
+            this.panel6.Controls.Add(this.txt_num);
             this.panel6.Controls.Add(this.label4);
-            this.panel6.Controls.Add(this.textBox3);
+            this.panel6.Controls.Add(this.txt_serie);
             this.panel6.Controls.Add(this.label3);
             this.panel6.Location = new System.Drawing.Point(203, 91);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(960, 132);
             this.panel6.TabIndex = 51;
             // 
-            // textBox14
+            // txt_poblacion2
             // 
-            this.textBox14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox14.Location = new System.Drawing.Point(776, 77);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(171, 20);
-            this.textBox14.TabIndex = 23;
+            this.txt_poblacion2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_poblacion2.Location = new System.Drawing.Point(776, 77);
+            this.txt_poblacion2.Name = "txt_poblacion2";
+            this.txt_poblacion2.Size = new System.Drawing.Size(171, 20);
+            this.txt_poblacion2.TabIndex = 23;
             // 
-            // textBox13
+            // txt_vendedor2
             // 
-            this.textBox13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox13.Location = new System.Drawing.Point(776, 105);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(171, 20);
-            this.textBox13.TabIndex = 22;
+            this.txt_vendedor2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_vendedor2.Location = new System.Drawing.Point(776, 105);
+            this.txt_vendedor2.Name = "txt_vendedor2";
+            this.txt_vendedor2.Size = new System.Drawing.Size(171, 20);
+            this.txt_vendedor2.TabIndex = 22;
             // 
-            // textBox12
+            // txt_vendedor
             // 
-            this.textBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox12.Location = new System.Drawing.Point(697, 105);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(73, 20);
-            this.textBox12.TabIndex = 21;
+            this.txt_vendedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_vendedor.Location = new System.Drawing.Point(697, 105);
+            this.txt_vendedor.Name = "txt_vendedor";
+            this.txt_vendedor.Size = new System.Drawing.Size(73, 20);
+            this.txt_vendedor.TabIndex = 21;
             // 
             // label11
             // 
@@ -380,13 +380,13 @@
             this.label11.TabIndex = 20;
             this.label11.Text = "Vendedor";
             // 
-            // textBox11
+            // txt_poblacion
             // 
-            this.textBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox11.Location = new System.Drawing.Point(697, 77);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(73, 20);
-            this.textBox11.TabIndex = 19;
+            this.txt_poblacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_poblacion.Location = new System.Drawing.Point(697, 77);
+            this.txt_poblacion.Name = "txt_poblacion";
+            this.txt_poblacion.Size = new System.Drawing.Size(73, 20);
+            this.txt_poblacion.TabIndex = 19;
             // 
             // label10
             // 
@@ -397,13 +397,13 @@
             this.label10.TabIndex = 18;
             this.label10.Text = "Población";
             // 
-            // textBox10
+            // txt_direccion
             // 
-            this.textBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox10.Location = new System.Drawing.Point(697, 51);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(250, 20);
-            this.textBox10.TabIndex = 17;
+            this.txt_direccion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_direccion.Location = new System.Drawing.Point(697, 51);
+            this.txt_direccion.Name = "txt_direccion";
+            this.txt_direccion.Size = new System.Drawing.Size(250, 20);
+            this.txt_direccion.TabIndex = 17;
             // 
             // label9
             // 
@@ -414,21 +414,21 @@
             this.label9.TabIndex = 16;
             this.label9.Text = "Dirección:";
             // 
-            // textBox9
+            // txt_cliente2
             // 
-            this.textBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox9.Location = new System.Drawing.Point(697, 25);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(250, 20);
-            this.textBox9.TabIndex = 15;
+            this.txt_cliente2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_cliente2.Location = new System.Drawing.Point(697, 25);
+            this.txt_cliente2.Name = "txt_cliente2";
+            this.txt_cliente2.Size = new System.Drawing.Size(250, 20);
+            this.txt_cliente2.TabIndex = 15;
             // 
-            // textBox8
+            // txtcliente
             // 
-            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox8.Location = new System.Drawing.Point(697, 3);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(250, 20);
-            this.textBox8.TabIndex = 4;
+            this.txtcliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtcliente.Location = new System.Drawing.Point(697, 3);
+            this.txtcliente.Name = "txtcliente";
+            this.txtcliente.Size = new System.Drawing.Size(250, 20);
+            this.txtcliente.TabIndex = 4;
             // 
             // label8
             // 
@@ -439,12 +439,12 @@
             this.label8.TabIndex = 14;
             this.label8.Text = "Cliente:";
             // 
-            // textBox7
+            // txt_transporte
             // 
-            this.textBox7.Location = new System.Drawing.Point(164, 96);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(95, 20);
-            this.textBox7.TabIndex = 13;
+            this.txt_transporte.Location = new System.Drawing.Point(164, 96);
+            this.txt_transporte.Name = "txt_transporte";
+            this.txt_transporte.Size = new System.Drawing.Size(95, 20);
+            this.txt_transporte.TabIndex = 13;
             // 
             // label7
             // 
@@ -455,12 +455,12 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Transporte:";
             // 
-            // textBox6
+            // txt_hora
             // 
-            this.textBox6.Location = new System.Drawing.Point(84, 96);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(57, 20);
-            this.textBox6.TabIndex = 11;
+            this.txt_hora.Location = new System.Drawing.Point(84, 96);
+            this.txt_hora.Name = "txt_hora";
+            this.txt_hora.Size = new System.Drawing.Size(57, 20);
+            this.txt_hora.TabIndex = 11;
             // 
             // label6
             // 
@@ -471,12 +471,12 @@
             this.label6.TabIndex = 10;
             this.label6.Text = "Hora:";
             // 
-            // textBox5
+            // txt_fecha
             // 
-            this.textBox5.Location = new System.Drawing.Point(6, 96);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(57, 20);
-            this.textBox5.TabIndex = 9;
+            this.txt_fecha.Location = new System.Drawing.Point(6, 96);
+            this.txt_fecha.Name = "txt_fecha";
+            this.txt_fecha.Size = new System.Drawing.Size(57, 20);
+            this.txt_fecha.TabIndex = 9;
             // 
             // label5
             // 
@@ -487,12 +487,12 @@
             this.label5.TabIndex = 8;
             this.label5.Text = "Fecha:";
             // 
-            // textBox4
+            // txt_num
             // 
-            this.textBox4.Location = new System.Drawing.Point(84, 25);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(57, 20);
-            this.textBox4.TabIndex = 7;
+            this.txt_num.Location = new System.Drawing.Point(84, 25);
+            this.txt_num.Name = "txt_num";
+            this.txt_num.Size = new System.Drawing.Size(57, 20);
+            this.txt_num.TabIndex = 7;
             // 
             // label4
             // 
@@ -503,12 +503,12 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Num:";
             // 
-            // textBox3
+            // txt_serie
             // 
-            this.textBox3.Location = new System.Drawing.Point(6, 25);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(57, 20);
-            this.textBox3.TabIndex = 5;
+            this.txt_serie.Location = new System.Drawing.Point(6, 25);
+            this.txt_serie.Name = "txt_serie";
+            this.txt_serie.Size = new System.Drawing.Size(57, 20);
+            this.txt_serie.TabIndex = 5;
             // 
             // label3
             // 
@@ -573,7 +573,7 @@
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.textBox21);
-            this.panel2.Controls.Add(this.textBox20);
+            this.panel2.Controls.Add(this.txt_impuesto);
             this.panel2.Controls.Add(this.textBox19);
             this.panel2.Controls.Add(this.textBox18);
             this.panel2.Controls.Add(this.textBox17);
@@ -599,12 +599,12 @@
             this.textBox21.Size = new System.Drawing.Size(156, 20);
             this.textBox21.TabIndex = 75;
             // 
-            // textBox20
+            // txt_impuesto
             // 
-            this.textBox20.Location = new System.Drawing.Point(174, 91);
-            this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new System.Drawing.Size(156, 20);
-            this.textBox20.TabIndex = 74;
+            this.txt_impuesto.Location = new System.Drawing.Point(174, 91);
+            this.txt_impuesto.Name = "txt_impuesto";
+            this.txt_impuesto.Size = new System.Drawing.Size(156, 20);
+            this.txt_impuesto.TabIndex = 74;
             // 
             // textBox19
             // 
@@ -721,7 +721,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1163, 705);
+            this.ClientSize = new System.Drawing.Size(1028, 705);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.textBox16);
             this.Controls.Add(this.button13);
@@ -732,13 +732,13 @@
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dgv_factura);
+            this.Controls.Add(this.txt_cliente);
             this.Controls.Add(this.dgv_q);
             this.Name = "FacturasVenta";
             this.Text = "FACTURAS DE VENTA";
             this.Load += new System.EventHandler(this.FacturasVenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_q)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_factura)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txt_cliente)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
@@ -755,7 +755,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgv_q;
-        private System.Windows.Forms.DataGridView dgv_factura;
+        private System.Windows.Forms.DataGridView txt_cliente;
         private System.Windows.Forms.Button btn_aceptar;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button12;
@@ -772,31 +772,31 @@
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txt_fechainicio;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txt_tipodoc;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txt_transporte;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txt_hora;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txt_fecha;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txt_num;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txt_serie;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox txt_poblacion2;
+        private System.Windows.Forms.TextBox txt_vendedor2;
+        private System.Windows.Forms.TextBox txt_vendedor;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txt_poblacion;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txt_direccion;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.TextBox textBox8;
+        private System.Windows.Forms.TextBox txt_cliente2;
+        private System.Windows.Forms.TextBox txtcliente;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label13;
@@ -815,7 +815,7 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox textBox21;
-        private System.Windows.Forms.TextBox textBox20;
+        private System.Windows.Forms.TextBox txt_impuesto;
         private System.Windows.Forms.TextBox textBox19;
         private System.Windows.Forms.TextBox textBox18;
         private System.Windows.Forms.TextBox textBox17;

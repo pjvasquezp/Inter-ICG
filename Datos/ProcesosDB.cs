@@ -71,7 +71,7 @@ namespace ICG_Inter.Datos
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
             cmd.Connection = ConClass.Con;
-            cmd.CommandText = "exec [SP_Get_DocumentosVentas] '" + Serie + "'," + NumDoc;
+            cmd.CommandText = "exec [SP_Get_VentasDocumentos] '" + Serie + "'," + NumDoc;
 
 
             ConClass.Open();
@@ -89,15 +89,16 @@ namespace ICG_Inter.Datos
                     var withBlock = ObjDocumentoCabecera;
                     withBlock.Serie = dr.GetString(14);
                     withBlock.Numero = dr.GetInt32(15);
-                    withBlock. = dr.GetString(21);
-                    withBlock.Descripcion = dr.GetString(22);
-                    withBlock.Unidades = Int16.Parse(dr.GetDouble(25).ToString());
-                    withBlock.Precio = decimal.Parse(dr.GetString(26).ToString());
-                    withBlock.Descuento = int.Parse(dr.GetDouble(28).ToString());
-                    withBlock.Total = Decimal.Parse(dr.GetDouble(29).ToString());
-                    withBlock.Almacen = dr.GetString(34);
-
-                    ObjListaDocDetalle.Add(ObjDocDetalle);
+                   // withBlock.Tipo_Documento = dr.GetString(14);
+                    withBlock.Cliente = dr.GetString(15);
+                    withBlock.Direccion = dr.GetString(15);
+                    withBlock.Fecha = DateTime.Parse(dr.GetDateTime(8).ToString());
+                    //withBlock.Fecha_Inicio = DateTime(dr.GetDateTime().ToString());
+                    withBlock.Hora = dr.GetString(9);
+                    withBlock.Impuesto = decimal.Parse(dr.GetDecimal(31).ToString());
+                    withBlock.Poblacion = dr.GetString(39);
+                    withBlock.Transporte = dr.GetString(39);
+                    withBlock.Vendedor = dr.GetString(39);                 
                 }
                 dr.Close();
             }
@@ -105,7 +106,7 @@ namespace ICG_Inter.Datos
             {
             }
 
-            return ObjListaDocDetalle;
+            return ObjDocumentoCabecera ;
         }
 
     }

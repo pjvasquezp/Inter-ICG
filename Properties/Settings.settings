@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="ConnStringSQL1" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=192.168.2.144;Initial Catalog=AGORA;User ID=sa;Password=B1Admin;Pooling=False</Value>
+      <Value Profile="(Default)">Data Source=10.65.7.95\MSSQLSERVER2k17;Initial Catalog=AGORA;User ID=sa;Password=B1Admin;Pooling=False</Value>
     </Setting>
     <Setting Name="ConnStringSQL2" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=192.168.2.144\MSSQLSERVER01;Initial Catalog=AGORA;User ID=sa;Password=B1Admins;Pooling=False</Value>
+      <Value Profile="(Default)">Data Source=DSNT-DEV-SRV\MSSQLSERVER2K17;Initial Catalog=AGORA;User ID=sa;Password=B1Admins;Pooling=False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

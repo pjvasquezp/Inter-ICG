@@ -44,10 +44,25 @@ namespace ICG_Inter
             Serie = this.dgv_q.CurrentRow.Cells[0].Value.ToString();
             NumDoc = int.Parse(this.dgv_q.CurrentRow.Cells[1].Value.ToString());
 
+            Documento_Cabecera MiObjCabecera = ObjProcDB.BuscarDocVentasCabecera(Serie, NumDoc);
+            txtcliente.Text = MiObjCabecera.Cliente;
+            txt_cliente2.Text = MiObjCabecera.Cliente;
+            txt_direccion.Text = MiObjCabecera.Direccion;
+            txt_poblacion.Text = MiObjCabecera.Poblacion;
+            txt_poblacion2.Text = MiObjCabecera.Poblacion;
+            txt_vendedor.Text = MiObjCabecera.Poblacion;
+            txt_vendedor2.Text = MiObjCabecera.Poblacion;
+            txt_fecha.Text = MiObjCabecera.Fecha.ToString();
+            txt_hora.Text = MiObjCabecera.Hora;
+            txt_transporte.Text = MiObjCabecera.Transporte;
+            txt_serie.Text = MiObjCabecera.Serie;
+            txt_num.Text = MiObjCabecera.Numero.ToString();
+            //fecha inicio
+            //tipo docu
+
             ListaDocDetalle MiObjDetalle = ObjProcDB.BuscarDocVentasDetalle(Serie, NumDoc);
-
-
-            dgv_factura.DataSource = MiObjDetalle;
+            
+            txt_cliente.DataSource = MiObjDetalle;
 
             //ObjDocCab.Cliente = tabla.Rows[0].ItemArray[11].ToString();
             //ObjDocCab.Direccion = tabla.Rows[0].ItemArray[50].ToString();
@@ -71,6 +86,8 @@ namespace ICG_Inter
             //dgv_factura.DataSource = tabla;
 
             //MessageBox.Show(Serie.ToString() + " " + NumDoc.ToString());
+
+
 
         }
 
