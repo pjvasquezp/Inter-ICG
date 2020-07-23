@@ -1,4 +1,5 @@
 ﻿using ICG_Inter.Datos;
+using ICG_Inter.Objetos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,20 +21,22 @@ namespace ICG_Inter
        // static string conexionstring = "server= DSNT-DEV-SRV\\MSSQLSERVER01; User= sa ; Password= B1Admin; database = AGORA;";
         //SqlConnection conexion = new SqlConnection(conexionstring);
 
-        public DataTable tablagrid = new DataTable();
+        //public DataTable tablagrid = new DataTable();
+        public ListaDocVentas ObjListaDocVentas = new ListaDocVentas();
         public FacturasVenta()
         {
             InitializeComponent();
         }
-        public FacturasVenta(DataTable table)
+        public FacturasVenta(ListaDocVentas ObjListaDoc)
         {
-            tablagrid = table;
+            ObjListaDocVentas = ObjListaDoc;
             InitializeComponent();
         }
 
         private void FacturasVenta_Load(object sender, EventArgs e)
         {
-            dgv_q.DataSource = tablagrid;
+            //ListaDocVentas ObjListaDocVentas = new ListaDocVentas();
+            dgv_q.DataSource = ObjListaDocVentas;
         }
         private void Dgv_q_DoubleClick(object sender, EventArgs e)
         {

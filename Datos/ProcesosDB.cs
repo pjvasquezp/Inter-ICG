@@ -1,4 +1,5 @@
 ﻿
+using ICG_Inter.Objetos;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -13,6 +14,47 @@ namespace ICG_Inter.Datos
             DAConnectionSQL DASQLConnection = new DAConnectionSQL();
         }
 
+        public ListaDocVentas GetDocVentas()
+        {
+            ListaDocVentas ObjListaDocVentas = new ListaDocVentas();
+
+            var ConClass = new DAConnectionSQL();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = ConClass.Con;
+            cmd.CommandText = "exec [SP_GET_DocumentoData]"; //+ Serie + "'," + NumDoc;
+
+            ConClass.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            try
+            {
+
+                while (dr.Read())
+                {
+                    DocVentas ObjDocVentas = new DocVentas();
+
+                    var withBlock = ObjDocVentas;
+                    withBlock.SerieDocumento = dr.GetString(0);
+                    withBlock.NumDocumento = dr.GetInt32(1);
+
+
+                    ObjListaDocVentas.Add(ObjDocVentas);
+                }
+                dr.Close();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+            return ObjListaDocVentas;
+        }
         public ListaDocDetalle BuscarDocVentasDetalle(string Serie, int NumDoc)
         {
             ListaDocDetalle ObjListaDocDetalle = new ListaDocDetalle();
@@ -23,7 +65,7 @@ namespace ICG_Inter.Datos
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType =  CommandType.Text;
             cmd.Connection = ConClass.Con;
-            cmd.CommandText = "exec [SP_Get_DocumentosVentas] '" + Serie + "'," + NumDoc;
+            cmd.CommandText = "exec [SP_Get_VentasDocumentos] '" + Serie + "'," + NumDoc;
 
 
             ConClass.Open();

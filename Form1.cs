@@ -8,14 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using ICG_Inter.Objetos;
+using ICG_Inter.Datos;
 
 namespace ICG_Inter
 {
     public partial class Entradafiltros : Form
     {
-        static string conexionstring = "server= DSNT-DEV-SRV\\MSSQLSERVER01; User= sa ; Password= B1Admin; database = AGORA;";
-        SqlConnection conexion = new SqlConnection(conexionstring);
+        //static string conexionstring = "server= DSNT-DEV-SRV\\MSSQLSERVER01; User= sa ; Password= B1Admin; database = AGORA;";
+        //SqlConnection conexion = new SqlConnection(conexionstring);
+        
+        public ProcesosDB ObjProcDB = new ProcesosDB();
+        
 
         public Entradafiltros()
         {
@@ -24,16 +28,17 @@ namespace ICG_Inter
 
         private void Btn_aceptar_Click(object sender, EventArgs e)
         {
-            string query = "exec [SP_GET_DocumentoData]";
-            SqlCommand comando = new SqlCommand(query, conexion);
-            SqlDataAdapter data = new SqlDataAdapter(comando);
-            DataTable tabla = new DataTable();
-            data.Fill(tabla);
+            ListaDocVentas ObjListaDocVentas = ObjProcDB.GetDocVentas();
 
-            FacturasVenta v1 = new FacturasVenta(tabla);
+            //ObjListaDocVentas = ObjProcDB.GetDocVentas();
+           
+
+            FacturasVenta v1 = new FacturasVenta(ObjListaDocVentas);
             this.Hide();
             v1.ShowDialog();
             this.Show();
+
+      
 
 
         }
