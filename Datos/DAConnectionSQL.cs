@@ -23,7 +23,7 @@ public class DAConnectionSQL
     {
         try
         {
-                Con = new SqlConnection(Settings.Default.ConnStringSQL2);
+                Con = new SqlConnection(Settings.Default.ConnStringSQL1);
         }
         catch (Exception ex)
 

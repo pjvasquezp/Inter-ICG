@@ -57,20 +57,20 @@ namespace ICG_Inter
             txt_vendedor2.Text = MiObjCabecera.Vendedor;
             txt_fecha.Text = MiObjCabecera.Fecha.ToString();
             txt_hora.Text = MiObjCabecera.Hora;
-            txt_transporte.Text = MiObjCabecera.Transporte;
+            //txt_transporte.Text = MiObjCabecera.Transporte;
             txt_serie.Text = MiObjCabecera.Serie;
             txt_num.Text = MiObjCabecera.Numero.ToString();
-            txt_bruto.Text = MiObjCabecera.Total_BrutoImponible.ToString();
-            txt_base.Text = MiObjCabecera.Total_BrutoImponible.ToString();
-            txt_impuesto.Text = MiObjCabecera.Impuesto.ToString();
-            txt_precioneto.Text = MiObjCabecera.Total_Neto.ToString();
+            //txt_bruto.Text = MiObjCabecera.Total_BrutoImponible.ToString();
+            //txt_base.Text = MiObjCabecera.Total_BrutoImponible.ToString();
+            //txt_impuesto.Text = MiObjCabecera.Impuesto.ToString();
+            //txt_precioneto.Text = MiObjCabecera.Total_Neto.ToString();
 
             //fecha inicio
             //tipo docu
 
             ListaDocDetalle MiObjDetalle = ObjProcDB.BuscarDocVentasDetalle(Serie, NumDoc);
             
-            txt_cliente.DataSource = MiObjDetalle;
+            dgv_Doc.DataSource = MiObjDetalle;
 
             //ObjDocCab.Cliente = tabla.Rows[0].ItemArray[11].ToString();
             //ObjDocCab.Direccion = tabla.Rows[0].ItemArray[50].ToString();
@@ -95,6 +95,12 @@ namespace ICG_Inter
 
             //MessageBox.Show(Serie.ToString() + " " + NumDoc.ToString());
 
+
+
+        }
+
+        private void dgv_Doc_DoubleClick(object sender, EventArgs e)
+        {
 
 
         }

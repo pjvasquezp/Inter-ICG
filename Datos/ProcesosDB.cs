@@ -37,9 +37,9 @@ namespace ICG_Inter.Datos
                     DocVentas ObjDocVentas = new DocVentas();
 
                     var withBlock = ObjDocVentas;
-                    withBlock.SerieDocumento = dr.GetString(0);
-                    withBlock.NumDocumento = dr.GetInt32(1);
-
+                    withBlock.Serie = dr.GetString(0);
+                    withBlock.Numero = dr.GetInt32(1);
+                    withBlock.TotalDocumento = dr.GetDouble(2);
 
                     ObjListaDocVentas.Add(ObjDocVentas);
                 }

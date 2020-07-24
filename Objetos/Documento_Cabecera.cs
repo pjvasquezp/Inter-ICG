@@ -22,10 +22,10 @@ namespace ICG_Inter
         public string Direccion { get; set; }
         public string Poblacion { get; set; }
         public string Vendedor { get; set; }
-        public Decimal Impuesto { get; set; }
-        public Decimal Total_BrutoImponible { get; set; }
-        public Decimal Descuentos { get; set; }
-        public Decimal Total_Neto { get; set; }
+        public decimal Impuesto { get; set; }
+        public decimal Total_BrutoImponible { get; set; }
+        public decimal Descuentos { get; set; }
+        public decimal Total_Neto { get; set; }
 
 
 

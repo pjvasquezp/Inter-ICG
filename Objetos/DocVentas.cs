@@ -9,8 +9,10 @@ namespace ICG_Inter.Objetos
 {
     public class DocVentas
     {
-        public string SerieDocumento { get; set; }
-        public int NumDocumento { get; set; }
+        public string Serie { get; set; }
+        public int Numero { get; set; }
+
+        public double TotalDocumento { get; set; }
     }
 
     public class ListaDocVentas : List<DocVentas>
