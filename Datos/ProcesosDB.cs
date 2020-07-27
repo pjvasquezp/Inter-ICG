@@ -3,6 +3,8 @@ using ICG_Inter.Objetos;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
 
 namespace ICG_Inter.Datos
 {
@@ -40,6 +42,7 @@ namespace ICG_Inter.Datos
                     withBlock.Serie = dr.GetString(0);
                     withBlock.Numero = dr.GetInt32(1);
                     withBlock.TotalDocumento = dr.GetDouble(2);
+                    withBlock.FechaDoc = dr.GetString(3).ToString();
 
                     ObjListaDocVentas.Add(ObjDocVentas);
                 }
@@ -91,6 +94,7 @@ namespace ICG_Inter.Datos
                         withBlock.Descuento = int.Parse(dr.GetDouble(24).ToString());
                         withBlock.Total = Decimal.Parse(dr.GetDouble(25).ToString());
                         withBlock.Almacen = dr.GetString(30);
+                    //withBlock.FotoArticulo = byte.Parse(dr.GetByte(44).GetType()); //MemoryStream(dr.GetByte(44));
 
                     ObjListaDocDetalle.Add(ObjDocDetalle);
                 }
@@ -145,6 +149,7 @@ namespace ICG_Inter.Datos
                     withBlock.Impuesto = decimal.Parse(dr.GetDouble(27).ToString());
                     withBlock.Total_Neto = decimal.Parse(dr.GetDouble(28).ToString());
                     //withBlock.Codigo_Cliente = dr.GetString(6);
+                    
                 }
                 dr.Close();
             }

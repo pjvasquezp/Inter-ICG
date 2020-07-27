@@ -14,10 +14,14 @@ namespace ICG_Inter.Objetos
         public string Descripcion { get; set; }
         public int UnidadesVenta { get; set; }
         public int UnidadesDevueltas { get; set; }
+        public string RazonDevolucion { get; set; }
         public Decimal Precio { get; set; }
         public string Almacen { get; set; }
     }
 
-    public ListaProductoDev
+    public class ListaProductoDev : List<ProductoDev>
+    {
+    
+    }
 
 }

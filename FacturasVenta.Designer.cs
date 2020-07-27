@@ -53,16 +53,14 @@
             this.txt_serie = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox15 = new System.Windows.Forms.TextBox();
-            this.button13 = new System.Windows.Forms.Button();
-            this.textBox16 = new System.Windows.Forms.TextBox();
+            this.Dgv_ProductosDev = new System.Windows.Forms.DataGridView();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_q)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Doc)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_ProductosDev)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv_q
@@ -304,57 +302,29 @@
             this.label12.TabIndex = 24;
             this.label12.Text = "Devoluciones";
             // 
-            // dataGridView2
+            // Dgv_ProductosDev
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(344, 461);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(388, 150);
-            this.dataGridView2.TabIndex = 54;
+            this.Dgv_ProductosDev.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.Dgv_ProductosDev.Location = new System.Drawing.Point(344, 461);
+            this.Dgv_ProductosDev.Name = "Dgv_ProductosDev";
+            this.Dgv_ProductosDev.Size = new System.Drawing.Size(592, 150);
+            this.Dgv_ProductosDev.TabIndex = 54;
             // 
-            // label13
+            // pictureBox1
             // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(263, 669);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(125, 13);
-            this.label13.TabIndex = 55;
-            this.label13.Text = "Moneda de Visualización";
-            // 
-            // textBox15
-            // 
-            this.textBox15.Location = new System.Drawing.Point(447, 667);
-            this.textBox15.Name = "textBox15";
-            this.textBox15.Size = new System.Drawing.Size(95, 20);
-            this.textBox15.TabIndex = 24;
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(566, 665);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(65, 32);
-            this.button13.TabIndex = 56;
-            this.button13.Text = "button13";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // textBox16
-            // 
-            this.textBox16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.textBox16.Location = new System.Drawing.Point(755, 461);
-            this.textBox16.Name = "textBox16";
-            this.textBox16.Size = new System.Drawing.Size(95, 20);
-            this.textBox16.TabIndex = 24;
+            this.pictureBox1.Location = new System.Drawing.Point(942, 461);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(212, 150);
+            this.pictureBox1.TabIndex = 57;
+            this.pictureBox1.TabStop = false;
             // 
             // FacturasVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1166, 705);
-            this.Controls.Add(this.textBox16);
-            this.Controls.Add(this.button13);
-            this.Controls.Add(this.textBox15);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.Dgv_ProductosDev);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel1);
@@ -368,7 +338,8 @@
             this.panel1.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Dgv_ProductosDev)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -401,10 +372,7 @@
         private System.Windows.Forms.TextBox txt_cliente2;
         private System.Windows.Forms.TextBox txtcliente;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox15;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.TextBox textBox16;
+        private System.Windows.Forms.DataGridView Dgv_ProductosDev;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

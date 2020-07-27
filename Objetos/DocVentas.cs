@@ -11,8 +11,9 @@ namespace ICG_Inter.Objetos
     {
         public string Serie { get; set; }
         public int Numero { get; set; }
-
         public double TotalDocumento { get; set; }
+
+        public String FechaDoc { get; set; }
     }
 
     public class ListaDocVentas : List<DocVentas>

@@ -17,6 +17,7 @@ namespace ICG_Inter
     {
         public Documento_Cabecera ObjDocCab = new Documento_Cabecera();
         public ProcesosDB ObjProcDB = new ProcesosDB();
+        public ListaProductoDev ObjListaProductosDev = new ListaProductoDev();
 
        // static string conexionstring = "server= DSNT-DEV-SRV\\MSSQLSERVER01; User= sa ; Password= B1Admin; database = AGORA;";
         //SqlConnection conexion = new SqlConnection(conexionstring);
@@ -101,9 +102,25 @@ namespace ICG_Inter
 
         private void dgv_Doc_DoubleClick(object sender, EventArgs e)
         {
+            ProductoDev ObjProductoDev = new ProductoDev();
+            ObjProductoDev.Serie = this.dgv_Doc.CurrentRow.Cells[0].Value.ToString();
+            ObjProductoDev.Numero = int.Parse(this.dgv_Doc.CurrentRow.Cells[1].Value.ToString());
+            ObjProductoDev.Referencia = this.dgv_Doc.CurrentRow.Cells[2].Value.ToString();
+            ObjProductoDev.Descripcion = this.dgv_Doc.CurrentRow.Cells[3].Value.ToString();
+            ObjProductoDev.UnidadesVenta = int.Parse(this.dgv_Doc.CurrentRow.Cells[4].Value.ToString());
+            ObjProductoDev.Precio = decimal.Parse(this.dgv_Doc.CurrentRow.Cells[5].Value.ToString());
+            ObjProductoDev.Almacen = this.dgv_Doc.CurrentRow.Cells[8].Value.ToString();
 
-
+            ObjListaProductosDev.Add(ObjProductoDev);
+            CargarGridProductosDev(ObjListaProductosDev);
+            //pictureBox1.Image = "C:\Users\pjvas\Pictures\Prueba.jpg";
         }
 
+        void CargarGridProductosDev(ListaProductoDev ObjListaProductosDev)
+        {
+            Dgv_ProductosDev.DataSource = null;
+            Dgv_ProductosDev.DataSource = ObjListaProductosDev;
+            Dgv_ProductosDev.Refresh();
+        }
     }
 }
