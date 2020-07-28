@@ -39,10 +39,11 @@ namespace ICG_Inter.Datos
                     DocVentas ObjDocVentas = new DocVentas();
 
                     var withBlock = ObjDocVentas;
-                    withBlock.Serie = dr.GetString(0);
-                    withBlock.Numero = dr.GetInt32(1);
-                    withBlock.TotalDocumento = dr.GetDouble(2);
-                    withBlock.FechaDoc = dr.GetString(3).ToString();
+                    withBlock.FechaDoc = dr.GetDateTime(0).ToString();
+                    withBlock.Serie = dr.GetString(1);
+                    withBlock.Numero = dr.GetInt32(2);
+                    withBlock.TotalDocumento = dr.GetDouble(3);
+                  
 
                     ObjListaDocVentas.Add(ObjDocVentas);
                 }
@@ -85,15 +86,17 @@ namespace ICG_Inter.Datos
                     Documento_Detalle ObjDocDetalle = new Documento_Detalle();
 
                     var withBlock = ObjDocDetalle;
-                        withBlock.Serie = dr.GetString(10);
-                        withBlock.Numero = dr.GetInt32(11);
-                        withBlock.Referencia = dr.GetString(17);
-                        withBlock.Descripcion = dr.GetString(18);
-                        withBlock.Unidades = Int16.Parse(dr.GetDouble(21).ToString());
-                        withBlock.Precio = decimal.Parse(dr.GetString(22).ToString());
-                        withBlock.Descuento = int.Parse(dr.GetDouble(24).ToString());
-                        withBlock.Total = Decimal.Parse(dr.GetDouble(25).ToString());
-                        withBlock.Almacen = dr.GetString(30);
+                        withBlock.Serie = dr.GetString(11);
+                        withBlock.Numero = dr.GetInt32(12);
+                        withBlock.Referencia = dr.GetString(18);
+                        withBlock.Descripcion = dr.GetString(19);
+                        withBlock.Unidades = Int16.Parse(dr.GetDouble(22).ToString());
+                        withBlock.Precio = decimal.Parse(dr.GetString(23).ToString());
+                        withBlock.Descuento = int.Parse(dr.GetDouble(25).ToString());
+                        withBlock.Total = Decimal.Parse(dr.GetDouble(26).ToString());
+                        withBlock.Almacen = dr.GetString(31);
+                        withBlock.Color = dr.GetString(20);
+                        withBlock.Talla = dr.GetString(21);
                     //withBlock.FotoArticulo = byte.Parse(dr.GetByte(44).GetType()); //MemoryStream(dr.GetByte(44));
 
                     ObjListaDocDetalle.Add(ObjDocDetalle);
@@ -133,21 +136,21 @@ namespace ICG_Inter.Datos
                 {
                     
                     var withBlock = ObjDocumentoCabecera;
-                    withBlock.Serie = dr.GetString(10);
-                    withBlock.Numero = dr.GetInt32(11);
+                    withBlock.Serie = dr.GetString(11);
+                    withBlock.Numero = dr.GetInt32(12);
                    // withBlock.Tipo_Documento = dr.GetString(35);
                     withBlock.Cliente = dr.GetString(7);
-                    withBlock.Direccion = dr.GetString(43);
+                    withBlock.Direccion = dr.GetString(44);
                     withBlock.Fecha = DateTime.Parse(dr.GetDateTime(4).ToString());
                     //withBlock.Fecha_Inicio = DateTime(dr.GetDateTime().ToString());
                     withBlock.Hora = dr.GetString(5);
-                    withBlock.Impuesto = decimal.Parse(dr.GetDouble(27).ToString());
-                    withBlock.Poblacion = dr.GetString(36);
+                    withBlock.Impuesto = decimal.Parse(dr.GetDouble(28).ToString());
+                    withBlock.Poblacion = dr.GetString(37);
                     //withBlock.Transporte = dr.GetString(39);
-                    withBlock.Vendedor = dr.GetString(38);      
-                    withBlock.Total_BrutoImponible = decimal.Parse(dr.GetDouble(26).ToString());
-                    withBlock.Impuesto = decimal.Parse(dr.GetDouble(27).ToString());
-                    withBlock.Total_Neto = decimal.Parse(dr.GetDouble(28).ToString());
+                    withBlock.Vendedor = dr.GetString(39);      
+                    withBlock.Total_BrutoImponible = decimal.Parse(dr.GetDouble(27).ToString());
+                    withBlock.Impuesto = decimal.Parse(dr.GetDouble(28).ToString());
+                    withBlock.Total_Neto = decimal.Parse(dr.GetDouble(29).ToString());
                     //withBlock.Codigo_Cliente = dr.GetString(6);
                     
                 }

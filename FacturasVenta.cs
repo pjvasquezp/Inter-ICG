@@ -52,7 +52,7 @@ namespace ICG_Inter
             txtcliente.Text = MiObjCabecera.Cliente;
             txt_cliente2.Text = MiObjCabecera.Cliente;
             txt_direccion.Text = MiObjCabecera.Direccion;
-            //txt_poblacion.Text = MiObjCabecera.Poblacion;
+           
             txt_poblacion2.Text = MiObjCabecera.Poblacion;
             //txt_vendedor.Text = MiObjCabecera.Codigo_Cliente;
             txt_vendedor2.Text = MiObjCabecera.Vendedor;
@@ -108,8 +108,9 @@ namespace ICG_Inter
             ObjProductoDev.Referencia = this.dgv_Doc.CurrentRow.Cells[2].Value.ToString();
             ObjProductoDev.Descripcion = this.dgv_Doc.CurrentRow.Cells[3].Value.ToString();
             ObjProductoDev.UnidadesVenta = int.Parse(this.dgv_Doc.CurrentRow.Cells[4].Value.ToString());
-            ObjProductoDev.Precio = decimal.Parse(this.dgv_Doc.CurrentRow.Cells[5].Value.ToString());
+            ObjProductoDev.Precio = decimal.Parse(this.dgv_Doc.CurrentRow.Cells[7].Value.ToString());
             ObjProductoDev.Almacen = this.dgv_Doc.CurrentRow.Cells[8].Value.ToString();
+
 
             ObjListaProductosDev.Add(ObjProductoDev);
             CargarGridProductosDev(ObjListaProductosDev);

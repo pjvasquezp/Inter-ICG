@@ -17,6 +17,8 @@ namespace ICG_Inter.Objetos
         public string RazonDevolucion { get; set; }
         public Decimal Precio { get; set; }
         public string Almacen { get; set; }
+        public string Talla { get; set; }
+        public string Color { get; set; }
     }
 
     public class ListaProductoDev : List<ProductoDev>
