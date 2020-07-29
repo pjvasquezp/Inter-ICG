@@ -51,10 +51,10 @@ namespace ICG_Inter
             Documento_Cabecera MiObjCabecera = ObjProcDB.BuscarDocVentasCabecera(Serie, NumDoc);
             txtcliente.Text = MiObjCabecera.Cliente;
             txt_cliente2.Text = MiObjCabecera.Cliente;
-            txt_direccion.Text = MiObjCabecera.Direccion;
-           
-            txt_poblacion2.Text = MiObjCabecera.Poblacion;
-            //txt_vendedor.Text = MiObjCabecera.Codigo_Cliente;
+            //txt_direccion.Text = MiObjCabecera.Direccion;
+
+            //txt_poblacion2.Text = MiObjCabecera.Poblacion;
+            txt_cliente2.Text = MiObjCabecera.Codigo_Cliente.ToString(); ;
             txt_vendedor2.Text = MiObjCabecera.Vendedor;
             txt_fecha.Text = MiObjCabecera.Fecha.ToString();
             txt_hora.Text = MiObjCabecera.Hora;

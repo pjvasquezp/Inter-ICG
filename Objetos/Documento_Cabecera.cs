@@ -17,7 +17,7 @@ namespace ICG_Inter
         public DateTime Fecha { get; set; }
         public string Hora { get; set; }
         public string Transporte { get; set; }
-        public string Codigo_Cliente { get; set; }
+        public int Codigo_Cliente { get; set; }
         public string Cliente { get; set; }
         public string Direccion { get; set; }
         public string Poblacion { get; set; }

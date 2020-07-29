@@ -16,7 +16,7 @@ namespace ICG_Inter.Datos
             DAConnectionSQL DASQLConnection = new DAConnectionSQL();
         }
 
-        public ListaDocVentas GetDocVentas()
+        public ListaDocVentas GetDocVentas(string Cod_Art, Int32 Cod_Cli)
         {
             ListaDocVentas ObjListaDocVentas = new ListaDocVentas();
 
@@ -25,7 +25,7 @@ namespace ICG_Inter.Datos
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.Text;
             cmd.Connection = ConClass.Con;
-            cmd.CommandText = "exec [SP_GET_DocumentoData]"; //+ Serie + "'," + NumDoc;
+            cmd.CommandText = "exec [SP_GET_DocumentoData] '" + Cod_Art + "'," + Cod_Cli;
 
             ConClass.Open();
 
@@ -140,6 +140,7 @@ namespace ICG_Inter.Datos
                     withBlock.Numero = dr.GetInt32(12);
                    // withBlock.Tipo_Documento = dr.GetString(35);
                     withBlock.Cliente = dr.GetString(7);
+                    withBlock.Codigo_Cliente = dr.GetInt32(6);
                     withBlock.Direccion = dr.GetString(44);
                     withBlock.Fecha = DateTime.Parse(dr.GetDateTime(4).ToString());
                     //withBlock.Fecha_Inicio = DateTime(dr.GetDateTime().ToString());
