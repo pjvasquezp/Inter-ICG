@@ -107,9 +107,19 @@ namespace ICG_Inter
             ObjProductoDev.Numero = int.Parse(this.dgv_Doc.CurrentRow.Cells[1].Value.ToString());
             ObjProductoDev.Referencia = this.dgv_Doc.CurrentRow.Cells[2].Value.ToString();
             ObjProductoDev.Descripcion = this.dgv_Doc.CurrentRow.Cells[3].Value.ToString();
-            ObjProductoDev.UnidadesVenta = int.Parse(this.dgv_Doc.CurrentRow.Cells[4].Value.ToString());
+            ObjProductoDev.Talla = this.dgv_Doc.CurrentRow.Cells[4].Value.ToString();
+            ObjProductoDev.Color = this.dgv_Doc.CurrentRow.Cells[5].Value.ToString();
+            ObjProductoDev.UnidadesVenta = int.Parse(this.dgv_Doc.CurrentRow.Cells[6].Value.ToString());
             ObjProductoDev.Precio = decimal.Parse(this.dgv_Doc.CurrentRow.Cells[7].Value.ToString());
             ObjProductoDev.Almacen = this.dgv_Doc.CurrentRow.Cells[8].Value.ToString();
+            
+
+
+
+            FormDevolucion v1 = new FormDevolucion(ObjProductoDev);
+            v1.ShowDialog();
+            this.Show();
+
 
 
             ObjListaProductosDev.Add(ObjProductoDev);

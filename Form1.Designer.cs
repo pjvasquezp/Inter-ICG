@@ -36,16 +36,16 @@
             this.label6 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.btn_aceptar = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmb_fechainicio = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_Codart = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.btn_aceptar = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
+            this.button13 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,63 +123,6 @@
             this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button11.UseVisualStyleBackColor = false;
             // 
-            // button13
-            // 
-            this.button13.Image = global::ICG_Inter.Properties.Resources.b_calendar;
-            this.button13.Location = new System.Drawing.Point(246, 91);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(29, 23);
-            this.button13.TabIndex = 44;
-            this.button13.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Image = global::ICG_Inter.Properties.Resources.b_calendar;
-            this.button12.Location = new System.Drawing.Point(246, 62);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(29, 23);
-            this.button12.TabIndex = 43;
-            this.button12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button9.Image = global::ICG_Inter.Properties.Resources.s_cancel;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(106, 14);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(73, 27);
-            this.button9.TabIndex = 40;
-            this.button9.Text = "Cancelar";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button9.UseVisualStyleBackColor = false;
-            // 
-            // btn_aceptar
-            // 
-            this.btn_aceptar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_aceptar.Image = global::ICG_Inter.Properties.Resources.s_success;
-            this.btn_aceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_aceptar.Location = new System.Drawing.Point(13, 14);
-            this.btn_aceptar.Name = "btn_aceptar";
-            this.btn_aceptar.Size = new System.Drawing.Size(65, 27);
-            this.btn_aceptar.TabIndex = 39;
-            this.btn_aceptar.Text = "Aceptar";
-            this.btn_aceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_aceptar.UseVisualStyleBackColor = false;
-            this.btn_aceptar.Click += new System.EventHandler(this.Btn_aceptar_Click);
-            // 
-            // button4
-            // 
-            this.button4.Image = global::ICG_Inter.Properties.Resources.b_search;
-            this.button4.Location = new System.Drawing.Point(246, 117);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(41, 23);
-            this.button4.TabIndex = 29;
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -230,6 +173,63 @@
             this.button1.TabIndex = 49;
             this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btn_aceptar
+            // 
+            this.btn_aceptar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_aceptar.Image = global::ICG_Inter.Properties.Resources.s_success;
+            this.btn_aceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_aceptar.Location = new System.Drawing.Point(13, 14);
+            this.btn_aceptar.Name = "btn_aceptar";
+            this.btn_aceptar.Size = new System.Drawing.Size(65, 27);
+            this.btn_aceptar.TabIndex = 39;
+            this.btn_aceptar.Text = "Aceptar";
+            this.btn_aceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_aceptar.UseVisualStyleBackColor = false;
+            this.btn_aceptar.Click += new System.EventHandler(this.Btn_aceptar_Click);
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button9.Image = global::ICG_Inter.Properties.Resources.s_cancel;
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button9.Location = new System.Drawing.Point(106, 14);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(73, 27);
+            this.button9.TabIndex = 40;
+            this.button9.Text = "Cancelar";
+            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button9.UseVisualStyleBackColor = false;
+            // 
+            // button13
+            // 
+            this.button13.Image = global::ICG_Inter.Properties.Resources.b_calendar;
+            this.button13.Location = new System.Drawing.Point(246, 91);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(29, 23);
+            this.button13.TabIndex = 44;
+            this.button13.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // button12
+            // 
+            this.button12.Image = global::ICG_Inter.Properties.Resources.b_calendar;
+            this.button12.Location = new System.Drawing.Point(246, 62);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(29, 23);
+            this.button12.TabIndex = 43;
+            this.button12.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Image = global::ICG_Inter.Properties.Resources.b_search;
+            this.button4.Location = new System.Drawing.Point(246, 117);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(41, 23);
+            this.button4.TabIndex = 29;
+            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // Entradafiltros
             // 

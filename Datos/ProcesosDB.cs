@@ -165,5 +165,46 @@ namespace ICG_Inter.Datos
             return ObjDocumentoCabecera ;
         }
 
+        public ListaMotivosDev GetMotivosDev()
+        {
+            ListaMotivosDev ObjListaMotivosDev = new ListaMotivosDev();
+
+            var ConClass = new DAConnectionSQL();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = ConClass.Con;
+            cmd.CommandText = "Select * from MOTIVOSDEVOLUCION ";
+
+            ConClass.Open();
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            try
+            {
+
+                while (dr.Read())
+                {
+                    MotivosDevolucion ObjMotivoDev = new MotivosDevolucion();
+
+                    var withBlock = ObjMotivoDev;
+                    withBlock.IdMotivo = dr.GetInt32(0);
+                    withBlock.Descripcion = dr.GetString(1);
+
+
+                    ObjListaMotivosDev.Add(ObjMotivoDev);
+                }
+                dr.Close();
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+            return ObjListaMotivosDev;
+        }
     }
 }

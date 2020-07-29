@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="Datos\DAConnectionSQL.cs" />
     <Compile Include="Datos\ProcesosDB.cs" />
+    <Compile Include="FormDevolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDevolucion.Designer.cs">
+      <DependentUpon>FormDevolucion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Objetos\Documento_Detalle.cs" />
     <Compile Include="Objetos\Documento_Cabecera.cs" />
     <Compile Include="Form1.cs">
@@ -63,6 +69,7 @@
       <DependentUpon>FacturasVenta.cs</DependentUpon>
     </Compile>
     <Compile Include="Objetos\DocVentas.cs" />
+    <Compile Include="Objetos\MotivosDevolucion.cs" />
     <Compile Include="Objetos\ProductoDev.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +78,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FacturasVenta.resx">
       <DependentUpon>FacturasVenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDevolucion.resx">
+      <DependentUpon>FormDevolucion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

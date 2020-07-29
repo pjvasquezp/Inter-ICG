@@ -53,6 +53,15 @@
             this.label12 = new System.Windows.Forms.Label();
             this.Dgv_ProductosDev = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.TotalDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referenciaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,14 +78,6 @@
             this.numeroDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fechaDocDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BSDocVentas = new System.Windows.Forms.BindingSource(this.components);
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_q)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Doc)).BeginInit();
             this.panel1.SuspendLayout();
@@ -95,6 +96,7 @@
             this.dgv_q.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.serieDataGridViewTextBoxColumn1,
             this.numeroDataGridViewTextBoxColumn1,
+            this.TotalDocumento,
             this.fechaDocDataGridViewTextBoxColumn});
             this.dgv_q.DataSource = this.BSDocVentas;
             this.dgv_q.Location = new System.Drawing.Point(0, 47);
@@ -120,7 +122,7 @@
             this.totalDataGridViewTextBoxColumn,
             this.almacenDataGridViewTextBoxColumn});
             this.dgv_Doc.DataSource = this.DSDetalleDoc;
-            this.dgv_Doc.Location = new System.Drawing.Point(344, 185);
+            this.dgv_Doc.Location = new System.Drawing.Point(345, 185);
             this.dgv_Doc.Name = "dgv_Doc";
             this.dgv_Doc.Size = new System.Drawing.Size(810, 257);
             this.dgv_Doc.TabIndex = 47;
@@ -213,6 +215,7 @@
             // txt_vendedor2
             // 
             this.txt_vendedor2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_vendedor2.Enabled = false;
             this.txt_vendedor2.Location = new System.Drawing.Point(279, 87);
             this.txt_vendedor2.Name = "txt_vendedor2";
             this.txt_vendedor2.Size = new System.Drawing.Size(171, 20);
@@ -230,6 +233,7 @@
             // txt_cliente2
             // 
             this.txt_cliente2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_cliente2.Enabled = false;
             this.txt_cliente2.Location = new System.Drawing.Point(279, 22);
             this.txt_cliente2.Name = "txt_cliente2";
             this.txt_cliente2.Size = new System.Drawing.Size(171, 20);
@@ -238,6 +242,7 @@
             // txtcliente
             // 
             this.txtcliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtcliente.Enabled = false;
             this.txtcliente.Location = new System.Drawing.Point(279, 56);
             this.txtcliente.Name = "txtcliente";
             this.txtcliente.Size = new System.Drawing.Size(171, 20);
@@ -254,6 +259,8 @@
             // 
             // txt_hora
             // 
+            this.txt_hora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_hora.Enabled = false;
             this.txt_hora.Location = new System.Drawing.Point(97, 83);
             this.txt_hora.Name = "txt_hora";
             this.txt_hora.Size = new System.Drawing.Size(57, 20);
@@ -270,6 +277,8 @@
             // 
             // txt_fecha
             // 
+            this.txt_fecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_fecha.Enabled = false;
             this.txt_fecha.Location = new System.Drawing.Point(19, 83);
             this.txt_fecha.Name = "txt_fecha";
             this.txt_fecha.Size = new System.Drawing.Size(72, 20);
@@ -286,6 +295,8 @@
             // 
             // txt_num
             // 
+            this.txt_num.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_num.Enabled = false;
             this.txt_num.Location = new System.Drawing.Point(97, 38);
             this.txt_num.Name = "txt_num";
             this.txt_num.Size = new System.Drawing.Size(57, 20);
@@ -302,6 +313,8 @@
             // 
             // txt_serie
             // 
+            this.txt_serie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_serie.Enabled = false;
             this.txt_serie.Location = new System.Drawing.Point(19, 38);
             this.txt_serie.Name = "txt_serie";
             this.txt_serie.Size = new System.Drawing.Size(72, 20);
@@ -341,6 +354,82 @@
             this.pictureBox1.TabIndex = 57;
             this.pictureBox1.TabStop = false;
             // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(153, 3);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(73, 27);
+            this.button2.TabIndex = 52;
+            this.button2.Text = "Filtro";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(345, 7);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 53;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(256, 10);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 13);
+            this.label2.TabIndex = 54;
+            this.label2.Text = "Codigo de Barra:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(502, 10);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 13);
+            this.label7.TabIndex = 55;
+            this.label7.Text = "Serie:";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(538, 7);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 56;
+            // 
+            // button4
+            // 
+            this.button4.Image = global::ICG_Inter.Properties.Resources.b_search;
+            this.button4.Location = new System.Drawing.Point(810, 3);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(70, 27);
+            this.button4.TabIndex = 57;
+            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(651, 10);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 13);
+            this.label9.TabIndex = 58;
+            this.label9.Text = "Número:";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(694, 7);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 59;
+            // 
+            // TotalDocumento
+            // 
+            this.TotalDocumento.DataPropertyName = "TotalDocumento";
+            this.TotalDocumento.HeaderText = "Total";
+            this.TotalDocumento.Name = "TotalDocumento";
+            this.TotalDocumento.Width = 80;
+            // 
             // serieDataGridViewTextBoxColumn
             // 
             this.serieDataGridViewTextBoxColumn.DataPropertyName = "Serie";
@@ -358,7 +447,7 @@
             // referenciaDataGridViewTextBoxColumn
             // 
             this.referenciaDataGridViewTextBoxColumn.DataPropertyName = "Referencia";
-            this.referenciaDataGridViewTextBoxColumn.HeaderText = "Referencia";
+            this.referenciaDataGridViewTextBoxColumn.HeaderText = "Cod. Articulo";
             this.referenciaDataGridViewTextBoxColumn.Name = "referenciaDataGridViewTextBoxColumn";
             // 
             // descripcionDataGridViewTextBoxColumn
@@ -438,75 +527,6 @@
             // 
             this.BSDocVentas.DataSource = typeof(ICG_Inter.Objetos.DocVentas);
             // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(153, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(73, 27);
-            this.button2.TabIndex = 52;
-            this.button2.Text = "Filtro";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(345, 7);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 53;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(256, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 13);
-            this.label2.TabIndex = 54;
-            this.label2.Text = "Codigo de Barra:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(502, 10);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 13);
-            this.label7.TabIndex = 55;
-            this.label7.Text = "Serie:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(538, 7);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 56;
-            // 
-            // button4
-            // 
-            this.button4.Image = global::ICG_Inter.Properties.Resources.b_search;
-            this.button4.Location = new System.Drawing.Point(810, 3);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(70, 27);
-            this.button4.TabIndex = 57;
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(651, 10);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(47, 13);
-            this.label9.TabIndex = 58;
-            this.label9.Text = "Número:";
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(694, 7);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 59;
-            // 
             // FacturasVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -562,6 +582,19 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.DataGridView Dgv_ProductosDev;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.BindingSource DSDetalleDoc;
+        private System.Windows.Forms.BindingSource BSDocVentas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalDocumentoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridViewTextBoxColumn serieDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn referenciaDataGridViewTextBoxColumn;
@@ -573,21 +606,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn descuentoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn almacenDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource DSDetalleDoc;
-        private System.Windows.Forms.BindingSource BSDocVentas;
         private System.Windows.Forms.DataGridViewTextBoxColumn serieDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroDataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalDocumentoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalDocumento;
         private System.Windows.Forms.DataGridViewTextBoxColumn fechaDocDataGridViewTextBoxColumn;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button4;
     }
 }
