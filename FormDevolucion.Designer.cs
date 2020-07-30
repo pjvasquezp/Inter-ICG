@@ -50,6 +50,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.txt_color = new System.Windows.Forms.TextBox();
             this.CBMotivodDev = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -247,11 +249,31 @@
             this.CBMotivodDev.Size = new System.Drawing.Size(100, 21);
             this.CBMotivodDev.TabIndex = 22;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(16, 320);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "Procesar";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(110, 320);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 24;
+            this.button2.Text = "Cancelar";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // FormDevolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(315, 361);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.CBMotivodDev);
             this.Controls.Add(this.txt_color);
             this.Controls.Add(this.label11);
@@ -275,7 +297,7 @@
             this.Controls.Add(this.txt_serie);
             this.Controls.Add(this.label1);
             this.Name = "FormDevolucion";
-            this.Text = "Form2";
+            this.Text = "Devolución de Artículos";
             this.Load += new System.EventHandler(this.FormDevolucion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -306,5 +328,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txt_color;
         private System.Windows.Forms.ComboBox CBMotivodDev;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
