@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic;
+using ICG_Inter.Funciones;
+using System.Diagnostics;
 
 namespace ICG_Inter
 {
@@ -18,8 +20,9 @@ namespace ICG_Inter
     {
         public Documento_Cabecera ObjDocCab = new Documento_Cabecera();
         public Documento_Detalle DocDetalleSeleccionado = new Documento_Detalle();
-        public ProductoDev ProductoDevSeleccionado = new ProductoDev(); 
-
+        public ProductoDev ProductoDevSeleccionado = new ProductoDev();
+        public Buildsxml ObjBuildXml = new Buildsxml();
+        string RutaExeFirmado = "C:\\Users\\pjvas\\OneDrive\\Proyectos\\ICG Desarrollo\\xml\\";
 
         public ProcesosDB ObjProcDB = new ProcesosDB();
         public ListaProductoDev ObjListaProductosDev = new ListaProductoDev();
@@ -213,9 +216,15 @@ namespace ICG_Inter
 
                 if (SerieFacActual != "" && NumDocActual != 0 && NumDocDocument != NumDocActual)
                 {
+                    
+
                     bool Exitoso = ObjProcDB.EjecutarNotasCredito();
                     if (Exitoso)
                     {
+                        ObjBuildXml.ContruyeXML(SerieFacActual, NumDocDocument);
+                        RutaExeFirmado = RutaExeFirmado + "llamarEXE.exe";
+                        Process.Start(RutaExeFirmado);
+
                         MessageBox.Show("La Devolucion de la Factura " + SerieFacDocumento + " - " + 
                             NumDocDocument + " se Proceso correctamente",
                             "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -261,7 +270,26 @@ namespace ICG_Inter
 
                 ValidarProceso(exitoso, SerieFacDocumento, NumDocDocument, NumLinea);
                                     
-            }                   
+            }
+
+            ObjBuildXml.ContruyeXML(SerieFacActual, NumDocDocument);
+            try
+            {
+                Process.Start(RutaExeFirmado + "llamarEXE.exe");
+
+                MessageBox.Show("Firmado de la Devolucion de la Factura " + 
+                    SerieFacActual + " - " + NumDocDocument +
+                    " Procesada Correctamente ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Error al Procesar el Firmado de " + NumLinea + " de la Devolucion de la Factura " + 
+                    SerieFacActual + " " + NumDocDocument
+                    , "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
 
         }
 

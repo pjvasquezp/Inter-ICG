@@ -61,6 +61,7 @@
     <Compile Include="FormDevolucion.Designer.cs">
       <DependentUpon>FormDevolucion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Funciones\Buildsxml.cs" />
     <Compile Include="Objetos\Cliente.cs" />
     <Compile Include="Objetos\Documento_Detalle.cs" />
     <Compile Include="Objetos\Documento_Cabecera.cs" />
