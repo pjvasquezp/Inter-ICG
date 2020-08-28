@@ -88,7 +88,7 @@
             this.txt_numero.Location = new System.Drawing.Point(137, 32);
             this.txt_numero.Name = "txt_numero";
             this.txt_numero.Size = new System.Drawing.Size(100, 20);
-            this.txt_numero.TabIndex = 3;
+            this.txt_numero.TabIndex = 2;
             // 
             // label3
             // 
@@ -106,7 +106,7 @@
             this.txt_codiart.Location = new System.Drawing.Point(137, 60);
             this.txt_codiart.Name = "txt_codiart";
             this.txt_codiart.Size = new System.Drawing.Size(100, 20);
-            this.txt_codiart.TabIndex = 5;
+            this.txt_codiart.TabIndex = 3;
             // 
             // label4
             // 
@@ -124,7 +124,7 @@
             this.txt_des.Location = new System.Drawing.Point(137, 87);
             this.txt_des.Name = "txt_des";
             this.txt_des.Size = new System.Drawing.Size(100, 20);
-            this.txt_des.TabIndex = 7;
+            this.txt_des.TabIndex = 4;
             // 
             // label5
             // 
@@ -142,7 +142,7 @@
             this.txt_dades.Location = new System.Drawing.Point(137, 167);
             this.txt_dades.Name = "txt_dades";
             this.txt_dades.Size = new System.Drawing.Size(100, 20);
-            this.txt_dades.TabIndex = 9;
+            this.txt_dades.TabIndex = 7;
             // 
             // label6
             // 
@@ -167,7 +167,8 @@
             this.textBox7.Location = new System.Drawing.Point(137, 221);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 13;
+            this.textBox7.TabIndex = 9;
+            this.textBox7.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // label8
             // 
@@ -221,7 +222,7 @@
             this.txt_talla.Location = new System.Drawing.Point(137, 115);
             this.txt_talla.Name = "txt_talla";
             this.txt_talla.Size = new System.Drawing.Size(100, 20);
-            this.txt_talla.TabIndex = 19;
+            this.txt_talla.TabIndex = 5;
             // 
             // label11
             // 
@@ -239,7 +240,7 @@
             this.txt_color.Location = new System.Drawing.Point(137, 141);
             this.txt_color.Name = "txt_color";
             this.txt_color.Size = new System.Drawing.Size(100, 20);
-            this.txt_color.TabIndex = 21;
+            this.txt_color.TabIndex = 6;
             // 
             // CBMotivodDev
             // 
@@ -247,16 +248,18 @@
             this.CBMotivodDev.Location = new System.Drawing.Point(137, 194);
             this.CBMotivodDev.Name = "CBMotivodDev";
             this.CBMotivodDev.Size = new System.Drawing.Size(100, 21);
-            this.CBMotivodDev.TabIndex = 22;
+            this.CBMotivodDev.TabIndex = 8;
+            this.CBMotivodDev.SelectionChangeCommitted += new System.EventHandler(this.CBMotivodDev_SelectionChangeCommitted);
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(16, 320);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 23;
+            this.button1.TabIndex = 10;
             this.button1.Text = "Procesar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button2
             // 
@@ -266,6 +269,7 @@
             this.button2.TabIndex = 24;
             this.button2.Text = "Cancelar";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FormDevolucion
             // 
@@ -299,6 +303,7 @@
             this.Name = "FormDevolucion";
             this.Text = "Devolución de Artículos";
             this.Load += new System.EventHandler(this.FormDevolucion_Load);
+            this.Leave += new System.EventHandler(this.FormDevolucion_Leave);
             this.ResumeLayout(false);
             this.PerformLayout();
 

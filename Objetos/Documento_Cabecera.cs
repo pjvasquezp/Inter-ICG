@@ -26,10 +26,5 @@ namespace ICG_Inter
         public decimal Total_BrutoImponible { get; set; }
         public decimal Descuentos { get; set; }
         public decimal Total_Neto { get; set; }
-
-
-
-
-
     }
 }

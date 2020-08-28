@@ -1,11 +1,13 @@
 ﻿using ICG_Inter.Datos;
 using ICG_Inter.Objetos;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,32 +18,117 @@ namespace ICG_Inter
     {
         public ProcesosDB objProcesosDB = new ProcesosDB();
         public ProductoDev ObjProducto = new ProductoDev();
+        public int Unidadesventas = 0;
+        public int UnidadesDev = 0;
         public FormDevolucion()
         {
             InitializeComponent();
         }
-        public FormDevolucion(ProductoDev ObjProductoDev)
+        public FormDevolucion(ref ProductoDev ObjProductoDev)
         {
-            ObjProducto = ObjProductoDev;
             InitializeComponent();
+            ObjProducto = ObjProductoDev;
+            CargaInfo(ref ObjProductoDev);
+            
         }
 
         private void FormDevolucion_Load(object sender, EventArgs e)
+        { 
+           
+            
+        }
+
+        private void CargaInfo(ref ProductoDev ObjProductoDev)
         {
-            txt_serie.Text = ObjProducto.Serie;
-            txt_numero.Text = ObjProducto.Numero.ToString();
-            txt_codiart.Text = ObjProducto.Referencia;
-            txt_des.Text = ObjProducto.Descripcion;
-            txt_talla.Text = ObjProducto.Talla;
-            txt_color.Text = ObjProducto.Color;
-            txt_dades.Text = ObjProducto.UnidadesVenta.ToString();
-            txt_precio.Text = ObjProducto.Precio.ToString();
-            txt_alma.Text = ObjProducto.Almacen;
+            Unidadesventas = ObjProductoDev.UnidadesVenta;
+            txt_serie.Text = ObjProductoDev.Serie;
+            txt_numero.Text = ObjProductoDev.Numero.ToString();
+            txt_codiart.Text = ObjProductoDev.Referencia;
+            txt_des.Text = ObjProductoDev.Descripcion;
+            txt_talla.Text = ObjProductoDev.Talla;
+            txt_color.Text = ObjProductoDev.Color;
+            txt_dades.Text = ObjProductoDev.UnidadesVenta.ToString();
+            txt_precio.Text = ObjProductoDev.Precio.ToString();
+            txt_alma.Text = ObjProductoDev.Almacen;
             CBMotivodDev.DataSource = objProcesosDB.GetMotivosDev();
             CBMotivodDev.DisplayMember = "DESCRIPCION";
             CBMotivodDev.ValueMember = "IDMOTIVO";
 
+        }
+
+        private void textBox7_TextChanged(object sender, EventArgs e)
+        {
+            if (IsNumeric(textBox7.Text) && textBox7.Text != "")
+            {
+                UnidadesDev = int.Parse(textBox7.Text);
+                if (UnidadesDev > Unidadesventas)
+                {
+                    MessageBox.Show("Valor Devuelto no puede ser mayor a unidades vendidas");
+                }
+
+                else
+                {
+                    ObjProducto.UnidadesDevueltas = UnidadesDev;
+                }
+                
+            }
+
+            else
+            {
+                MessageBox.Show("Valor no permitidoo");
+            }
+        }
+
+        public bool IsNumeric(string value)
+        {
+            return value.All(char.IsNumber);
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            //return ObjProducto;
+            if (UnidadesDev == 0)
+            {
+                MessageBox.Show("Debe selecionar cantidad a devoolver","Notificación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            else
+            {
+                if (UnidadesDev > Unidadesventas)
+                {
+                    MessageBox.Show("Debe selecionar una cantidad menor a devolver","Notificación", MessageBoxButtons.OK , MessageBoxIcon.Error);
+                }
+
+                else
+                {
+                    ObjProducto.UnidadesDevueltas = Unidadesventas;
+                    ObjProducto.RazonDevolucion = CBMotivodDev.Text;
+                    ObjProducto.Procesado = true;
+
+                    this.Dispose();
+                }
+            }
 
         }
+
+
+
+        private void CBMotivodDev_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            ObjProducto.RazonDevolucion = CBMotivodDev.SelectedText.ToString();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ObjProducto = null;
+            //ObjProducto.
+            this.Close();
+        }
+
+        private void FormDevolucion_Leave(object sender, EventArgs e)
+        {
+            ObjProducto = null;
+        }
     }
+
 }

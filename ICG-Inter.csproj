@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConsultaDevolucion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConsultaDevolucion.Designer.cs">
+      <DependentUpon>ConsultaDevolucion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Datos\DAConnectionSQL.cs" />
     <Compile Include="Datos\ProcesosDB.cs" />
     <Compile Include="FormDevolucion.cs">
@@ -54,6 +61,7 @@
     <Compile Include="FormDevolucion.Designer.cs">
       <DependentUpon>FormDevolucion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\Cliente.cs" />
     <Compile Include="Objetos\Documento_Detalle.cs" />
     <Compile Include="Objetos\Documento_Cabecera.cs" />
     <Compile Include="Form1.cs">
@@ -70,9 +78,14 @@
     </Compile>
     <Compile Include="Objetos\DocVentas.cs" />
     <Compile Include="Objetos\MotivosDevolucion.cs" />
+    <Compile Include="Objetos\NotasCredito.cs" />
     <Compile Include="Objetos\ProductoDev.cs" />
+    <Compile Include="Objetos\ProductoXCB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ConsultaDevolucion.resx">
+      <DependentUpon>ConsultaDevolucion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +108,8 @@
     <None Include="Properties\DataSources\Documento_Detalle.datasource" />
     <None Include="Properties\DataSources\FacturasVenta.datasource" />
     <None Include="Properties\DataSources\ICG_Inter.Objetos.DocVentas.datasource" />
+    <None Include="Properties\DataSources\ICG_Inter.Objetos.NotasCredito.datasource" />
+    <None Include="Properties\DataSources\ICG_Inter.Objetos.ProductoDev.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
