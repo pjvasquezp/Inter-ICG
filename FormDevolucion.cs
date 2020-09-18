@@ -16,17 +16,21 @@ namespace ICG_Inter
 {
     public partial class FormDevolucion : Form
     {
+        public DAConnectionSQL ObjDaConnexion; 
         public ProcesosDB objProcesosDB = new ProcesosDB();
         public ProductoDev ObjProducto = new ProductoDev();
         public int Unidadesventas = 0;
         public int UnidadesDev = 0;
+        public int UnidTotalDev; 
         public FormDevolucion()
         {
             InitializeComponent();
         }
-        public FormDevolucion(ref ProductoDev ObjProductoDev)
+        public FormDevolucion(ref ProductoDev ObjProductoDev, DAConnectionSQL ObjDAConnecion)
         {
+            ObjDaConnexion = ObjDAConnecion;
             InitializeComponent();
+
             ObjProducto = ObjProductoDev;
             CargaInfo(ref ObjProductoDev);
             
@@ -50,7 +54,7 @@ namespace ICG_Inter
             txt_dades.Text = ObjProductoDev.UnidadesVenta.ToString();
             txt_precio.Text = ObjProductoDev.Precio.ToString();
             txt_alma.Text = ObjProductoDev.Almacen;
-            CBMotivodDev.DataSource = objProcesosDB.GetMotivosDev();
+            CBMotivodDev.DataSource = objProcesosDB.GetMotivosDev(ObjDaConnexion);
             CBMotivodDev.DisplayMember = "DESCRIPCION";
             CBMotivodDev.ValueMember = "IDMOTIVO";
 
@@ -63,7 +67,8 @@ namespace ICG_Inter
                 UnidadesDev = int.Parse(textBox7.Text);
                 if (UnidadesDev > Unidadesventas)
                 {
-                    MessageBox.Show("Valor Devuelto no puede ser mayor a unidades vendidas");
+                    MessageBox.Show("Valor Devuelto no puede ser mayor a unidades vendidas",
+                            "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
                 else
@@ -101,7 +106,7 @@ namespace ICG_Inter
 
                 else
                 {
-                    ObjProducto.UnidadesDevueltas = Unidadesventas;
+                    ObjProducto.UnidadesDevueltas = UnidadesDev;
                     ObjProducto.RazonDevolucion = CBMotivodDev.Text;
                     ObjProducto.Procesado = true;
 

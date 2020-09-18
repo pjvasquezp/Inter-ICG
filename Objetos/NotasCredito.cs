@@ -29,6 +29,7 @@ namespace ICG_Inter.Objetos
         public Decimal Precio_Sin_iva { get; set; }
         public Decimal Total { get; set; }
         public string CodBarra { get; set; }
+        public String CodColor { get; set; }
 
     }
 

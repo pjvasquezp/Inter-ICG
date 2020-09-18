@@ -20,14 +20,10 @@ namespace ICG_Inter
         public Decimal Descuento { get; set; }
         public Decimal Total { get; set; }
         public string Almacen { get; set; }
-
         public String Retornable { get; set; }
-
         public string CodColor { get; set; }
-
         public string CodBarra { get; set; }
-
-        //public Image FotoArticulo { get; set; }
+        public Image FotoArticulo { get; set; }
     }
 
     

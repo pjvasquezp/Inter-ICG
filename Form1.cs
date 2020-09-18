@@ -16,6 +16,7 @@ namespace ICG_Inter
 {
     public partial class Entradafiltros : Form
     {
+        public DAConnectionSQL ObjDaConnexion = new DAConnectionSQL();
         public ProductoXCB ObjProductoxCB = new ProductoXCB();
         public Cliente ObjCliente = new Cliente();
         int CodCLiente = 0;
@@ -35,23 +36,26 @@ namespace ICG_Inter
             InitializeComponent();
         }
 
+        public Entradafiltros(DAConnectionSQL ObjDAConnecion)
+        {
+            ObjDaConnexion = ObjDAConnecion;
+            InitializeComponent();
+        }
+
         private void Btn_aceptar_Click(object sender, EventArgs e)
         {
 
-            ListaDocVentas ObjListaDocVentas = ObjProcDB.GetDocVentas(ObjProductoxCB, CodCLiente, TipoFecha);
-
+            ListaDocVentas ObjListaDocVentas = ObjProcDB.GetDocVentas(ObjDaConnexion,ObjProductoxCB, CodCLiente, TipoFecha);
 
             if (cmb_fechainicio.Text == "Seleccione ---")
             {
                 TipoFecha = 30;
             }
 
-            FacturasVenta v1 = new FacturasVenta(ObjListaDocVentas);
+            FacturasVenta v1 = new FacturasVenta(ObjListaDocVentas, ObjDaConnexion);
             this.Hide();
             v1.ShowDialog();
             this.Show();
-
-
         }
 
         private void Txt_CodCliente_TextChanged(object sender, EventArgs e)
@@ -99,7 +103,7 @@ namespace ICG_Inter
                 else
                 {
 
-                    ObjProductoxCB = ObjProcDB.GetProductoxCodigo(txt_Codart.Text);
+                    ObjProductoxCB = ObjProcDB.GetProductoxCodigo(ObjDaConnexion, txt_Codart.Text);
 
                     if (ObjProductoxCB.CodigoArticulo != null)
                     {
@@ -166,7 +170,7 @@ namespace ICG_Inter
                 else
                 {
                     ObjCliente.CodCliente = Int32.Parse(Txt_CodCliente.Text);
-                    ObjCliente = ObjProcDB.GetCliente(ObjCliente.CodCliente);
+                    ObjCliente = ObjProcDB.GetCliente(ObjDaConnexion,ObjCliente.CodCliente);
 
                     if (ObjCliente.NombreCliente != null)
                     {
@@ -176,9 +180,6 @@ namespace ICG_Inter
                         txtTlf2.Text = ObjCliente.Telefono2;
                         txtDirec.Text = ObjCliente.Direccion;
                         CodCLiente = ObjCliente.CodCliente;
-
-
-
 
                         txt_Codart.SelectAll();
                     }
@@ -198,6 +199,29 @@ namespace ICG_Inter
         private void button9_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            cmb_fechainicio.SelectedItem = 0;
+            Txt_CodCliente.Text = "";
+            txtNomCliente.Text = "";
+            txtCif.Text = "";
+            txtTlf1.Text = "";
+            txtTlf2.Text = "";
+            TxtDescripcion.Text = "";
+            txtDirec.Text = "";
+            txt_Codart.Text = "";
+            txtTalla.Text = "";
+            TxtColor.Text = "";
+        }
+
+        private void BtnReportes_Click(object sender, EventArgs e)
+        {
+            FrmRecibos oFRMRecibos = new FrmRecibos (ObjDaConnexion);
+            this.Hide();
+            oFRMRecibos.ShowDialog();
+            this.Show();
         }
     }
 }

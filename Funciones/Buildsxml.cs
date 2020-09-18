@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ICG_Inter.Properties;
+using Microsoft.SqlServer.Server;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +17,10 @@ namespace ICG_Inter.Funciones
 
             XmlDeclaration xmlDeclaration = xml.CreateXmlDeclaration("1.0", "UTF-8", null);
 
-            string RutaXml = "C:\\Users\\pjvas\\OneDrive\\Proyectos\\ICG Desarrollo\\xml\\";
+            string RutaXml = Settings.Default.PathFirmFEL;          //Ruta XML 
+            string SRVFirmado = Settings.Default.ServidorFirmado;   //Servidor para Firmado
+            string UserFirmado = Settings.Default.UserFirmado;      //User para Firmado
+            string BDFirmado = Settings.Default.BDFirmado;          //BD para Firmado
 
             //raiz
             XmlElement raiz = xml.CreateElement("docbeforeprint");
@@ -27,21 +32,17 @@ namespace ICG_Inter.Funciones
             raiz.AppendChild(bd);
 
             XmlElement server = xml.CreateElement("server");
-            server.AppendChild(xml.CreateTextNode("192.168.2.144\\MSSQLSERVER01"));
+            server.AppendChild(xml.CreateTextNode(SRVFirmado));
             bd.AppendChild(server);
 
             XmlElement database = xml.CreateElement("database");
-            database.AppendChild(xml.CreateTextNode("AGORA"));
+            database.AppendChild(xml.CreateTextNode(BDFirmado));
             bd.AppendChild(database);
 
             XmlElement user = xml.CreateElement("user");
-            user.AppendChild(xml.CreateTextNode("sa"));
+            user.AppendChild(xml.CreateTextNode(UserFirmado));
             bd.AppendChild(user);
-
-            XmlElement pass = xml.CreateElement("pass");
-            pass.AppendChild(xml.CreateTextNode("B1Admin"));
-            bd.AppendChild(pass);
-
+                        
             //Element codvendedor
             XmlElement codvendedor = xml.CreateElement("codvendedor");
             codvendedor.AppendChild(xml.CreateTextNode("1"));

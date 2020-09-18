@@ -33,15 +33,11 @@
             this.Txt_CodCliente = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
+            this.BtnReportes = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btn_aceptar = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.cmb_fechainicio = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_Codart = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.LBLRefer = new System.Windows.Forms.Label();
             this.lblTalla = new System.Windows.Forms.Label();
             this.lblColor = new System.Windows.Forms.Label();
@@ -63,6 +59,10 @@
             this.lblCif = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtNomCliente = new System.Windows.Forms.TextBox();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_aceptar = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -113,18 +113,20 @@
             this.button10.Text = "Quitar filtros";
             this.button10.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.button10_Click);
             // 
-            // button11
+            // BtnReportes
             // 
-            this.button11.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button11.Location = new System.Drawing.Point(307, 14);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(81, 27);
-            this.button11.TabIndex = 42;
-            this.button11.Text = "Campos libres";
-            this.button11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button11.UseVisualStyleBackColor = false;
+            this.BtnReportes.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BtnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnReportes.Location = new System.Drawing.Point(285, 14);
+            this.BtnReportes.Name = "BtnReportes";
+            this.BtnReportes.Size = new System.Drawing.Size(103, 27);
+            this.BtnReportes.TabIndex = 42;
+            this.BtnReportes.Text = "Consultar Recibos";
+            this.BtnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnReportes.UseVisualStyleBackColor = false;
+            this.BtnReportes.Click += new System.EventHandler(this.BtnReportes_Click);
             // 
             // panel1
             // 
@@ -132,39 +134,11 @@
             this.panel1.Controls.Add(this.btn_aceptar);
             this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.button10);
-            this.panel1.Controls.Add(this.button11);
+            this.panel1.Controls.Add(this.BtnReportes);
             this.panel1.Location = new System.Drawing.Point(-1, -2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(528, 54);
             this.panel1.TabIndex = 45;
-            // 
-            // btn_aceptar
-            // 
-            this.btn_aceptar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_aceptar.Image = global::ICG_Inter.Properties.Resources.s_success;
-            this.btn_aceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_aceptar.Location = new System.Drawing.Point(13, 14);
-            this.btn_aceptar.Name = "btn_aceptar";
-            this.btn_aceptar.Size = new System.Drawing.Size(65, 27);
-            this.btn_aceptar.TabIndex = 39;
-            this.btn_aceptar.Text = "Aceptar";
-            this.btn_aceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_aceptar.UseVisualStyleBackColor = false;
-            this.btn_aceptar.Click += new System.EventHandler(this.Btn_aceptar_Click);
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button9.Image = global::ICG_Inter.Properties.Resources.s_cancel;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(106, 14);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(73, 27);
-            this.button9.TabIndex = 40;
-            this.button9.Text = "Cancelar";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // cmb_fechainicio
             // 
@@ -197,26 +171,6 @@
             this.txt_Codart.TabIndex = 48;
             this.txt_Codart.TextChanged += new System.EventHandler(this.Txt_Codart_TextChanged);
             this.txt_Codart.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Codart_KeyPress);
-            // 
-            // button1
-            // 
-            this.button1.Image = global::ICG_Inter.Properties.Resources.b_search;
-            this.button1.Location = new System.Drawing.Point(314, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(41, 23);
-            this.button1.TabIndex = 49;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Image = global::ICG_Inter.Properties.Resources.b_search;
-            this.button4.Location = new System.Drawing.Point(216, 52);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(41, 23);
-            this.button4.TabIndex = 29;
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = true;
             // 
             // LBLRefer
             // 
@@ -415,6 +369,54 @@
             this.txtNomCliente.Size = new System.Drawing.Size(242, 20);
             this.txtNomCliente.TabIndex = 47;
             // 
+            // button4
+            // 
+            this.button4.Image = global::ICG_Inter.Properties.Resources.b_search;
+            this.button4.Location = new System.Drawing.Point(216, 52);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(41, 23);
+            this.button4.TabIndex = 29;
+            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Image = global::ICG_Inter.Properties.Resources.b_search;
+            this.button1.Location = new System.Drawing.Point(314, 16);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(41, 23);
+            this.button1.TabIndex = 49;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // btn_aceptar
+            // 
+            this.btn_aceptar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_aceptar.Image = global::ICG_Inter.Properties.Resources.s_success;
+            this.btn_aceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_aceptar.Location = new System.Drawing.Point(13, 14);
+            this.btn_aceptar.Name = "btn_aceptar";
+            this.btn_aceptar.Size = new System.Drawing.Size(65, 27);
+            this.btn_aceptar.TabIndex = 39;
+            this.btn_aceptar.Text = "Aceptar";
+            this.btn_aceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_aceptar.UseVisualStyleBackColor = false;
+            this.btn_aceptar.Click += new System.EventHandler(this.Btn_aceptar_Click);
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button9.Image = global::ICG_Inter.Properties.Resources.s_cancel;
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button9.Location = new System.Drawing.Point(106, 14);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(73, 27);
+            this.button9.TabIndex = 40;
+            this.button9.Text = "Cancelar";
+            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
             // Entradafiltros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -449,7 +451,7 @@
         private System.Windows.Forms.Button btn_aceptar;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button BtnReportes;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cmb_fechainicio;
         private System.Windows.Forms.Label label2;

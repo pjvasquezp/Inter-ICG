@@ -16,7 +16,8 @@ namespace ICG_Inter
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Entradafiltros());
+            //Application.Run(new Entradafiltros());
+            Application.Run(new LoadinForm()); 
         }
     }
 }

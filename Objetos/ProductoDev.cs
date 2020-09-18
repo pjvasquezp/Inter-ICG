@@ -24,6 +24,8 @@ namespace ICG_Inter.Objetos
         public string Retornable { get; set; }
         public bool Procesado { get; set; }
         public string CodBarra { get; set; }
+        public string CodColor { get; set; }
+
     }
 
     public class ListaProductoDev : List<ProductoDev>

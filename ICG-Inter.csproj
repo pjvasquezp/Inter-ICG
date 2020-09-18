@@ -33,9 +33,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +60,14 @@
     <Compile Include="ConsultaDevolucion.Designer.cs">
       <DependentUpon>ConsultaDevolucion.cs</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DSNotasCredito.cs">
+      <DependentUpon>DSNotasCredito.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DSNotasCredito.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSNotasCredito.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Datos\DAConnectionSQL.cs" />
     <Compile Include="Datos\ProcesosDB.cs" />
     <Compile Include="FormDevolucion.cs">
@@ -61,7 +76,32 @@
     <Compile Include="FormDevolucion.Designer.cs">
       <DependentUpon>FormDevolucion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormPass.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPass.Designer.cs">
+      <DependentUpon>FormPass.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrintNCR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrintNCR.Designer.cs">
+      <DependentUpon>FrmPrintNCR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRecibos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRecibos.Designer.cs">
+      <DependentUpon>FrmRecibos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Funciones\Buildsxml.cs" />
+    <Compile Include="Funciones\GetValueQuery.cs" />
+    <Compile Include="LoadinForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoadinForm.Designer.cs">
+      <DependentUpon>LoadinForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Objetos\Cliente.cs" />
     <Compile Include="Objetos\Documento_Detalle.cs" />
     <Compile Include="Objetos\Documento_Cabecera.cs" />
@@ -79,11 +119,28 @@
     </Compile>
     <Compile Include="Objetos\DocVentas.cs" />
     <Compile Include="Objetos\MotivosDevolucion.cs" />
+    <Compile Include="Objetos\NCReporteData.cs" />
     <Compile Include="Objetos\NotasCredito.cs" />
     <Compile Include="Objetos\ProductoDev.cs" />
     <Compile Include="Objetos\ProductoXCB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reportes\ReciboNcr.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReciboNcr.rpt</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\ReciboNcrAll.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReciboNcrAll.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\ReciboNcrVF.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReciboNcrVF.rpt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ConsultaDevolucion.resx">
       <DependentUpon>ConsultaDevolucion.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +153,18 @@
     <EmbeddedResource Include="FormDevolucion.resx">
       <DependentUpon>FormDevolucion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormPass.resx">
+      <DependentUpon>FormPass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrintNCR.resx">
+      <DependentUpon>FrmPrintNCR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRecibos.resx">
+      <DependentUpon>FrmRecibos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoadinForm.resx">
+      <DependentUpon>LoadinForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -106,6 +175,29 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reportes\ReciboNcr.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReciboNcr.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReciboNcrAll.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReciboNcrAll.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReciboNcrVF.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReciboNcrVF.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="DataSet\DSNotasCredito.xsc">
+      <DependentUpon>DSNotasCredito.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DSNotasCredito.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSNotasCredito.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\DSNotasCredito.xss">
+      <DependentUpon>DSNotasCredito.xsd</DependentUpon>
+    </None>
     <None Include="Properties\DataSources\Documento_Detalle.datasource" />
     <None Include="Properties\DataSources\FacturasVenta.datasource" />
     <None Include="Properties\DataSources\ICG_Inter.Objetos.DocVentas.datasource" />
@@ -150,6 +242,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\curved-arrow1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

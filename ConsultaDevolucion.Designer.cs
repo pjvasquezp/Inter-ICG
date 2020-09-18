@@ -30,10 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_aceptar = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.DGV_NotasCredito = new System.Windows.Forms.DataGridView();
-            this.BSNotasCredito = new System.Windows.Forms.BindingSource(this.components);
             this.FechaNC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -53,6 +50,9 @@
             this.precioSinivaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codBarraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BSNotasCredito = new System.Windows.Forms.BindingSource(this.components);
+            this.btn_aceptar = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_NotasCredito)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSNotasCredito)).BeginInit();
@@ -67,32 +67,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Devoluciones del Cliente";
-            // 
-            // btn_aceptar
-            // 
-            this.btn_aceptar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_aceptar.Image = global::ICG_Inter.Properties.Resources.s_success;
-            this.btn_aceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_aceptar.Location = new System.Drawing.Point(12, -1);
-            this.btn_aceptar.Name = "btn_aceptar";
-            this.btn_aceptar.Size = new System.Drawing.Size(65, 27);
-            this.btn_aceptar.TabIndex = 41;
-            this.btn_aceptar.Text = "Aceptar";
-            this.btn_aceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_aceptar.UseVisualStyleBackColor = false;
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button9.Image = global::ICG_Inter.Properties.Resources.s_cancel;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(92, 0);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(73, 27);
-            this.button9.TabIndex = 42;
-            this.button9.Text = "Cancelar";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button9.UseVisualStyleBackColor = false;
             // 
             // DGV_NotasCredito
             // 
@@ -123,10 +97,6 @@
             this.DGV_NotasCredito.Name = "DGV_NotasCredito";
             this.DGV_NotasCredito.Size = new System.Drawing.Size(556, 150);
             this.DGV_NotasCredito.TabIndex = 0;
-            // 
-            // BSNotasCredito
-            // 
-            this.BSNotasCredito.DataSource = typeof(ICG_Inter.Objetos.NotasCredito);
             // 
             // FechaNC
             // 
@@ -241,6 +211,38 @@
             this.codBarraDataGridViewTextBoxColumn.DataPropertyName = "CodBarra";
             this.codBarraDataGridViewTextBoxColumn.HeaderText = "CodBarra";
             this.codBarraDataGridViewTextBoxColumn.Name = "codBarraDataGridViewTextBoxColumn";
+            // 
+            // BSNotasCredito
+            // 
+            this.BSNotasCredito.DataSource = typeof(ICG_Inter.Objetos.NotasCredito);
+            // 
+            // btn_aceptar
+            // 
+            this.btn_aceptar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_aceptar.Image = global::ICG_Inter.Properties.Resources.s_success;
+            this.btn_aceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_aceptar.Location = new System.Drawing.Point(12, -1);
+            this.btn_aceptar.Name = "btn_aceptar";
+            this.btn_aceptar.Size = new System.Drawing.Size(65, 27);
+            this.btn_aceptar.TabIndex = 41;
+            this.btn_aceptar.Text = "Aceptar";
+            this.btn_aceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_aceptar.UseVisualStyleBackColor = false;
+            this.btn_aceptar.Click += new System.EventHandler(this.btn_aceptar_Click);
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button9.Image = global::ICG_Inter.Properties.Resources.s_cancel;
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button9.Location = new System.Drawing.Point(92, 0);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(73, 27);
+            this.button9.TabIndex = 42;
+            this.button9.Text = "Cancelar";
+            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // ConsultaDevolucion
             // 
