@@ -25,30 +25,10 @@ namespace ICG_Inter.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.2.144\\MSSQLSERVER01;Initial Catalog=AGORA;User ID=sa;Password" +
-            "=B1Admin;Pooling=False")]
-        public string ConnStringSQL2 {
-            get {
-                return ((string)(this["ConnStringSQL2"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Print to PDF")]
+        [global::System.Configuration.DefaultSettingValueAttribute("ImpresoraCambios (redirected 4)")]
         public string PrinterName {
             get {
                 return ((string)(this["PrinterName"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.238.26.69;Initial Catalog=AGORA;User ID=sa;Password=masterkey;Pool" +
-            "ing=False")]
-        public string ConnStringSQL1 {
-            get {
-                return ((string)(this["ConnStringSQL1"]));
             }
         }
         
@@ -103,6 +83,44 @@ namespace ICG_Inter.Properties {
         public string SERIETIENDA {
             get {
                 return ((string)(this["SERIETIENDA"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\Proyectos\\\\Inter-ICG\\\\Reportes\\\\")]
+        public string PathReportes {
+            get {
+                return ((string)(this["PathReportes"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.238.26.69;Initial Catalog=AGORA;User ID=sa;Password=masterkey;Pool" +
+            "ing=False")]
+        public string ConnStringSQL1 {
+            get {
+                return ((string)(this["ConnStringSQL1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.2.144\\MSSQLSERVER01;Initial Catalog=AGORA;User ID=sa;Password" +
+            "=B1Admin;Pooling=False")]
+        public string ConnStringSQL2 {
+            get {
+                return ((string)(this["ConnStringSQL2"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\Proyectos\\\\Personas\\\\")]
+        public string PathImagCUST {
+            get {
+                return ((string)(this["PathImagCUST"]));
             }
         }
     }

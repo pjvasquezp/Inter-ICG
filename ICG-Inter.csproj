@@ -39,6 +39,7 @@
     <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -102,6 +103,12 @@
     <Compile Include="LoadinForm.Designer.cs">
       <DependentUpon>LoadinForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginFrm.Designer.cs">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Objetos\Cliente.cs" />
     <Compile Include="Objetos\Documento_Detalle.cs" />
     <Compile Include="Objetos\Documento_Cabecera.cs" />
@@ -123,12 +130,14 @@
     <Compile Include="Objetos\NotasCredito.cs" />
     <Compile Include="Objetos\ProductoDev.cs" />
     <Compile Include="Objetos\ProductoXCB.cs" />
+    <Compile Include="Objetos\UserSistemas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reportes\ReciboNcr.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReciboNcr.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\ReciboNcrAll.cs">
       <AutoGen>True</AutoGen>
@@ -136,10 +145,17 @@
       <DependentUpon>ReciboNcrAll.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\ReciboNcrVCD.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReciboNcrVCD.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\ReciboNcrVF.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ReciboNcrVF.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <EmbeddedResource Include="ConsultaDevolucion.resx">
       <DependentUpon>ConsultaDevolucion.cs</DependentUpon>
@@ -165,6 +181,9 @@
     <EmbeddedResource Include="LoadinForm.resx">
       <DependentUpon>LoadinForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginFrm.resx">
+      <DependentUpon>LoginFrm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -182,6 +201,10 @@
     <EmbeddedResource Include="Reportes\ReciboNcrAll.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReciboNcrAll.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ReciboNcrVCD.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ReciboNcrVCD.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReciboNcrVF.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -247,5 +270,24 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup />
+  <ItemGroup>
+    <Content Include="Imagenes\100.jpg" />
+    <Content Include="Imagenes\1010.jpg" />
+    <Content Include="Imagenes\1013.jpg" />
+    <Content Include="Imagenes\101993.jpg" />
+    <Content Include="Imagenes\1023.jpg" />
+    <Content Include="Imagenes\11505.jpg" />
+    <Content Include="Imagenes\1992.jpg" />
+    <Content Include="Imagenes\2005.jpg" />
+    <Content Include="Imagenes\2132.jpg" />
+    <Content Include="Imagenes\2975.jpg" />
+    <Content Include="Imagenes\3825.jpg" />
+    <Content Include="Imagenes\4565.jpg" />
+    <Content Include="Imagenes\714.jpg" />
+    <Content Include="Imagenes\NOIMAGEN.jpg" />
+    <Content Include="images\JoinBanner.bmp" />
+    <Content Include="images\Notepad.ico" />
+    <None Include="Resources\Refresh1.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

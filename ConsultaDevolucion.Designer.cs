@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.DGV_NotasCredito = new System.Windows.Forms.DataGridView();
+            this.BSNotasCredito = new System.Windows.Forms.BindingSource(this.components);
+            this.btn_aceptar = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.FechaNC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.serieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,9 +53,6 @@
             this.precioSinivaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codBarraDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BSNotasCredito = new System.Windows.Forms.BindingSource(this.components);
-            this.btn_aceptar = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV_NotasCredito)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.BSNotasCredito)).BeginInit();
@@ -98,120 +98,6 @@
             this.DGV_NotasCredito.Size = new System.Drawing.Size(556, 150);
             this.DGV_NotasCredito.TabIndex = 0;
             // 
-            // FechaNC
-            // 
-            this.FechaNC.DataPropertyName = "FechaNC";
-            this.FechaNC.HeaderText = "Fecha NCR";
-            this.FechaNC.Name = "FechaNC";
-            // 
-            // serieDataGridViewTextBoxColumn
-            // 
-            this.serieDataGridViewTextBoxColumn.DataPropertyName = "Serie";
-            this.serieDataGridViewTextBoxColumn.HeaderText = "Serie";
-            this.serieDataGridViewTextBoxColumn.Name = "serieDataGridViewTextBoxColumn";
-            // 
-            // numeroDataGridViewTextBoxColumn
-            // 
-            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "Numero";
-            this.numeroDataGridViewTextBoxColumn.HeaderText = "Numero";
-            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
-            // 
-            // referenciaDataGridViewTextBoxColumn
-            // 
-            this.referenciaDataGridViewTextBoxColumn.DataPropertyName = "Referencia";
-            this.referenciaDataGridViewTextBoxColumn.HeaderText = "Referencia";
-            this.referenciaDataGridViewTextBoxColumn.Name = "referenciaDataGridViewTextBoxColumn";
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            // 
-            // unidadesDataGridViewTextBoxColumn
-            // 
-            this.unidadesDataGridViewTextBoxColumn.DataPropertyName = "Unidades";
-            this.unidadesDataGridViewTextBoxColumn.HeaderText = "Unidades";
-            this.unidadesDataGridViewTextBoxColumn.Name = "unidadesDataGridViewTextBoxColumn";
-            // 
-            // unidadesDevueltasDataGridViewTextBoxColumn
-            // 
-            this.unidadesDevueltasDataGridViewTextBoxColumn.DataPropertyName = "UnidadesDevueltas";
-            this.unidadesDevueltasDataGridViewTextBoxColumn.HeaderText = "UnidadesDevueltas";
-            this.unidadesDevueltasDataGridViewTextBoxColumn.Name = "unidadesDevueltasDataGridViewTextBoxColumn";
-            // 
-            // razonDevolucionDataGridViewTextBoxColumn
-            // 
-            this.razonDevolucionDataGridViewTextBoxColumn.DataPropertyName = "RazonDevolucion";
-            this.razonDevolucionDataGridViewTextBoxColumn.HeaderText = "RazonDevolucion";
-            this.razonDevolucionDataGridViewTextBoxColumn.Name = "razonDevolucionDataGridViewTextBoxColumn";
-            // 
-            // precioDataGridViewTextBoxColumn
-            // 
-            this.precioDataGridViewTextBoxColumn.DataPropertyName = "Precio";
-            this.precioDataGridViewTextBoxColumn.HeaderText = "Precio";
-            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
-            // 
-            // tallaDataGridViewTextBoxColumn
-            // 
-            this.tallaDataGridViewTextBoxColumn.DataPropertyName = "Talla";
-            this.tallaDataGridViewTextBoxColumn.HeaderText = "Talla";
-            this.tallaDataGridViewTextBoxColumn.Name = "tallaDataGridViewTextBoxColumn";
-            // 
-            // colorDataGridViewTextBoxColumn
-            // 
-            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
-            this.colorDataGridViewTextBoxColumn.HeaderText = "Color";
-            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
-            // 
-            // almacenDataGridViewTextBoxColumn
-            // 
-            this.almacenDataGridViewTextBoxColumn.DataPropertyName = "Almacen";
-            this.almacenDataGridViewTextBoxColumn.HeaderText = "Almacen";
-            this.almacenDataGridViewTextBoxColumn.Name = "almacenDataGridViewTextBoxColumn";
-            // 
-            // numLineaDataGridViewTextBoxColumn
-            // 
-            this.numLineaDataGridViewTextBoxColumn.DataPropertyName = "NumLinea";
-            this.numLineaDataGridViewTextBoxColumn.HeaderText = "NumLinea";
-            this.numLineaDataGridViewTextBoxColumn.Name = "numLineaDataGridViewTextBoxColumn";
-            // 
-            // descuentoDataGridViewTextBoxColumn
-            // 
-            this.descuentoDataGridViewTextBoxColumn.DataPropertyName = "Descuento";
-            this.descuentoDataGridViewTextBoxColumn.HeaderText = "Descuento";
-            this.descuentoDataGridViewTextBoxColumn.Name = "descuentoDataGridViewTextBoxColumn";
-            // 
-            // codArticuloDataGridViewTextBoxColumn
-            // 
-            this.codArticuloDataGridViewTextBoxColumn.DataPropertyName = "CodArticulo";
-            this.codArticuloDataGridViewTextBoxColumn.HeaderText = "CodArticulo";
-            this.codArticuloDataGridViewTextBoxColumn.Name = "codArticuloDataGridViewTextBoxColumn";
-            // 
-            // fechaFactDataGridViewTextBoxColumn
-            // 
-            this.fechaFactDataGridViewTextBoxColumn.DataPropertyName = "Fecha_Fact";
-            this.fechaFactDataGridViewTextBoxColumn.HeaderText = "Fecha_Fact";
-            this.fechaFactDataGridViewTextBoxColumn.Name = "fechaFactDataGridViewTextBoxColumn";
-            // 
-            // precioSinivaDataGridViewTextBoxColumn
-            // 
-            this.precioSinivaDataGridViewTextBoxColumn.DataPropertyName = "Precio_Sin_iva";
-            this.precioSinivaDataGridViewTextBoxColumn.HeaderText = "Precio_Sin_iva";
-            this.precioSinivaDataGridViewTextBoxColumn.Name = "precioSinivaDataGridViewTextBoxColumn";
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            // 
-            // codBarraDataGridViewTextBoxColumn
-            // 
-            this.codBarraDataGridViewTextBoxColumn.DataPropertyName = "CodBarra";
-            this.codBarraDataGridViewTextBoxColumn.HeaderText = "CodBarra";
-            this.codBarraDataGridViewTextBoxColumn.Name = "codBarraDataGridViewTextBoxColumn";
-            // 
             // BSNotasCredito
             // 
             this.BSNotasCredito.DataSource = typeof(ICG_Inter.Objetos.NotasCredito);
@@ -244,6 +130,120 @@
             this.button9.UseVisualStyleBackColor = false;
             this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
+            // FechaNC
+            // 
+            this.FechaNC.DataPropertyName = "FechaNC";
+            this.FechaNC.HeaderText = "Fecha NCR";
+            this.FechaNC.Name = "FechaNC";
+            // 
+            // serieDataGridViewTextBoxColumn
+            // 
+            this.serieDataGridViewTextBoxColumn.DataPropertyName = "Serie";
+            this.serieDataGridViewTextBoxColumn.HeaderText = "Serie";
+            this.serieDataGridViewTextBoxColumn.Name = "serieDataGridViewTextBoxColumn";
+            // 
+            // numeroDataGridViewTextBoxColumn
+            // 
+            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "Numero";
+            this.numeroDataGridViewTextBoxColumn.HeaderText = "Número";
+            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
+            // 
+            // referenciaDataGridViewTextBoxColumn
+            // 
+            this.referenciaDataGridViewTextBoxColumn.DataPropertyName = "Referencia";
+            this.referenciaDataGridViewTextBoxColumn.HeaderText = "Referencia";
+            this.referenciaDataGridViewTextBoxColumn.Name = "referenciaDataGridViewTextBoxColumn";
+            // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripción";
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            // 
+            // unidadesDataGridViewTextBoxColumn
+            // 
+            this.unidadesDataGridViewTextBoxColumn.DataPropertyName = "Unidades";
+            this.unidadesDataGridViewTextBoxColumn.HeaderText = "Unidades";
+            this.unidadesDataGridViewTextBoxColumn.Name = "unidadesDataGridViewTextBoxColumn";
+            // 
+            // unidadesDevueltasDataGridViewTextBoxColumn
+            // 
+            this.unidadesDevueltasDataGridViewTextBoxColumn.DataPropertyName = "UnidadesDevueltas";
+            this.unidadesDevueltasDataGridViewTextBoxColumn.HeaderText = "Unidades Devueltas";
+            this.unidadesDevueltasDataGridViewTextBoxColumn.Name = "unidadesDevueltasDataGridViewTextBoxColumn";
+            // 
+            // razonDevolucionDataGridViewTextBoxColumn
+            // 
+            this.razonDevolucionDataGridViewTextBoxColumn.DataPropertyName = "RazonDevolucion";
+            this.razonDevolucionDataGridViewTextBoxColumn.HeaderText = "Razón Devolución";
+            this.razonDevolucionDataGridViewTextBoxColumn.Name = "razonDevolucionDataGridViewTextBoxColumn";
+            // 
+            // precioDataGridViewTextBoxColumn
+            // 
+            this.precioDataGridViewTextBoxColumn.DataPropertyName = "Precio";
+            this.precioDataGridViewTextBoxColumn.HeaderText = "Precio";
+            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
+            // 
+            // tallaDataGridViewTextBoxColumn
+            // 
+            this.tallaDataGridViewTextBoxColumn.DataPropertyName = "Talla";
+            this.tallaDataGridViewTextBoxColumn.HeaderText = "Talla";
+            this.tallaDataGridViewTextBoxColumn.Name = "tallaDataGridViewTextBoxColumn";
+            // 
+            // colorDataGridViewTextBoxColumn
+            // 
+            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
+            this.colorDataGridViewTextBoxColumn.HeaderText = "Color";
+            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            // 
+            // almacenDataGridViewTextBoxColumn
+            // 
+            this.almacenDataGridViewTextBoxColumn.DataPropertyName = "Almacen";
+            this.almacenDataGridViewTextBoxColumn.HeaderText = "Almacén";
+            this.almacenDataGridViewTextBoxColumn.Name = "almacenDataGridViewTextBoxColumn";
+            // 
+            // numLineaDataGridViewTextBoxColumn
+            // 
+            this.numLineaDataGridViewTextBoxColumn.DataPropertyName = "NumLinea";
+            this.numLineaDataGridViewTextBoxColumn.HeaderText = "N° Línea";
+            this.numLineaDataGridViewTextBoxColumn.Name = "numLineaDataGridViewTextBoxColumn";
+            // 
+            // descuentoDataGridViewTextBoxColumn
+            // 
+            this.descuentoDataGridViewTextBoxColumn.DataPropertyName = "Descuento";
+            this.descuentoDataGridViewTextBoxColumn.HeaderText = "Descuento";
+            this.descuentoDataGridViewTextBoxColumn.Name = "descuentoDataGridViewTextBoxColumn";
+            // 
+            // codArticuloDataGridViewTextBoxColumn
+            // 
+            this.codArticuloDataGridViewTextBoxColumn.DataPropertyName = "CodArticulo";
+            this.codArticuloDataGridViewTextBoxColumn.HeaderText = "Cod. Artículo";
+            this.codArticuloDataGridViewTextBoxColumn.Name = "codArticuloDataGridViewTextBoxColumn";
+            // 
+            // fechaFactDataGridViewTextBoxColumn
+            // 
+            this.fechaFactDataGridViewTextBoxColumn.DataPropertyName = "Fecha_Fact";
+            this.fechaFactDataGridViewTextBoxColumn.HeaderText = "Fecha Fact";
+            this.fechaFactDataGridViewTextBoxColumn.Name = "fechaFactDataGridViewTextBoxColumn";
+            // 
+            // precioSinivaDataGridViewTextBoxColumn
+            // 
+            this.precioSinivaDataGridViewTextBoxColumn.DataPropertyName = "Precio_Sin_iva";
+            this.precioSinivaDataGridViewTextBoxColumn.HeaderText = "Precio_Sin_iva";
+            this.precioSinivaDataGridViewTextBoxColumn.Name = "precioSinivaDataGridViewTextBoxColumn";
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            // 
+            // codBarraDataGridViewTextBoxColumn
+            // 
+            this.codBarraDataGridViewTextBoxColumn.DataPropertyName = "CodBarra";
+            this.codBarraDataGridViewTextBoxColumn.HeaderText = "CodBarra";
+            this.codBarraDataGridViewTextBoxColumn.Name = "codBarraDataGridViewTextBoxColumn";
+            // 
             // ConsultaDevolucion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,7 +253,7 @@
             this.Controls.Add(this.button9);
             this.Controls.Add(this.groupBox1);
             this.Name = "ConsultaDevolucion";
-            this.Text = "ConsultaDevolucion";
+            this.Text = "Consulta Devolución";
             this.Load += new System.EventHandler(this.ConsultaDevolucion_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DGV_NotasCredito)).EndInit();

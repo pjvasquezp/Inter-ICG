@@ -32,9 +32,9 @@ namespace ICG_Inter
 
             if (Conectar)
             {
-                Entradafiltros ObjForm1 = new Entradafiltros(AppConexion);
+                LoginFrm ObjLoginFrm = new LoginFrm(AppConexion);
                 this.Hide();
-                ObjForm1.ShowDialog();
+                ObjLoginFrm.ShowDialog();
             }
             else
             {

@@ -16,6 +16,7 @@ namespace ICG_Inter
         public string Talla { get; set; }
         public string Color { get; set; }
         public int Unidades { get; set; }
+        public int Devoluciones { get; set; }
         public Decimal Precio { get; set; }
         public Decimal Descuento { get; set; }
         public Decimal Total { get; set; }
@@ -23,7 +24,9 @@ namespace ICG_Inter
         public String Retornable { get; set; }
         public string CodColor { get; set; }
         public string CodBarra { get; set; }
-        public Image FotoArticulo { get; set; }
+        public byte[] FotoArticulo { get; set; }
+        public int CodigoArticulo { get; set; }
+        public int NumLinea { get; set; }
     }
 
     

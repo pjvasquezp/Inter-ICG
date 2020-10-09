@@ -30,6 +30,7 @@ namespace ICG_Inter.Objetos
         public Decimal Total { get; set; }
         public string CodBarra { get; set; }
         public String CodColor { get; set; }
+        public int Linea_Fact { get; set; }
 
     }
 

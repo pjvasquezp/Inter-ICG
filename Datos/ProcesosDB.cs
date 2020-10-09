@@ -14,8 +14,8 @@ namespace ICG_Inter.Datos
     public class ProcesosDB
     {
         //***************************************************
-            public string Bodega = Settings.Default.Bodega;
-            public string SerieTienda = Settings.Default.SERIETIENDA;
+        public string Bodega = Settings.Default.Bodega;
+        public string SerieTienda = Settings.Default.SERIETIENDA;
         //***************************************************
 
         public void DACliente()
@@ -23,6 +23,75 @@ namespace ICG_Inter.Datos
             DAConnectionSQL DASQLConnection = new DAConnectionSQL();
         }
 
+
+        public UserSistemas GetUserSistema(DAConnectionSQL ObjDaConnexion, UserSistemas oUserSistemas)
+        {
+            UserSistemas oUserSistemaLog = new UserSistemas();
+
+            string StrinSQL = "";
+         
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = ObjDaConnexion.Con;
+
+            StrinSQL = "SELECT CODVENDEDOR, NOMVENDEDOR,TIPOUSUARIO, PASSWORDWEB ";
+            StrinSQL = StrinSQL + " FROM VENDEDORES where NOMVENDEDOR  = '" + oUserSistemas.NOMVENDEDOR + "' AND ";
+            StrinSQL = StrinSQL + " PASSWORDWEB  = '" + oUserSistemas.PASSWORDWEB + "' ";
+
+
+            cmd.CommandText = StrinSQL;
+
+            if (ObjDaConnexion.Con.State == ConnectionState.Closed)
+            {
+                ObjDaConnexion.Open();
+            }
+
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            try
+            {
+
+                while (dr.Read())
+                {
+                    var withBlock = oUserSistemaLog;
+                    withBlock.CODVENDEDOR = dr.GetInt32(0);
+                    withBlock.NOMVENDEDOR = dr.GetString(1);
+                    //withBlock.TIPOUSUARIO = dr.GetInt32(2);
+
+                    if (dr["PASSWORDWEB"].GetType() == typeof(DBNull)) //!dr.IsDBNull(GetString(45)))
+                    {
+                        withBlock.PASSWORDWEB = ""; 
+                    }
+                    else
+                    {
+                        withBlock.PASSWORDWEB = dr.GetString(3);
+                    }
+
+                    if (dr["TIPOUSUARIO"].GetType() == typeof(DBNull)) //!dr.IsDBNull(GetString(45)))
+                    {
+                        withBlock.TIPOUSUARIO = 0; 
+                    }
+                    else
+                    {
+                        withBlock.TIPOUSUARIO = dr.GetInt32(2);
+                    }
+
+
+                }
+                dr.Close();
+
+            }
+            catch (Exception)
+            {
+
+                dr.Close();
+            }
+
+
+            return oUserSistemaLog;
+        }
         public ListaDocVentas GetDocVentas(DAConnectionSQL ObjDaConnexion, ProductoXCB ObjProducto , Int32 Cod_Cli, int TipoFecha)
         {
             ListaDocVentas ObjListaDocVentas = new ListaDocVentas();
@@ -79,10 +148,67 @@ namespace ICG_Inter.Datos
 
             return ObjListaDocVentas;
         }
+
+        public void UpdateImageItem(DAConnectionSQL ObjDaConnexion, Byte[] bytes, Int32 CodItem)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = ObjDaConnexion.Con;
+            cmd.CommandText = "UPDATE ARTICULOS set FOTOSHA = (@Front_Image) where CODARTICULO = " + CodItem + "";
+            cmd.Parameters.AddWithValue("@Front_Image", bytes);
+            cmd.ExecuteNonQuery();
+        }
+
+        public byte[] BuscarFotoArticulo(DAConnectionSQL ObjDaConnexion, Int32 CodItem)
+        {
+            byte[] FotoItem = new byte[300];
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = ObjDaConnexion.Con;
+            cmd.CommandText = "select FOTO from ARTICULOS WHERE CODARTICULO = '" + CodItem + "'";
+
+
+            if (ObjDaConnexion.Con.State == ConnectionState.Closed)
+            {
+                ObjDaConnexion.Open();
+            }
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            try
+            {
+                while (dr.Read())
+                {                   
+                    
+                    if (dr["FOTO"].GetType() == typeof(DBNull)) //!dr.IsDBNull(GetString(45)))
+                    {
+                        FotoItem = null;
+                    }
+                    else
+                    {
+                        FotoItem = (byte[])dr[0];
+                        
+                    }
+
+                }
+
+                dr.Close();
+
+                return FotoItem;
+            }
+            catch (Exception ex)
+            {
+                dr.Close();
+                MessageBox.Show("Error " + ex.Message);
+            }
+
+            return FotoItem;
+        }
         public ListaDocDetalle BuscarDocVentasDetalle(DAConnectionSQL ObjDaConnexion,string Serie, int NumDoc)
         {
             ListaDocDetalle ObjListaDocDetalle = new ListaDocDetalle();
-           
+            byte[] FotoItem = new byte[200];
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType =  CommandType.Text;
             cmd.Connection = ObjDaConnexion.Con;
@@ -113,9 +239,14 @@ namespace ICG_Inter.Datos
                         withBlock.Descuento = int.Parse(dr.GetDouble(24).ToString());
                         withBlock.Total = Decimal.Parse(dr.GetDouble(25).ToString());
                         withBlock.Almacen = dr.GetString(30);
+                        withBlock.CodigoArticulo = dr.GetInt32(49);
+                        withBlock.NumLinea = dr.GetInt32(16);
 
 
-                        if (dr["COLOR"].GetType() == typeof(DBNull))
+
+
+
+                    if (dr["COLOR"].GetType() == typeof(DBNull))
                         {
                             withBlock.Color = "";
                         }
@@ -132,11 +263,32 @@ namespace ICG_Inter.Datos
                         }
                         else
                         {
-                        withBlock.CodColor  = dr.GetString(45);
+                            withBlock.CodColor  = dr.GetString(45);
                         }
 
+                    if (dr["UnitDevueltas"].GetType() == typeof(DBNull)) //!dr.IsDBNull(GetString(45)))
+                    {
+                        withBlock.Devoluciones = 0;
+                    }
+                    else
+                    {
+                        withBlock.Devoluciones = dr.GetInt32(47);
+                    }
+
+                    if (dr["FOTO"].GetType() == typeof(DBNull)) //!dr.IsDBNull(GetString(45)))
+                    {
+                        withBlock.FotoArticulo = null;
+                    }
+                    else
+                    {
+                        FotoItem = (byte[])dr[48];
+                        withBlock.FotoArticulo = (byte[])dr[48];
+                    }
+
+                    
+
                     //int.Parse(dr.GetString(45));
-                        withBlock.CodBarra = withBlock.Referencia + withBlock.CodColor + withBlock.Talla;
+                    withBlock.CodBarra = withBlock.Referencia + withBlock.CodColor + withBlock.Talla;
 
 
                     //withBlock.FotoArticulo = byte.Parse(dr.GetByte(44).GetType()); //MemoryStream(dr.GetByte(44));
@@ -196,8 +348,17 @@ namespace ICG_Inter.Datos
                     withBlock.Total_BrutoImponible = decimal.Parse(dr.GetDouble(28).ToString());
                     withBlock.Impuesto = decimal.Parse(dr.GetDouble(27).ToString());
                     withBlock.Total_Neto = decimal.Parse(dr.GetDouble(26).ToString());
-                    //withBlock.Codigo_Cliente = dr.GetString(6);
+
+                    if (dr["FOTOCLIENTE"].GetType() == typeof(DBNull)) //!dr.IsDBNull(GetString(45)))
+                    {
+                        withBlock.RutaFotoCliente = "";
+                    }
+                    else
+                    {
+                        withBlock.RutaFotoCliente = dr.GetString(50);
+                    }
                     
+
                 }
                 dr.Close();
             }
@@ -282,12 +443,19 @@ namespace ICG_Inter.Datos
                 FiltroSerie = " = '" + SerieTienda + "Y";
             }
 
-            StrinSQL = "Select T0.NUMSERIE, T0.NUMFACTURA,T0.SERIEFEL, T0.DOCUMENTOFEL,T0.FECHAHORACERTIFICACI, T0.UUID, T1.CodBarra, ";
-            StrinSQL = StrinSQL + " T1.UnidadesDevueltas, T1.Precio, (T1.UnidadesDevueltas * Precio) as TotalLinea, T1.Descripcion, T3.CODCLIENTE, ";
-            StrinSQL = StrinSQL + " T3.CIF as NIT, T3.NOMBRECLIENTE ,T3.DIRECCION1, T1.Numero_Fact, T1.Serie_Fact ";
-            StrinSQL = StrinSQL + " from FACTURASVENTACAMPOSLIBRES T0 INNER JOIN NotaC_Join T1 ON T0.NUMSERIE = T1.Serie and T0.NUMFACTURA = T1.Numero ";
-            StrinSQL = StrinSQL + " INNER JOIN ALBVENTACAB T2 ON T1.Serie_Fact = T2.NumSerie and T1.Numero_Fact = T2.NUMFAC  ";
-            StrinSQL = StrinSQL + " INNER JOIN CLIENTES T3 ON T2.CODCLIENTE = T3.CODCLIENTE ";
+            StrinSQL = " Select T0.NUMSERIE, T0.NUMFACTURA,T0.SERIEFEL, T0.DOCUMENTOFEL, ";
+            StrinSQL = StrinSQL + " T0.FECHAHORACERTIFICACI,T0.UUID, T1.CodBarra, ";
+            StrinSQL = StrinSQL + " Case When T1.Serie = '" + SerieTienda + "X' then T4.PRECIOIVA ";
+            StrinSQL = StrinSQL + " Else T4.PRECIO end as Precio, t1.UnidadesDevueltas as UnidadesDevueltas,  ";
+            StrinSQL = StrinSQL + " ((T4.PRECIOIVA)*t1.UnidadesDevueltas) AS TotalLinea,T1.Descripcion, ";
+            StrinSQL = StrinSQL + " T3.CODCLIENTE, T3.CIF as NIT, T3.NOMBRECLIENTE ,T3.DIRECCION1, ";
+            StrinSQL = StrinSQL + " T1.Numero_Fact, T1.Serie_Fact, T1.Linea_Fact ";
+            StrinSQL = StrinSQL + " from FACTURASVENTACAMPOSLIBRES T0 INNER JOIN ";
+            StrinSQL = StrinSQL + " NotaC_Join T1 ON T0.NUMSERIE = T1.Serie and T0.NUMFACTURA = T1.Numero ";
+            StrinSQL = StrinSQL + " INNER JOIN ALBVENTACAB T2 ON T1.Serie_Fact = T2.NumSerie and T1.Numero_Fact = T2.NUMFAC ";
+            StrinSQL = StrinSQL + " INNER JOIN ALBVENTALIN T4 ON  T4.NUMALBARAN = T2.NUMALBARAN AND T2.NUMSERIE = T4.NUMSERIE AND ";
+            StrinSQL = StrinSQL + " T1.CodBarra = CONCAT(T4.REFERENCIA COLLATE  Latin1_General_CS_AI , T4.COLOR, T4.TALLA) AND ";
+            StrinSQL = StrinSQL + " T1.Linea_Fact = t4.NUMLIN INNER JOIN CLIENTES T3 ON T2.CODCLIENTE = T3.CODCLIENTE  ";
             StrinSQL = StrinSQL + " where (T0.SERIEFEL is not NULL AND DOCUMENTOFEL IS NOT NULL) and (T0.SERIEFEL <> '' AND DOCUMENTOFEL <> '') and ";
             StrinSQL = StrinSQL + " (T0.FECHAHORACERTIFICACI >= '" + FechaDesde.ToString("yyyy-MM-dd") + "' and T0.FECHAHORACERTIFICACI <= '" + FechaHasta.ToString("yyyy-MM-dd") + "') AND ";
             StrinSQL = StrinSQL + " T0.NUMSERIE " + FiltroSerie + "'" ;
@@ -315,7 +483,7 @@ namespace ICG_Inter.Datos
             return DTNotasNCR;
         }
 
-        public DataTable GetDataNCR(NotasCredito ONotaCredito, DAConnectionSQL ObjDaConnexion)
+        public DataTable GetDataNCR(string TipoSerie,Int32 Numero, DAConnectionSQL ObjDaConnexion)
         {
 
             DataTable DTNotasNCR = new DataTable();
@@ -327,13 +495,21 @@ namespace ICG_Inter.Datos
             cmd.CommandType = CommandType.Text;
             cmd.Connection = ObjDaConnexion.Con;
 
-            StrinSQL = "Select T0.NUMSERIE, T0.NUMFACTURA,T0.SERIEFEL, T0.DOCUMENTOFEL,T0.FECHAHORACERTIFICACI, T0.UUID, T1.CodBarra, ";
-            StrinSQL = StrinSQL + " T1.UnidadesDevueltas, T1.Precio, (T1.UnidadesDevueltas * Precio) as TotalLinea, T1.Descripcion, T3.CODCLIENTE, ";
-            StrinSQL = StrinSQL + "T3.CIF as NIT, T3.NOMBRECLIENTE ,T3.DIRECCION1, T1.Numero_Fact, T1.Serie_Fact ";
-            StrinSQL = StrinSQL + "from FACTURASVENTACAMPOSLIBRES T0 INNER JOIN NotaC_Join T1 ON T0.NUMSERIE = T1.Serie and T0.NUMFACTURA = T1.Numero ";
-            StrinSQL = StrinSQL + "INNER JOIN ALBVENTACAB T2 ON T1.Serie_Fact = T2.NumSerie and T1.Numero_Fact = T2.NUMFAC ";
-            StrinSQL = StrinSQL + "INNER JOIN CLIENTES T3 ON T2.CODCLIENTE = T3.CODCLIENTE ";
-            StrinSQL = StrinSQL + "where T0.NUMSERIE = '"+ ONotaCredito.Serie + "' and T0.NUMFACTURA = " + ONotaCredito.Numero;
+            StrinSQL = " Select T0.NUMSERIE, T0.NUMFACTURA,T0.SERIEFEL, T0.DOCUMENTOFEL, ";
+            StrinSQL = StrinSQL + " T0.FECHAHORACERTIFICACI,T0.UUID, T1.CodBarra, ";
+            StrinSQL = StrinSQL + " Case When T1.Serie = '" + SerieTienda +  "X' then T4.PRECIOIVA ";
+            StrinSQL = StrinSQL + " Else T4.PRECIO end as Precio, t1.UnidadesDevueltas as UnidadesDevueltas,  ";
+            StrinSQL = StrinSQL + " ((T4.PRECIOIVA)*t1.UnidadesDevueltas) AS TotalLinea,T1.Descripcion, ";
+            StrinSQL = StrinSQL + " T3.CODCLIENTE, T3.CIF as NIT, T3.NOMBRECLIENTE ,T3.DIRECCION1, ";
+            StrinSQL = StrinSQL + " T1.Numero_Fact, T1.Serie_Fact, T1.Linea_Fact ";
+            StrinSQL = StrinSQL + " from FACTURASVENTACAMPOSLIBRES T0 INNER JOIN ";
+            StrinSQL = StrinSQL + " NotaC_Join T1 ON T0.NUMSERIE = T1.Serie and T0.NUMFACTURA = T1.Numero ";
+            StrinSQL = StrinSQL + " INNER JOIN ALBVENTACAB T2 ON T1.Serie_Fact = T2.NumSerie and T1.Numero_Fact = T2.NUMFAC ";
+            StrinSQL = StrinSQL + " INNER JOIN ALBVENTALIN T4 ON  T4.NUMALBARAN = T2.NUMALBARAN AND T2.NUMSERIE = T4.NUMSERIE AND ";
+            StrinSQL = StrinSQL + " T1.CodBarra = CONCAT(T4.REFERENCIA COLLATE  Latin1_General_CS_AI , T4.COLOR, T4.TALLA) AND ";
+            StrinSQL = StrinSQL + " T1.Linea_Fact = t4.NUMLIN INNER JOIN CLIENTES T3 ON T2.CODCLIENTE = T3.CODCLIENTE  ";
+            StrinSQL = StrinSQL + " where T0.NUMSERIE ='" + SerieTienda + TipoSerie + "' and T0.NUMFACTURA = " + Numero;
+            
 
             cmd.CommandText = StrinSQL;
 
@@ -680,7 +856,7 @@ namespace ICG_Inter.Datos
 
             return ObjListaNotasCredito; //CodigoArticuloBD;
         }
-        public bool InsertarNotasCredito(DAConnectionSQL ObjDaConnexion, NotasCredito ObjNotasCredito, string TipoSerie)
+        public bool InsertarNotasCredito(DAConnectionSQL ObjDaConnexion, NotasCredito ObjNotasCredito, string TipoSerie, UserSistemas oUserSistemas)
         {
             bool ExisteNC = false;
             bool exitoso = false;
@@ -702,14 +878,15 @@ namespace ICG_Inter.Datos
             StrinSQL = "INSERT INTO NotaC_Join ";
             StrinSQL = StrinSQL + "(Fecha_Notac,Serie,Numero,Referencia,Descripcion,UnidadesVenta,UnidadesDevueltas, ";
             StrinSQL = StrinSQL + "RazonDevolucion,Precio,Talla,Color,CodBarra,Almacen,NumLinea,Dtco,CodArticulo, ";
-            StrinSQL = StrinSQL + "Precio_Sin_Iva, Fecha_Fact, Serie_Fact , Numero_Fact) ";
+            StrinSQL = StrinSQL + "Precio_Sin_Iva, Fecha_Fact, Serie_Fact , Numero_Fact,CODVENDEDOR, Linea_Fact ) ";
             StrinSQL = StrinSQL + "VALUES ('" + DateTime.Now.Date.ToString("MM/dd/yyyy") + "','" + SerieTienda + TipoSerie + "'," + ObjNotasCredito.Numero + ",";
             StrinSQL = StrinSQL + "'" + ObjNotasCredito.Referencia + "','" + ObjNotasCredito.Descripcion + "',"; 
             StrinSQL = StrinSQL + ObjNotasCredito.Unidades + "," + ObjNotasCredito.UnidadesDevueltas + ",'" + ObjNotasCredito.RazonDevolucion + "',";
             StrinSQL = StrinSQL + ObjNotasCredito.Precio + ",'" + ObjNotasCredito.Talla + "','";
             StrinSQL = StrinSQL + ObjNotasCredito.CodColor + "','" + ObjNotasCredito.CodBarra + "','" + Bodega + "'," + ObjNotasCredito.NumLinea + ",'";
             StrinSQL = StrinSQL + ObjNotasCredito.Descuento + "'," + ObjNotasCredito.CodArticulo + "," + ObjNotasCredito.Precio_Sin_iva + ",'"; 
-            StrinSQL = StrinSQL + ObjNotasCredito.Fecha_Fact.Date.ToString("MM/dd/yyyy") + "','" + ObjNotasCredito.Serie_Fact + "'," + ObjNotasCredito.Num_Fact + ")";
+            StrinSQL = StrinSQL + ObjNotasCredito.Fecha_Fact.Date.ToString("MM/dd/yyyy") + "','" + ObjNotasCredito.Serie_Fact + "', ";
+            StrinSQL = StrinSQL + ObjNotasCredito.Num_Fact + ",'" + oUserSistemas.CODVENDEDOR + "', '" + ObjNotasCredito.Linea_Fact + "')";
 
             cmd.CommandText = StrinSQL;                  
 

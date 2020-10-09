@@ -11,17 +11,19 @@ using System.Data.SqlClient;
 using ICG_Inter.Objetos;
 using ICG_Inter.Datos;
 using System.Net.Configuration;
+using System.IO;
 
 namespace ICG_Inter
 {
     public partial class Entradafiltros : Form
     {
-        public DAConnectionSQL ObjDaConnexion = new DAConnectionSQL();
+        public DAConnectionSQL ObjDaConnexion; //= new DAConnectionSQL();
         public ProductoXCB ObjProductoxCB = new ProductoXCB();
         public Cliente ObjCliente = new Cliente();
         int CodCLiente = 0;
         public string Cod_Art = "";
         public string Des_Articulo = "";
+        public UserSistemas oUserSistemasLog = new UserSistemas(); 
 
         int TipoFecha = 30;
 
@@ -36,10 +38,12 @@ namespace ICG_Inter
             InitializeComponent();
         }
 
-        public Entradafiltros(DAConnectionSQL ObjDAConnecion)
+        public Entradafiltros(DAConnectionSQL ObjDAConnecion, UserSistemas oUserSistemas)
         {
+            oUserSistemasLog = oUserSistemas;
             ObjDaConnexion = ObjDAConnecion;
             InitializeComponent();
+            this.Text = this.Text + " USER .: " + oUserSistemasLog.NOMVENDEDOR + " :.";
         }
 
         private void Btn_aceptar_Click(object sender, EventArgs e)
@@ -52,7 +56,7 @@ namespace ICG_Inter
                 TipoFecha = 30;
             }
 
-            FacturasVenta v1 = new FacturasVenta(ObjListaDocVentas, ObjDaConnexion);
+            FacturasVenta v1 = new FacturasVenta(ObjListaDocVentas, ObjDaConnexion, oUserSistemasLog);
             this.Hide();
             v1.ShowDialog();
             this.Show();
@@ -67,7 +71,7 @@ namespace ICG_Inter
                     CodCLiente = int.Parse(Txt_CodCliente.Text);
                 }
                 else
-                    MessageBox.Show("Valor incorrecto");
+                    MessageBox.Show("Valor incorrecto", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else CodCLiente = 0;
 
@@ -119,7 +123,7 @@ namespace ICG_Inter
                     }
                     else
                     {
-                        MessageBox.Show("No Existe el Articulo");
+                        MessageBox.Show("No Existe el Artículo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txt_Codart.SelectAll();
 
                     }
@@ -198,11 +202,23 @@ namespace ICG_Inter
 
         private void button9_Click(object sender, EventArgs e)
         {
-
+            Application.Exit();
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
+           
+            //string filePath = @"C:\\Users\\pjvas\\Pictures\\3801.JPG";
+            //Int32 CodItem = 3801;
+            //FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            //BinaryReader br = new BinaryReader(fs);
+            //Byte[] bytes = br.ReadBytes((Int32)fs.Length);
+            //br.Close();
+            //fs.Close();
+
+            //ObjProcDB.UpdateImageItem(ObjDaConnexion, bytes, CodItem);
+
+
             cmb_fechainicio.SelectedItem = 0;
             Txt_CodCliente.Text = "";
             txtNomCliente.Text = "";
@@ -218,10 +234,35 @@ namespace ICG_Inter
 
         private void BtnReportes_Click(object sender, EventArgs e)
         {
-            FrmRecibos oFRMRecibos = new FrmRecibos (ObjDaConnexion);
+            FrmRecibos oFRMRecibos = new FrmRecibos (ObjDaConnexion, oUserSistemasLog);
             this.Hide();
             oFRMRecibos.ShowDialog();
             this.Show();
+        }
+
+        private void Entradafiltros_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Alt) + Convert.ToInt32(Keys.A))
+            {
+                
+            }
+        }
+
+        private void Entradafiltros_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.A )
+            {
+                FrmRecibos oFRMRecibos = new FrmRecibos(ObjDaConnexion, oUserSistemasLog);
+                this.Hide();
+                oFRMRecibos.ShowDialog();
+                this.Show();
+
+            }
+        }
+
+        private void Entradafiltros_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

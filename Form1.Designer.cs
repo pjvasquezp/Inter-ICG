@@ -35,6 +35,8 @@
             this.button10 = new System.Windows.Forms.Button();
             this.BtnReportes = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_aceptar = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.cmb_fechainicio = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txt_Codart = new System.Windows.Forms.TextBox();
@@ -46,6 +48,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.TxtCodArticulo = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.txtReferencia = new System.Windows.Forms.TextBox();
             this.TxtDescripcion = new System.Windows.Forms.TextBox();
             this.LblCodArticulo = new System.Windows.Forms.Label();
@@ -60,9 +63,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtNomCliente = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btn_aceptar = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -106,7 +106,7 @@
             // 
             this.button10.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button10.Location = new System.Drawing.Point(207, 14);
+            this.button10.Location = new System.Drawing.Point(191, 14);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(72, 27);
             this.button10.TabIndex = 41;
@@ -118,10 +118,11 @@
             // BtnReportes
             // 
             this.BtnReportes.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.BtnReportes.Image = global::ICG_Inter.Properties.Resources.b_calendar;
             this.BtnReportes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnReportes.Location = new System.Drawing.Point(285, 14);
+            this.BtnReportes.Location = new System.Drawing.Point(274, 14);
             this.BtnReportes.Name = "BtnReportes";
-            this.BtnReportes.Size = new System.Drawing.Size(103, 27);
+            this.BtnReportes.Size = new System.Drawing.Size(117, 27);
             this.BtnReportes.TabIndex = 42;
             this.BtnReportes.Text = "Consultar Recibos";
             this.BtnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -139,6 +140,34 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(528, 54);
             this.panel1.TabIndex = 45;
+            // 
+            // btn_aceptar
+            // 
+            this.btn_aceptar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_aceptar.Image = global::ICG_Inter.Properties.Resources.s_success;
+            this.btn_aceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_aceptar.Location = new System.Drawing.Point(13, 14);
+            this.btn_aceptar.Name = "btn_aceptar";
+            this.btn_aceptar.Size = new System.Drawing.Size(65, 27);
+            this.btn_aceptar.TabIndex = 39;
+            this.btn_aceptar.Text = "Aceptar";
+            this.btn_aceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_aceptar.UseVisualStyleBackColor = false;
+            this.btn_aceptar.Click += new System.EventHandler(this.Btn_aceptar_Click);
+            // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button9.Image = global::ICG_Inter.Properties.Resources.s_cancel;
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button9.Location = new System.Drawing.Point(106, 14);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(68, 27);
+            this.button9.TabIndex = 40;
+            this.button9.Text = "Salir";
+            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // cmb_fechainicio
             // 
@@ -251,6 +280,16 @@
             this.TxtCodArticulo.Size = new System.Drawing.Size(96, 20);
             this.TxtCodArticulo.TabIndex = 58;
             // 
+            // button1
+            // 
+            this.button1.Image = global::ICG_Inter.Properties.Resources.b_search;
+            this.button1.Location = new System.Drawing.Point(314, 16);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(41, 23);
+            this.button1.TabIndex = 49;
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // txtReferencia
             // 
             this.txtReferencia.Location = new System.Drawing.Point(261, 53);
@@ -318,7 +357,7 @@
             this.lblTelef.Name = "lblTelef";
             this.lblTelef.Size = new System.Drawing.Size(57, 13);
             this.lblTelef.TabIndex = 53;
-            this.lblTelef.Text = "Telefonos:";
+            this.lblTelef.Text = "Teléfonos:";
             // 
             // txtDirec
             // 
@@ -379,44 +418,6 @@
             this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button1
-            // 
-            this.button1.Image = global::ICG_Inter.Properties.Resources.b_search;
-            this.button1.Location = new System.Drawing.Point(314, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(41, 23);
-            this.button1.TabIndex = 49;
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btn_aceptar
-            // 
-            this.btn_aceptar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_aceptar.Image = global::ICG_Inter.Properties.Resources.s_success;
-            this.btn_aceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_aceptar.Location = new System.Drawing.Point(13, 14);
-            this.btn_aceptar.Name = "btn_aceptar";
-            this.btn_aceptar.Size = new System.Drawing.Size(65, 27);
-            this.btn_aceptar.TabIndex = 39;
-            this.btn_aceptar.Text = "Aceptar";
-            this.btn_aceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_aceptar.UseVisualStyleBackColor = false;
-            this.btn_aceptar.Click += new System.EventHandler(this.Btn_aceptar_Click);
-            // 
-            // button9
-            // 
-            this.button9.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button9.Image = global::ICG_Inter.Properties.Resources.s_cancel;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(106, 14);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(73, 27);
-            this.button9.TabIndex = 40;
-            this.button9.Text = "Cancelar";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
             // Entradafiltros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -430,7 +431,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Entradafiltros";
             this.Text = "Entrada de filtros";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Entradafiltros_FormClosed);
             this.Load += new System.EventHandler(this.Entradafiltros_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Entradafiltros_KeyDown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Entradafiltros_KeyUp);
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

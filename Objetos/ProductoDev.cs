@@ -25,6 +25,10 @@ namespace ICG_Inter.Objetos
         public bool Procesado { get; set; }
         public string CodBarra { get; set; }
         public string CodColor { get; set; }
+        public byte[] FotoArticulo { get; set; }
+        public int CodArticulo { get; set; }
+        public int NumLinea { get; set; }
+        public int Linea_Fact { get; set; }
 
     }
 

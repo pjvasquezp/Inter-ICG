@@ -1,5 +1,6 @@
 ﻿using CrystalDecisions.CrystalReports.Engine;
 using ICG_Inter.Datos;
+using ICG_Inter.Objetos;
 using ICG_Inter.Properties;
 using System;
 using System.Collections.Generic;
@@ -21,16 +22,19 @@ namespace ICG_Inter
         public ProcesosDB ObjProcDB = new ProcesosDB();
         public String  TipoSrie = "A";
         public string SereDocumento;
+        public UserSistemas oUserSistemasLog = new UserSistemas();
 
         public FrmRecibos()
         {
             InitializeComponent();
         }
 
-        public FrmRecibos(DAConnectionSQL ObjDAConnecion)
+        public FrmRecibos(DAConnectionSQL ObjDAConnecion, UserSistemas oUserSistemas)
         {
+            oUserSistemasLog = oUserSistemas;
             ObjDaConnexion = ObjDAConnecion;
             InitializeComponent();
+            this.Text = this.Text + " USER .: " + oUserSistemasLog.NOMVENDEDOR + " :.";
         }
 
         private void FrmRecibos_Load(object sender, EventArgs e)
@@ -42,32 +46,45 @@ namespace ICG_Inter
         private void BtnGenerar_Click(object sender, EventArgs e)
         {
             ReportDocument crystalReport = new ReportDocument();
-            if (System.IO.File.Exists(Application.StartupPath.Replace("bin\\Debug", "\\Reportes\\ReciboNcrAll.rpt")))
+            //MessageBox.Show(Settings.Default.PathReportes + "ReciboNcrAll.rpt");
+            if (System.IO.File.Exists(Settings.Default.PathReportes + "ReciboNcrAll.rpt"))
             {
-                //Uso de la Impresora
-                //*****************************************************
-                PrinterSettings ps = new PrinterSettings();
-                ps.PrinterName = PrinterName;
-                bool ImpresoraValida = ps.IsValid;
-                ps.Copies = 1;
-                PageSettings pg = new PageSettings();
-                pg.PrinterSettings = ps;
-                //*****************************************************
+                try
+                {
+                
+                        //Uso de la Impresora
+                        //*****************************************************
+                        PrinterSettings ps = new PrinterSettings();
+                        ps.PrinterName = PrinterName;
+                        bool ImpresoraValida = ps.IsValid;
+                        ps.Copies = 1;
+                        PageSettings pg = new PageSettings();
+                        pg.PrinterSettings = ps;
+                        //*****************************************************
 
-                //Carga el Reporte en el Visor
-                //*****************************************************
-                crystalReport.Load(Application.StartupPath.Replace("bin\\Debug", "\\Reportes\\ReciboNcrAll.rpt"));
+                        //Carga el Reporte en el Visor
+                        //*****************************************************
+                        crystalReport.Load(Settings.Default.PathReportes + "ReciboNcrAll.rpt");
+                        //MessageBox.Show(Application.StartupPath.ToString());
 
-                //Creo mi Repositorio de Datos y le agrego la info
-                //*****************************************************
-                DataTable DTNotasCred = new DataTable();
-                DTNotasCred = ObjProcDB.GetDataNCRAll(DTPFechaDesde.Value, DTPFechaHasta.Value, TipoSrie, ObjDaConnexion);
+                        //Creo mi Repositorio de Datos y le agrego la info
+                        //*****************************************************
+                        DataTable DTNotasCred = new DataTable();
+                        DTNotasCred = ObjProcDB.GetDataNCRAll(DTPFechaDesde.Value, DTPFechaHasta.Value, TipoSrie, ObjDaConnexion);
 
-                crystalReport.SetDataSource(DTNotasCred);
+                        crystalReport.SetDataSource(DTNotasCred);
 
-                crystalReportViewer1.ReportSource = crystalReport;
+                        crystalReportViewer1.ReportSource = crystalReport;
 
-                //crystalReport.PrintToPrinter(ps, pg, false);
+                            //crystalReport.PrintToPrinter(ps, pg, false);
+
+
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show("Error " + ex.Message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
 
         }

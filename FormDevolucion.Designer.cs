@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDevolucion));
             this.label1 = new System.Windows.Forms.Label();
             this.txt_serie = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -95,9 +96,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(2, 63);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
+            this.label3.Size = new System.Drawing.Size(83, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Codigo Articulo:";
+            this.label3.Text = "Código Artículo:";
             // 
             // txt_codiart
             // 
@@ -300,6 +301,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txt_serie);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormDevolucion";
             this.Text = "Devolución de Artículos";
             this.Load += new System.EventHandler(this.FormDevolucion_Load);

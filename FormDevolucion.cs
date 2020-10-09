@@ -21,15 +21,19 @@ namespace ICG_Inter
         public ProductoDev ObjProducto = new ProductoDev();
         public int Unidadesventas = 0;
         public int UnidadesDev = 0;
-        public int UnidTotalDev; 
+        public int UnidTotalDev;
+        public UserSistemas oUserSistemasLog = new UserSistemas();
         public FormDevolucion()
         {
             InitializeComponent();
         }
-        public FormDevolucion(ref ProductoDev ObjProductoDev, DAConnectionSQL ObjDAConnecion)
+        public FormDevolucion(ref ProductoDev ObjProductoDev, DAConnectionSQL ObjDAConnecion, UserSistemas oUserSistemas)
         {
             ObjDaConnexion = ObjDAConnecion;
+            oUserSistemasLog = oUserSistemas;
             InitializeComponent();
+
+            this.Text = this.Text + " USER .: " + oUserSistemasLog.NOMVENDEDOR + " :.";
 
             ObjProducto = ObjProductoDev;
             CargaInfo(ref ObjProductoDev);
@@ -67,7 +71,7 @@ namespace ICG_Inter
                 UnidadesDev = int.Parse(textBox7.Text);
                 if (UnidadesDev > Unidadesventas)
                 {
-                    MessageBox.Show("Valor Devuelto no puede ser mayor a unidades vendidas",
+                    MessageBox.Show("Valor Devuelto no puede ser mayor a la unidades vendidas",
                             "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
 
@@ -80,7 +84,7 @@ namespace ICG_Inter
 
             else
             {
-                MessageBox.Show("Valor no permitidoo");
+                MessageBox.Show("Valor no permitidoo", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -94,7 +98,7 @@ namespace ICG_Inter
             //return ObjProducto;
             if (UnidadesDev == 0)
             {
-                MessageBox.Show("Debe selecionar cantidad a devoolver","Notificación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe selecionar la cantidad a devoolver","Notificación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
             else

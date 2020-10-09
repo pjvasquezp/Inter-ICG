@@ -15,6 +15,8 @@ using ICG_Inter.Funciones;
 using System.Diagnostics;
 using System.Threading;
 using ICG_Inter.Properties;
+using System.Windows.Media.Imaging;
+using System.IO;
 
 namespace ICG_Inter
 {
@@ -26,7 +28,11 @@ namespace ICG_Inter
         public ProductoDev ProductoDevSeleccionado = new ProductoDev();
         public Buildsxml ObjBuildXml = new Buildsxml();
         public int TotalProducDev;
- 
+        public bool SWDevol = false;
+        public UserSistemas oUserSistemasLog = new UserSistemas();
+
+
+
         string RutaExeFirmado = Settings.Default.PathFirmFEL;
         NotasCredito ObjNotaCredit = new NotasCredito();
 
@@ -40,11 +46,13 @@ namespace ICG_Inter
         {
             InitializeComponent();
         }
-        public FacturasVenta(ListaDocVentas ObjListaDoc, DAConnectionSQL ObjDAConnecion)
+        public FacturasVenta(ListaDocVentas ObjListaDoc, DAConnectionSQL ObjDAConnecion, UserSistemas oUserSistemas)
         {
+            oUserSistemasLog = oUserSistemas;
             ObjListaDocVentas = ObjListaDoc;
             ObjDaConnexion = ObjDAConnecion;
             InitializeComponent();
+            this.Text = this.Text + " USER .: " + oUserSistemasLog.NOMVENDEDOR + " :.";
         }
 
         private void FacturasVenta_Load(object sender, EventArgs e)
@@ -56,6 +64,7 @@ namespace ICG_Inter
         {
             string Serie;
             int NumDoc;
+            string RutaImagen;
 
 
             Serie = this.dgv_q.CurrentRow.Cells[0].Value.ToString();
@@ -70,6 +79,37 @@ namespace ICG_Inter
             txt_hora.Text = MiObjCabecera.Hora;
             txt_serie.Text = MiObjCabecera.Serie;
             txt_num.Text = MiObjCabecera.Numero.ToString();
+
+            if (MiObjCabecera.RutaFotoCliente != null)
+            {
+                if (System.IO.File.Exists(MiObjCabecera.RutaFotoCliente))
+                {
+                    RutaImagen = MiObjCabecera.RutaFotoCliente;
+                }
+                else
+                {
+                    RutaImagen = Settings.Default.PathImagCUST + "NOIMAGEN" + ".jpg";
+                }
+                //RutaImagen = MiObjCabecera.RutaFotoCliente;
+                //RutaImagen = Settings.Default.PathImagCUST + "NOIMAGEN" + ".jpg";
+                PBClientes.Image = Image.FromFile(RutaImagen);
+            }
+            else
+            {
+                RutaImagen = Settings.Default.PathImagCUST + "NOIMAGEN" + ".jpg";
+                PBClientes.Image = Image.FromFile(RutaImagen);
+            }
+
+            //if (System.IO.File.Exists(Settings.Default.PathImagCUST + MiObjCabecera.Codigo_Cliente.ToString() +  ".jpg"))
+            //{
+            //    RutaImagen = Settings.Default.PathImagCUST + MiObjCabecera.Codigo_Cliente.ToString() + ".jpg";
+            //    PBClientes.Image = Image.FromFile(RutaImagen);
+            //}
+            //else
+            //{
+            //    RutaImagen = Settings.Default.PathImagCUST + "NOIMAGEN" + ".jpg";
+            //    PBClientes.Image = Image.FromFile(RutaImagen);
+            //}
 
             int daysDiff = ((TimeSpan)(DateAndTime.Now.Date - MiObjCabecera.Fecha.Date)).Days;
 
@@ -91,16 +131,47 @@ namespace ICG_Inter
                     return;
                 }
             }
-           
-                      
+
+            
 
             ListaDocDetalle MiObjDetalle = ObjProcDB.BuscarDocVentasDetalle(ObjDaConnexion, Serie, NumDoc);
 
+            TotalProducDev = (from ProductoDev in MiObjDetalle
+                              select ProductoDev.Devoluciones).Sum();
+
             dgv_Doc.DataSource = MiObjDetalle;
+
+            DibujaGrid(ref dgv_Doc);
+        }
+
+        private void DibujaGrid(ref DataGridView Dgv_ProductosDev)
+        {
+            foreach (DataGridViewRow Row in Dgv_ProductosDev.Rows)
+            {
+                
+
+                if (int.Parse(Row.Cells[7].Value.ToString()) > 0) //Row.Cells[0].Value > 0
+                {
+                    SWDevol = true;
+                    Row.Cells[7].Style.BackColor = Color.Yellow;
+                    Row.Cells[7].Style.ForeColor = Color.Red;
+
+                }
+
+                else
+                {
+                    SWDevol = false;
+                    Row.Cells[7].Style.BackColor = Color.White;
+                    Row.Cells[7].Style.ForeColor = Color.Black;
+
+                }
+            }
+
         }
 
         private void dgv_Doc_DoubleClick(object sender, EventArgs e)
         {
+            string RutaImagen;
             ListaNotasCredito ObjListaNCR = new ListaNotasCredito();
             ProductoDev ObjProductoDev = new ProductoDev();
             ObjProductoDev.Serie = this.dgv_Doc.CurrentRow.Cells[0].Value.ToString();
@@ -111,19 +182,39 @@ namespace ICG_Inter
             ObjProductoDev.Talla = this.dgv_Doc.CurrentRow.Cells[4].Value.ToString();
             ObjProductoDev.Color = this.dgv_Doc.CurrentRow.Cells[5].Value.ToString();
             ObjProductoDev.UnidadesVenta = int.Parse(this.dgv_Doc.CurrentRow.Cells[6].Value.ToString());
-            ObjProductoDev.Precio = decimal.Parse(this.dgv_Doc.CurrentRow.Cells[7].Value.ToString());
-            ObjProductoDev.Almacen = this.dgv_Doc.CurrentRow.Cells[11].Value.ToString();
-            ObjProductoDev.Retornable = this.dgv_Doc.CurrentRow.Cells[10].Value.ToString();
-            ObjProductoDev.CodBarra = this.dgv_Doc.CurrentRow.Cells[12].Value.ToString();
-            ObjProductoDev.CodColor = this.dgv_Doc.CurrentRow.Cells[13].Value.ToString();
+            ObjProductoDev.Precio = decimal.Parse(this.dgv_Doc.CurrentRow.Cells[8].Value.ToString());
+            ObjProductoDev.Almacen = this.dgv_Doc.CurrentRow.Cells[12].Value.ToString();
+            ObjProductoDev.Retornable = this.dgv_Doc.CurrentRow.Cells[11].Value.ToString();
+            ObjProductoDev.CodBarra = this.dgv_Doc.CurrentRow.Cells[13].Value.ToString();
+            ObjProductoDev.CodColor = this.dgv_Doc.CurrentRow.Cells[14].Value.ToString();
+            ObjProductoDev.CodArticulo = int.Parse(this.dgv_Doc.CurrentRow.Cells[15].Value.ToString());
+            ObjProductoDev.NumLinea = int.Parse(this.dgv_Doc.CurrentRow.Cells[16].Value.ToString());
+            ObjProductoDev.Linea_Fact = int.Parse(this.dgv_Doc.CurrentRow.Cells[16].Value.ToString());
+
+
 
             ObjProductoDev.Procesado = false;
-          
+
+            byte[] FotoItem = ObjProcDB.BuscarFotoArticulo(ObjDaConnexion, ObjProductoDev.CodArticulo);
+
+            PBArticulos.Image = byteArrayToImage(FotoItem);
+
+            if (FotoItem != null)
+            {
+                PBArticulos.Image = byteArrayToImage(FotoItem);
+            }
+            else
+            {
+                RutaImagen = Settings.Default.PathImagCUST + "NOIMAGEN" + ".jpg";
+                PBArticulos.Image = Image.FromFile(RutaImagen);
+            }
+
+
 
             if (ObjProductoDev.Retornable == "T")
             {
 
-                FormDevolucion v1 = new FormDevolucion(ref ObjProductoDev, ObjDaConnexion);
+                FormDevolucion v1 = new FormDevolucion(ref ObjProductoDev, ObjDaConnexion, oUserSistemasLog);
                 v1.ShowDialog();
                 this.Show();
 
@@ -137,45 +228,51 @@ namespace ICG_Inter
                         if (ObjListaNCR.Count > 0)
                         {
                             bool procesar = false;
-                            foreach (var item in ObjListaNCR)
-                            {
+                            //Debe ser una sola validacion
+                            //foreach (var item in ObjListaNCR)
+                            //{
                                 TotalProducDev = (from NotasCredito in ObjListaNCR select NotasCredito.UnidadesDevueltas).Sum();
-                                procesar = ValidarDevolucion(item, TotalProducDev + ObjProductoDev.UnidadesDevueltas);
-                                if (procesar)
+                                //procesar = ValidarDevolucion( ObjListaNCR[0], TotalProducDev + ObjProductoDev.UnidadesDevueltas);
+                                procesar = ValidarDevolucion(ObjProductoDev, TotalProducDev + ObjProductoDev.UnidadesDevueltas);
+                            if (procesar)
                                 {
                                     ObjListaProductosDev.Add(ObjProductoDev);
                                     CargarGridProductosDev(ObjListaProductosDev);
-                                    //pictureBox1.Image = "C:\Users\pjvas\Pictures\Prueba.jpg";
-                                    
+
                                 }
-                            }
+                            //}
 
                         }
                         else
                         {
                             bool procesar = false;
                             TotalProducDev = (from ProductoDev in ObjListaProductosDev 
-                                              where ProductoDev.CodBarra.ToString() == ObjProductoDev.CodBarra.ToString()
+                                              where ProductoDev.CodBarra.ToString() == ObjProductoDev.CodBarra.ToString() &
+                                              ProductoDev.NumLinea == ObjProductoDev.NumLinea
                                               select ProductoDev.UnidadesDevueltas).Sum();
 
                             if (ObjProductoDev.UnidadesDevueltas + TotalProducDev > ObjProductoDev.UnidadesVenta)
                             {
-                                MessageBox.Show("El Articulo " + ObjProductoDev.CodBarra + " de la Factura " + ObjProductoDev.Serie + " " + ObjProductoDev.Numero +
-                                        " Ya esta incluida para Procesar como Devolucions", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("El Artículo " + ObjProductoDev.CodBarra + " de la Factura " + ObjProductoDev.Serie + " " + ObjProductoDev.Numero +
+                                        " Ya esta incluida para Procesar como Devolución", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 return;
                             }
                             
                             foreach (var someobject in ObjListaProductosDev)
                             {                                
-                                if (someobject.CodBarra.ToString() == dgv_Doc.CurrentRow.Cells[12].Value.ToString())   
+                                if (someobject.CodBarra.ToString() == dgv_Doc.CurrentRow.Cells[13].Value.ToString())   
                                 {
                                     procesar = true;
                                     someobject.UnidadesDevueltas = ObjProductoDev.UnidadesDevueltas + TotalProducDev;
+
                                 }
+                                //ObjListaProductosDev.Add(ObjProductoDev);
+                                //CargarGridProductosDev(ObjListaProductosDev);
                             }
 
                             if (procesar)
                             {
+                                ObjListaProductosDev.Add(ObjProductoDev);
                                 Dgv_ProductosDev.DataSource = null;
                                 Dgv_ProductosDev.DataSource = ObjListaProductosDev;
                             }
@@ -196,6 +293,23 @@ namespace ICG_Inter
                 MessageBox.Show("Producto no acepta Devolución", "Notificación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+        }
+        public Image byteArrayToImage(byte[] byteArrayIn)
+        {
+            if (byteArrayIn != null)
+            {
+                using (MemoryStream mStream = new MemoryStream(byteArrayIn))
+                {
+                    return Image.FromStream(mStream);
+                }
+            }
+
+            else
+            {
+                return null;
+
+            }
+            
         }
 
         private bool ValidarFechaDevolucion(DateTime FechaDev)
@@ -224,41 +338,67 @@ namespace ICG_Inter
             Dgv_ProductosDev.Refresh();
         }
 
-        public bool ValidarDevolucion(NotasCredito ObjNCR, int TotalDevoluciones)
+        public bool ValidarDevolucion(ProductoDev OProductosDevNCR, int TotalDevoluciones)
         {
             bool Procesar = false;
-            var result = MessageBox.Show("El Articulo " + ObjNCR.CodBarra + " La Factura " + ObjNCR.Serie_Fact + " " + ObjNCR.Num_Fact +
-                                        " Posee Devoluciones Previas " + ObjNCR.Serie + "-" + ObjNCR.Numero + "\r\n" +
-                                        " Desea Verificar Devoluciones?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            int TotalProducXProc = (from DevxProcesar in ObjListaProductosDev select DevxProcesar.UnidadesDevueltas).Sum();
 
-            if (result == DialogResult.Yes)
+            if (TotalDevoluciones > OProductosDevNCR.UnidadesVenta)  //ObjListaNCR[0].Unidades)
             {
-                ListaNotasCredito ObjListaNCR = new ListaNotasCredito();
-                ObjListaNCR = ObjProcDB.ValidarDevolucion(ObjDaConnexion, ObjNCR.Serie_Fact, ObjNCR.Num_Fact, ObjNCR.CodBarra, ObjNCR.UnidadesDevueltas);
-                ConsultaDevolucion v1 = new ConsultaDevolucion(ObjListaNCR);
-                this.Hide();
-                v1.ShowDialog();
-                this.Show();
+                var result = MessageBox.Show("El Artículo " + OProductosDevNCR.CodBarra + " de la Factura " + OProductosDevNCR.Serie + " " + OProductosDevNCR.Numero +
+                                " Posee Devoluciones Previas " +  "\r\n" +
+                                " Desea Verificar Devoluciones?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                var result2 = MessageBox.Show("Se va a procesar la Devolución? " + "\r\n"
-                , "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                if (result2 == DialogResult.Yes)
+                if (result == DialogResult.Yes)
                 {
-                    if (TotalDevoluciones >= ObjListaNCR[0].Unidades)
-                    {
-                        MessageBox.Show("No se pueden Devolver mas unidades de las vendidas " + "\r\n"
-                , "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        ObjListaNotasCredito.Add(ObjNCR);
-                        Procesar = true;
-                    }
-                    
-                    //exitoso = ObjProcDB.InsertarNotasCredito(ObjNotaCredito);
+                    ListaNotasCredito ObjListaNCR = new ListaNotasCredito();
+                    ObjListaNCR = ObjProcDB.ValidarDevolucion(ObjDaConnexion, OProductosDevNCR.Serie, OProductosDevNCR.Numero, 
+                        OProductosDevNCR.CodBarra, OProductosDevNCR.UnidadesDevueltas);
+                    ConsultaDevolucion v1 = new ConsultaDevolucion(ObjListaNCR);
+                    this.Hide();
+                    v1.ShowDialog();
+                    this.Show();
                 }
+                else
+                { MessageBox.Show("No se pueden Devolver más unidades de las vendidas en esta Factura " + "\r\n"
+                  , "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
             }
+            else if (TotalDevoluciones + TotalProducXProc > OProductosDevNCR.UnidadesVenta)
+            {
+                MessageBox.Show("No se puede devolver mas de lo permitido, Solo Puede Procesar lo Pendiente " + "\r\n"
+            , "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+
+            else
+            {
+                NotasCredito ObjNCR = new NotasCredito();
+
+                ObjNCR.Almacen = OProductosDevNCR.Almacen;
+                ObjNCR.CodArticulo = OProductosDevNCR.CodArticulo;
+                ObjNCR.CodBarra = OProductosDevNCR.CodBarra ;
+                ObjNCR.CodColor = OProductosDevNCR.CodColor ;
+                ObjNCR.Color = OProductosDevNCR.Color ;
+                ObjNCR.Descripcion = OProductosDevNCR.Descripcion ;
+                ObjNCR.Fecha_Fact = OProductosDevNCR.Fecha_Factura;
+                ObjNCR.Num_Fact = OProductosDevNCR.Numero ;
+                ObjNCR.Precio = OProductosDevNCR.Precio ;
+                //ObjNCR. = OProductosDevNCR. ;
+
+                ObjListaNotasCredito.Add(ObjNCR);
+                Procesar = true;
+            }
+
+            //var result2 = MessageBox.Show("Se va a procesar la Devolución? " + "\r\n"
+            //, "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            //if (result2 == DialogResult.Yes)
+            //{
+
+            //}
 
             return Procesar;
 
@@ -309,7 +449,7 @@ namespace ICG_Inter
                         Process.Start(RutaExeFirmado + "llamarEXE.exe");
 
                         var stopwatch = Stopwatch.StartNew();
-                        Thread.Sleep(6000); //tiempo de pausa
+                        Thread.Sleep(2000); //tiempo de pausa
                         stopwatch.Stop();
 
                         FrmPrintNCR MyFormPrintNCR = new FrmPrintNCR(ObjDaConnexion, ObjNotaCredit);   //(ObjListaNCR);
@@ -317,13 +457,13 @@ namespace ICG_Inter
                         this.Show();
 
 
-                        MessageBox.Show("La Devolucion de la Factura " + SerieFacDocumento + " - " +
+                        MessageBox.Show("La Devolución de la Factura " + SerieFacDocumento + " - " +
                             NumDocDocument + " se Proceso correctamente",
                             "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                     else
                     {
-                        MessageBox.Show("La Devolucion de la Factura " + SerieFacDocumento + " - " +
+                        MessageBox.Show("La Devoluci+on de la Factura " + SerieFacDocumento + " - " +
                             NumDocDocument + " No se Proceso correctamente",
                             "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
@@ -351,7 +491,9 @@ namespace ICG_Inter
                 ObjNotaCredito.CodColor = Row.Cells[14].Value.ToString();
                 ObjNotaCredito.NumLinea = NumLinea;
                 ObjNotaCredito.Total = ObjNotaCredito.UnidadesDevueltas * ObjNotaCredito.Precio;
-                
+                ObjNotaCredito.Linea_Fact = Int32.Parse(Row.Cells[15].Value.ToString());
+
+
                 SerieFacActual = SerieFacDocumento;
                 NumDocActual = NumDocDocument;
 
@@ -359,7 +501,7 @@ namespace ICG_Inter
                 //ObjListaNCR = ObjProcDB.ValidarDevolucion(ObjNotaCredito.Serie, ObjNotaCredito.Numero, ObjNotaCredito.CodBarra, ObjNotaCredito.UnidadesDevueltas)
 
                 ObjListaNotasCredito.Add(ObjNotaCredito);
-                Exitoso = ObjProcDB.InsertarNotasCredito(ObjDaConnexion, ObjNotaCredito, TipoSerie);
+                Exitoso = ObjProcDB.InsertarNotasCredito(ObjDaConnexion, ObjNotaCredito, TipoSerie, oUserSistemasLog);
 
                 ValidarProceso(Exitoso, SerieFacDocumento, NumDocDocument, NumLinea);                                
 
@@ -379,12 +521,12 @@ namespace ICG_Inter
                 {
                     Process.Start(RutaExeFirmado + "llamarEXE.exe");
 
-                    MessageBox.Show("Firmado de la Devolucion de la Factura " +
+                    MessageBox.Show("Firmado de la Devolución de la Factura " +
                     SerieFacActual + " - " + NumDocDocument +
                     " Procesada Correctamente ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                     var stopwatch = Stopwatch.StartNew();
-                    Thread.Sleep(6000); //tiempo de pausa
+                    Thread.Sleep(2000); //tiempo de pausa
                     stopwatch.Stop();
 
                     FrmPrintNCR MyFormPrintNCR = new FrmPrintNCR(ObjDaConnexion, ObjNotaCredit);   //(ObjListaNCR);
@@ -420,7 +562,7 @@ namespace ICG_Inter
 
             else
             {
-                MessageBox.Show("Error al Procesar la Linea " + NumLinea + " de la Devolucion de la Factura " + SerieFac + " " + NumDoc
+                MessageBox.Show("Error al Procesar la Linea " + NumLinea + " de la Devolución de la Factura " + SerieFac + " " + NumDoc
                     , "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -432,34 +574,39 @@ namespace ICG_Inter
 
             if (e.KeyChar == (Char)13)
             {
-                Serie = Strings.Mid(textBox1.Text, 1, 4);
-                Numero = int.Parse(Strings.Mid(textBox1.Text, 5, 15));
-
-                foreach (DataGridViewRow Row in dgv_q.Rows)
+                if (textBox1.Text != "")
                 {
-                    String strFila = Row.Index.ToString();
+                    Serie = Strings.Mid(textBox1.Text, 1, 4);
+                    Numero = int.Parse(Strings.Mid(textBox1.Text, 5, 15));
 
-
-                    string SerirFac = Row.Cells[0].Value.ToString();
-                    Int32 NumDoc = int.Parse(Row.Cells[1].Value.ToString());
-
-
-                    if (SerirFac == Serie && NumDoc == Numero)
+                    foreach (DataGridViewRow Row in dgv_q.Rows)
                     {
-                        //RowsCells[0].de
-                       dgv_q.Rows[Convert.ToInt32(strFila)].DefaultCellStyle.BackColor = Color.Green;
+                        String strFila = Row.Index.ToString();
 
-                        //dgv_q.ClearSelection();
-                        dgv_q.Rows[Int16.Parse(strFila)].Selected = true;
-                        dgv_q.Focus();                                        
-                        dgv_q.Refresh();
 
-                        dgv_q.FirstDisplayedScrollingRowIndex = Int16.Parse(strFila);
+                        string SerirFac = Row.Cells[0].Value.ToString();
+                        Int32 NumDoc = int.Parse(Row.Cells[1].Value.ToString());
+
+
+                        if (SerirFac == Serie && NumDoc == Numero)
+                        {
+                            //RowsCells[0].de
+                            dgv_q.Rows[Convert.ToInt32(strFila)].DefaultCellStyle.BackColor = Color.Green;
+
+                            //dgv_q.ClearSelection();
+                            dgv_q.Rows[Int16.Parse(strFila)].Selected = true;
+                            dgv_q.Focus();
+                            dgv_q.Refresh();
+
+                            dgv_q.FirstDisplayedScrollingRowIndex = Int16.Parse(strFila);
+
+                        }
+
 
                     }
 
-
                 }
+                
 
             }
             
@@ -479,7 +626,7 @@ namespace ICG_Inter
 
             else
             {
-                MessageBox.Show("Numero de Documento invalido");
+                MessageBox.Show("Numero de Documento invalido", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtNumero.SelectAll();                
                 return;
             }
@@ -510,7 +657,7 @@ namespace ICG_Inter
 
             if (!SwFind)
             {
-                MessageBox.Show("Esta Serie y/o Factura no esta se encuentra");
+                MessageBox.Show("Esta Serie y/o Factura no esta se encuentra registrada", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -568,6 +715,83 @@ namespace ICG_Inter
 
 
 
+
+
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtCancelar_Click(object sender, EventArgs e)
+        {
+            txt_serie.Text = "";
+            txtSerie.Text = "";
+            txt_num.Text = "";
+            txtcliente.Text = "";
+            txt_cliente2.Text = "";
+            txt_fecha.Text = "";
+            txt_hora.Text = "";
+            txt_vendedor2.Text = "";
+            textBox1.Text = "";
+            txtNumero.Text = "";
+            dgv_Doc.DataSource = null;
+            Dgv_ProductosDev.DataSource = null;
+            PBClientes.Image = null;
+            PBArticulos.Image = null;
+
+        }
+
+        private void txtNumero_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool Exitoso = false;
+            string Serie;
+            Int32 Numero;
+            if (e.KeyChar == (Char)13)
+            {
+                if (txtSerie.Text != "" && txtNumero.Text != "")  
+                {
+                    Serie = txtSerie.Text;
+                    Numero = int.Parse(txtNumero.Text);
+
+                    foreach (DataGridViewRow Row in dgv_q.Rows)
+                    {
+                        String strFila = Row.Index.ToString();
+
+
+                        string SerirFac = Row.Cells[0].Value.ToString();
+                        Int32 NumDoc = int.Parse(Row.Cells[1].Value.ToString());
+
+
+                        if (SerirFac == Serie && NumDoc == Numero)
+                        {
+                            Exitoso = true;
+                            dgv_q.Rows[Convert.ToInt32(strFila)].DefaultCellStyle.BackColor = Color.Green;
+
+                            //dgv_q.ClearSelection();
+                            dgv_q.Rows[Int16.Parse(strFila)].Selected = true;
+                            dgv_q.Focus();
+                            dgv_q.Refresh();
+
+                            dgv_q.FirstDisplayedScrollingRowIndex = Int16.Parse(strFila);
+                        }
+                    }
+                    if (!Exitoso)
+                    {
+                        MessageBox.Show(" No Existe Documento " + Serie + " - " + Numero , "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(" Debe ingresar Serie y NÚmero de Documento ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
 
 
             }

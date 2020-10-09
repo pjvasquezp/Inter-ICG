@@ -24,6 +24,7 @@ namespace ICG_Inter
     {
         string PrinterName = Settings.Default.PrinterName;
         public DAConnectionSQL ObjDaConnexion;
+
         public ProcesosDB ObjProcDB = new ProcesosDB();
         public NotasCredito oProcNotaCredito = new NotasCredito();
 
@@ -46,26 +47,27 @@ namespace ICG_Inter
             this.Visible = false;
             DataSet.DSNotasCredito MyDataset = new DSNotasCredito();
             ReportDocument crystalReport = new ReportDocument();
-            if (System.IO.File.Exists(Application.StartupPath.Replace("bin\\Debug", "\\Reportes\\ReciboNcr.rpt")))
+            //MessageBox.Show(Application.StartupPath.ToString());
+            if (System.IO.File.Exists(Settings.Default.PathReportes + "ReciboNcrVCD.rpt"))
             {
                 //Uso de la Impresora
                 //*****************************************************
                 PrinterSettings ps = new PrinterSettings();
                 ps.PrinterName = PrinterName;
                 bool ImpresoraValida = ps.IsValid;
-                ps.Copies = 1;
+                ps.Copies = 2;
                 PageSettings pg = new PageSettings();
                 pg.PrinterSettings = ps;
                 //*****************************************************
 
                 //Carga el Reporte en el Visor
                 //*****************************************************
-                crystalReport.Load(Application.StartupPath.Replace("bin\\Debug", "\\Reportes\\ReciboNcrVF.rpt"));
+                crystalReport.Load(Settings.Default.PathReportes + "ReciboNcrVCD.rpt");
 
                 //Creo mi Repositorio de Datos y le agrego la info
                 //*****************************************************
                 DataTable DTNotasCred = new DataTable();                
-                DTNotasCred = ObjProcDB.GetDataNCR(oProcNotaCredito, ObjDaConnexion);
+                DTNotasCred = ObjProcDB.GetDataNCR(oProcNotaCredito.Serie.Substring(3,1), oProcNotaCredito.Numero, ObjDaConnexion);
                
                 
                 crystalReport.SetDataSource(DTNotasCred);
