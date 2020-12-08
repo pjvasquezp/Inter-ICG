@@ -31,23 +31,43 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FacturasVenta));
             this.dgv_q = new System.Windows.Forms.DataGridView();
+            this.serieDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalDocumento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaDocDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DiasFac = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.BSDocVentas = new System.Windows.Forms.BindingSource(this.components);
             this.dgv_Doc = new System.Windows.Forms.DataGridView();
+            this.serieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.referenciaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tallaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unidadesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Devoluciones = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descuentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Retornable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.almacenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodBarra = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodColor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CodigoArticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NumLinea = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DSDetalleDoc = new System.Windows.Forms.BindingSource(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtNumero = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnBuscar2 = new System.Windows.Forms.Button();
             this.txtSerie = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button9 = new System.Windows.Forms.Button();
+            this.btn_aceptar = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.PBClientes = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_vendedor2 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -63,29 +83,9 @@
             this.txt_serie = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.Dgv_ProductosDev = new System.Windows.Forms.DataGridView();
-            this.Fecha_Factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Linea_Fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.PBClientes = new System.Windows.Forms.PictureBox();
-            this.serieDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.referenciaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tallaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidadesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descuentoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.almacenDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DSDetalleDoc = new System.Windows.Forms.BindingSource(this.components);
             this.serieDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.numeroDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha_Factura = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.referenciaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcionDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unidadesVentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,36 +96,36 @@
             this.tallaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.retornableDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Linea_Fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.BSDocDevol = new System.Windows.Forms.BindingSource(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.PBArticulos = new System.Windows.Forms.PictureBox();
             this.BtCancelar = new System.Windows.Forms.Button();
             this.BtnProcesar = new System.Windows.Forms.Button();
-            this.btnBuscar2 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.btn_aceptar = new System.Windows.Forms.Button();
-            this.serieDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.numeroDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fechaDocDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.BSDocVentas = new System.Windows.Forms.BindingSource(this.components);
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_q)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BSDocVentas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Doc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DSDetalleDoc)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PBClientes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_ProductosDev)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BSDocDevol)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PBArticulos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.PBClientes)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DSDetalleDoc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BSDocDevol)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PBArticulos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BSDocVentas)).BeginInit();
             this.SuspendLayout();
             // 
             // dgv_q
@@ -150,6 +150,22 @@
             this.dgv_q.TabIndex = 46;
             this.dgv_q.DoubleClick += new System.EventHandler(this.Dgv_q_DoubleClick);
             // 
+            // serieDataGridViewTextBoxColumn1
+            // 
+            this.serieDataGridViewTextBoxColumn1.DataPropertyName = "Serie";
+            this.serieDataGridViewTextBoxColumn1.HeaderText = "Serie";
+            this.serieDataGridViewTextBoxColumn1.Name = "serieDataGridViewTextBoxColumn1";
+            this.serieDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.serieDataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // numeroDataGridViewTextBoxColumn1
+            // 
+            this.numeroDataGridViewTextBoxColumn1.DataPropertyName = "Numero";
+            this.numeroDataGridViewTextBoxColumn1.HeaderText = "Número";
+            this.numeroDataGridViewTextBoxColumn1.Name = "numeroDataGridViewTextBoxColumn1";
+            this.numeroDataGridViewTextBoxColumn1.ReadOnly = true;
+            this.numeroDataGridViewTextBoxColumn1.Width = 50;
+            // 
             // TotalDocumento
             // 
             this.TotalDocumento.DataPropertyName = "TotalDocumento";
@@ -158,12 +174,24 @@
             this.TotalDocumento.ReadOnly = true;
             this.TotalDocumento.Width = 80;
             // 
+            // fechaDocDataGridViewTextBoxColumn
+            // 
+            this.fechaDocDataGridViewTextBoxColumn.DataPropertyName = "FechaDoc";
+            this.fechaDocDataGridViewTextBoxColumn.HeaderText = "Fecha";
+            this.fechaDocDataGridViewTextBoxColumn.Name = "fechaDocDataGridViewTextBoxColumn";
+            this.fechaDocDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fechaDocDataGridViewTextBoxColumn.Width = 70;
+            // 
             // DiasFac
             // 
             this.DiasFac.DataPropertyName = "DiasFac";
             this.DiasFac.HeaderText = "Días";
             this.DiasFac.Name = "DiasFac";
             this.DiasFac.ReadOnly = true;
+            // 
+            // BSDocVentas
+            // 
+            this.BSDocVentas.DataSource = typeof(ICG_Inter.Objetos.DocVentas);
             // 
             // dgv_Doc
             // 
@@ -195,17 +223,85 @@
             this.dgv_Doc.TabIndex = 47;
             this.dgv_Doc.DoubleClick += new System.EventHandler(this.dgv_Doc_DoubleClick);
             // 
+            // serieDataGridViewTextBoxColumn
+            // 
+            this.serieDataGridViewTextBoxColumn.DataPropertyName = "Serie";
+            this.serieDataGridViewTextBoxColumn.HeaderText = "Serie";
+            this.serieDataGridViewTextBoxColumn.Name = "serieDataGridViewTextBoxColumn";
+            this.serieDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // numeroDataGridViewTextBoxColumn
+            // 
+            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "Numero";
+            this.numeroDataGridViewTextBoxColumn.HeaderText = "Número";
+            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
+            this.numeroDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // referenciaDataGridViewTextBoxColumn
+            // 
+            this.referenciaDataGridViewTextBoxColumn.DataPropertyName = "Referencia";
+            this.referenciaDataGridViewTextBoxColumn.HeaderText = "Cod. Artículo";
+            this.referenciaDataGridViewTextBoxColumn.Name = "referenciaDataGridViewTextBoxColumn";
+            // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripción";
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            // 
+            // tallaDataGridViewTextBoxColumn
+            // 
+            this.tallaDataGridViewTextBoxColumn.DataPropertyName = "Talla";
+            this.tallaDataGridViewTextBoxColumn.HeaderText = "Talla";
+            this.tallaDataGridViewTextBoxColumn.Name = "tallaDataGridViewTextBoxColumn";
+            // 
+            // colorDataGridViewTextBoxColumn
+            // 
+            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
+            this.colorDataGridViewTextBoxColumn.HeaderText = "Color";
+            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            // 
+            // unidadesDataGridViewTextBoxColumn
+            // 
+            this.unidadesDataGridViewTextBoxColumn.DataPropertyName = "Unidades";
+            this.unidadesDataGridViewTextBoxColumn.HeaderText = "Unidades";
+            this.unidadesDataGridViewTextBoxColumn.Name = "unidadesDataGridViewTextBoxColumn";
+            // 
             // Devoluciones
             // 
             this.Devoluciones.DataPropertyName = "Devoluciones";
             this.Devoluciones.HeaderText = "Devoluciones";
             this.Devoluciones.Name = "Devoluciones";
             // 
+            // precioDataGridViewTextBoxColumn
+            // 
+            this.precioDataGridViewTextBoxColumn.DataPropertyName = "Precio";
+            this.precioDataGridViewTextBoxColumn.HeaderText = "Precio";
+            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
+            // 
+            // descuentoDataGridViewTextBoxColumn
+            // 
+            this.descuentoDataGridViewTextBoxColumn.DataPropertyName = "Descuento";
+            this.descuentoDataGridViewTextBoxColumn.HeaderText = "Descuento";
+            this.descuentoDataGridViewTextBoxColumn.Name = "descuentoDataGridViewTextBoxColumn";
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            // 
             // Retornable
             // 
             this.Retornable.DataPropertyName = "Retornable";
             this.Retornable.HeaderText = "Retornable";
             this.Retornable.Name = "Retornable";
+            // 
+            // almacenDataGridViewTextBoxColumn
+            // 
+            this.almacenDataGridViewTextBoxColumn.DataPropertyName = "Almacen";
+            this.almacenDataGridViewTextBoxColumn.HeaderText = "Almacén";
+            this.almacenDataGridViewTextBoxColumn.Name = "almacenDataGridViewTextBoxColumn";
             // 
             // CodBarra
             // 
@@ -230,6 +326,10 @@
             this.NumLinea.DataPropertyName = "NumLinea";
             this.NumLinea.HeaderText = "Linea";
             this.NumLinea.Name = "NumLinea";
+            // 
+            // DSDetalleDoc
+            // 
+            this.DSDetalleDoc.DataSource = typeof(ICG_Inter.Documento_Detalle);
             // 
             // panel1
             // 
@@ -266,6 +366,17 @@
             this.label9.TabIndex = 58;
             this.label9.Text = "Número:";
             // 
+            // btnBuscar2
+            // 
+            this.btnBuscar2.Image = global::ICG_Inter.Properties.Resources.b_search;
+            this.btnBuscar2.Location = new System.Drawing.Point(775, 3);
+            this.btnBuscar2.Name = "btnBuscar2";
+            this.btnBuscar2.Size = new System.Drawing.Size(44, 27);
+            this.btnBuscar2.TabIndex = 4;
+            this.btnBuscar2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnBuscar2.UseVisualStyleBackColor = true;
+            this.btnBuscar2.Click += new System.EventHandler(this.btnBuscar2_Click);
+            // 
             // txtSerie
             // 
             this.txtSerie.Location = new System.Drawing.Point(494, 7);
@@ -299,6 +410,33 @@
             this.textBox1.TabIndex = 1;
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
+            // button9
+            // 
+            this.button9.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.button9.Image = global::ICG_Inter.Properties.Resources.s_cancel;
+            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button9.Location = new System.Drawing.Point(74, 3);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(73, 27);
+            this.button9.TabIndex = 50;
+            this.button9.Text = "Cancelar";
+            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
+            // 
+            // btn_aceptar
+            // 
+            this.btn_aceptar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btn_aceptar.Image = global::ICG_Inter.Properties.Resources.s_success;
+            this.btn_aceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_aceptar.Location = new System.Drawing.Point(3, 3);
+            this.btn_aceptar.Name = "btn_aceptar";
+            this.btn_aceptar.Size = new System.Drawing.Size(65, 27);
+            this.btn_aceptar.TabIndex = 48;
+            this.btn_aceptar.Text = "Aceptar";
+            this.btn_aceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_aceptar.UseVisualStyleBackColor = false;
+            // 
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -322,6 +460,15 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(827, 130);
             this.panel6.TabIndex = 51;
+            // 
+            // PBClientes
+            // 
+            this.PBClientes.Location = new System.Drawing.Point(656, 3);
+            this.PBClientes.Name = "PBClientes";
+            this.PBClientes.Size = new System.Drawing.Size(138, 100);
+            this.PBClientes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PBClientes.TabIndex = 58;
+            this.PBClientes.TabStop = false;
             // 
             // label1
             // 
@@ -476,165 +623,8 @@
             this.Dgv_ProductosDev.Name = "Dgv_ProductosDev";
             this.Dgv_ProductosDev.Size = new System.Drawing.Size(624, 214);
             this.Dgv_ProductosDev.TabIndex = 54;
+            this.Dgv_ProductosDev.DoubleClick += new System.EventHandler(this.Dgv_ProductosDev_DoubleClick);
             this.Dgv_ProductosDev.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Dgv_ProductosDev_MouseClick);
-            // 
-            // Fecha_Factura
-            // 
-            this.Fecha_Factura.DataPropertyName = "Fecha_Factura";
-            this.Fecha_Factura.HeaderText = "Fecha Factura";
-            this.Fecha_Factura.Name = "Fecha_Factura";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "CodBarra";
-            this.dataGridViewTextBoxColumn1.HeaderText = "CodBarra";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "CodColor";
-            this.dataGridViewTextBoxColumn2.HeaderText = "Cod. Color";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // Linea_Fact
-            // 
-            this.Linea_Fact.DataPropertyName = "Linea_Fact";
-            this.Linea_Fact.HeaderText = "Linea Fact";
-            this.Linea_Fact.Name = "Linea_Fact";
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.splitContainer1.Location = new System.Drawing.Point(339, 472);
-            this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.PBArticulos);
-            this.splitContainer1.Panel2.Controls.Add(this.BtCancelar);
-            this.splitContainer1.Panel2.Controls.Add(this.BtnProcesar);
-            this.splitContainer1.Size = new System.Drawing.Size(827, 233);
-            this.splitContainer1.SplitterDistance = 630;
-            this.splitContainer1.TabIndex = 60;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.Dgv_ProductosDev);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(630, 233);
-            this.groupBox1.TabIndex = 55;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Devoluciones";
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(339, 39);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.panel6);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.dgv_Doc);
-            this.splitContainer2.Size = new System.Drawing.Size(827, 433);
-            this.splitContainer2.SplitterDistance = 130;
-            this.splitContainer2.TabIndex = 61;
-            // 
-            // PBClientes
-            // 
-            this.PBClientes.Location = new System.Drawing.Point(656, 3);
-            this.PBClientes.Name = "PBClientes";
-            this.PBClientes.Size = new System.Drawing.Size(138, 100);
-            this.PBClientes.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PBClientes.TabIndex = 58;
-            this.PBClientes.TabStop = false;
-            // 
-            // serieDataGridViewTextBoxColumn
-            // 
-            this.serieDataGridViewTextBoxColumn.DataPropertyName = "Serie";
-            this.serieDataGridViewTextBoxColumn.HeaderText = "Serie";
-            this.serieDataGridViewTextBoxColumn.Name = "serieDataGridViewTextBoxColumn";
-            this.serieDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // numeroDataGridViewTextBoxColumn
-            // 
-            this.numeroDataGridViewTextBoxColumn.DataPropertyName = "Numero";
-            this.numeroDataGridViewTextBoxColumn.HeaderText = "Número";
-            this.numeroDataGridViewTextBoxColumn.Name = "numeroDataGridViewTextBoxColumn";
-            this.numeroDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // referenciaDataGridViewTextBoxColumn
-            // 
-            this.referenciaDataGridViewTextBoxColumn.DataPropertyName = "Referencia";
-            this.referenciaDataGridViewTextBoxColumn.HeaderText = "Cod. Artículo";
-            this.referenciaDataGridViewTextBoxColumn.Name = "referenciaDataGridViewTextBoxColumn";
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripción";
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            // 
-            // tallaDataGridViewTextBoxColumn
-            // 
-            this.tallaDataGridViewTextBoxColumn.DataPropertyName = "Talla";
-            this.tallaDataGridViewTextBoxColumn.HeaderText = "Talla";
-            this.tallaDataGridViewTextBoxColumn.Name = "tallaDataGridViewTextBoxColumn";
-            // 
-            // colorDataGridViewTextBoxColumn
-            // 
-            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
-            this.colorDataGridViewTextBoxColumn.HeaderText = "Color";
-            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
-            // 
-            // unidadesDataGridViewTextBoxColumn
-            // 
-            this.unidadesDataGridViewTextBoxColumn.DataPropertyName = "Unidades";
-            this.unidadesDataGridViewTextBoxColumn.HeaderText = "Unidades";
-            this.unidadesDataGridViewTextBoxColumn.Name = "unidadesDataGridViewTextBoxColumn";
-            // 
-            // precioDataGridViewTextBoxColumn
-            // 
-            this.precioDataGridViewTextBoxColumn.DataPropertyName = "Precio";
-            this.precioDataGridViewTextBoxColumn.HeaderText = "Precio";
-            this.precioDataGridViewTextBoxColumn.Name = "precioDataGridViewTextBoxColumn";
-            // 
-            // descuentoDataGridViewTextBoxColumn
-            // 
-            this.descuentoDataGridViewTextBoxColumn.DataPropertyName = "Descuento";
-            this.descuentoDataGridViewTextBoxColumn.HeaderText = "Descuento";
-            this.descuentoDataGridViewTextBoxColumn.Name = "descuentoDataGridViewTextBoxColumn";
-            // 
-            // totalDataGridViewTextBoxColumn
-            // 
-            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
-            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
-            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
-            // 
-            // almacenDataGridViewTextBoxColumn
-            // 
-            this.almacenDataGridViewTextBoxColumn.DataPropertyName = "Almacen";
-            this.almacenDataGridViewTextBoxColumn.HeaderText = "Almacén";
-            this.almacenDataGridViewTextBoxColumn.Name = "almacenDataGridViewTextBoxColumn";
-            // 
-            // DSDetalleDoc
-            // 
-            this.DSDetalleDoc.DataSource = typeof(ICG_Inter.Documento_Detalle);
             // 
             // serieDataGridViewTextBoxColumn2
             // 
@@ -649,6 +639,12 @@
             this.numeroDataGridViewTextBoxColumn2.HeaderText = "Número";
             this.numeroDataGridViewTextBoxColumn2.Name = "numeroDataGridViewTextBoxColumn2";
             this.numeroDataGridViewTextBoxColumn2.Width = 60;
+            // 
+            // Fecha_Factura
+            // 
+            this.Fecha_Factura.DataPropertyName = "Fecha_Factura";
+            this.Fecha_Factura.HeaderText = "Fecha Factura";
+            this.Fecha_Factura.Name = "Fecha_Factura";
             // 
             // referenciaDataGridViewTextBoxColumn1
             // 
@@ -714,9 +710,62 @@
             this.retornableDataGridViewTextBoxColumn.Name = "retornableDataGridViewTextBoxColumn";
             this.retornableDataGridViewTextBoxColumn.Visible = false;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "CodBarra";
+            this.dataGridViewTextBoxColumn1.HeaderText = "CodBarra";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "CodColor";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Cod. Color";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // Linea_Fact
+            // 
+            this.Linea_Fact.DataPropertyName = "Linea_Fact";
+            this.Linea_Fact.HeaderText = "Linea Fact";
+            this.Linea_Fact.Name = "Linea_Fact";
+            // 
             // BSDocDevol
             // 
             this.BSDocDevol.DataSource = typeof(ICG_Inter.Objetos.ProductoDev);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.splitContainer1.Location = new System.Drawing.Point(339, 472);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.PBArticulos);
+            this.splitContainer1.Panel2.Controls.Add(this.BtCancelar);
+            this.splitContainer1.Panel2.Controls.Add(this.BtnProcesar);
+            this.splitContainer1.Size = new System.Drawing.Size(827, 233);
+            this.splitContainer1.SplitterDistance = 630;
+            this.splitContainer1.TabIndex = 60;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.Dgv_ProductosDev);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(630, 233);
+            this.groupBox1.TabIndex = 55;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Devoluciones";
             // 
             // PBArticulos
             // 
@@ -753,71 +802,23 @@
             this.BtnProcesar.UseVisualStyleBackColor = true;
             this.BtnProcesar.Click += new System.EventHandler(this.BtnProcesar_Click);
             // 
-            // btnBuscar2
+            // splitContainer2
             // 
-            this.btnBuscar2.Image = global::ICG_Inter.Properties.Resources.b_search;
-            this.btnBuscar2.Location = new System.Drawing.Point(775, 3);
-            this.btnBuscar2.Name = "btnBuscar2";
-            this.btnBuscar2.Size = new System.Drawing.Size(44, 27);
-            this.btnBuscar2.TabIndex = 4;
-            this.btnBuscar2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnBuscar2.UseVisualStyleBackColor = true;
-            this.btnBuscar2.Click += new System.EventHandler(this.btnBuscar2_Click);
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(339, 39);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // button9
+            // splitContainer2.Panel1
             // 
-            this.button9.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.button9.Image = global::ICG_Inter.Properties.Resources.s_cancel;
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.Location = new System.Drawing.Point(74, 3);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(73, 27);
-            this.button9.TabIndex = 50;
-            this.button9.Text = "Cancelar";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
+            this.splitContainer2.Panel1.Controls.Add(this.panel6);
             // 
-            // btn_aceptar
+            // splitContainer2.Panel2
             // 
-            this.btn_aceptar.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btn_aceptar.Image = global::ICG_Inter.Properties.Resources.s_success;
-            this.btn_aceptar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_aceptar.Location = new System.Drawing.Point(3, 3);
-            this.btn_aceptar.Name = "btn_aceptar";
-            this.btn_aceptar.Size = new System.Drawing.Size(65, 27);
-            this.btn_aceptar.TabIndex = 48;
-            this.btn_aceptar.Text = "Aceptar";
-            this.btn_aceptar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_aceptar.UseVisualStyleBackColor = false;
-            // 
-            // serieDataGridViewTextBoxColumn1
-            // 
-            this.serieDataGridViewTextBoxColumn1.DataPropertyName = "Serie";
-            this.serieDataGridViewTextBoxColumn1.HeaderText = "Serie";
-            this.serieDataGridViewTextBoxColumn1.Name = "serieDataGridViewTextBoxColumn1";
-            this.serieDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.serieDataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // numeroDataGridViewTextBoxColumn1
-            // 
-            this.numeroDataGridViewTextBoxColumn1.DataPropertyName = "Numero";
-            this.numeroDataGridViewTextBoxColumn1.HeaderText = "Número";
-            this.numeroDataGridViewTextBoxColumn1.Name = "numeroDataGridViewTextBoxColumn1";
-            this.numeroDataGridViewTextBoxColumn1.ReadOnly = true;
-            this.numeroDataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // fechaDocDataGridViewTextBoxColumn
-            // 
-            this.fechaDocDataGridViewTextBoxColumn.DataPropertyName = "FechaDoc";
-            this.fechaDocDataGridViewTextBoxColumn.HeaderText = "Fecha";
-            this.fechaDocDataGridViewTextBoxColumn.Name = "fechaDocDataGridViewTextBoxColumn";
-            this.fechaDocDataGridViewTextBoxColumn.ReadOnly = true;
-            this.fechaDocDataGridViewTextBoxColumn.Width = 70;
-            // 
-            // BSDocVentas
-            // 
-            this.BSDocVentas.DataSource = typeof(ICG_Inter.Objetos.DocVentas);
+            this.splitContainer2.Panel2.Controls.Add(this.dgv_Doc);
+            this.splitContainer2.Size = new System.Drawing.Size(827, 433);
+            this.splitContainer2.SplitterDistance = 130;
+            this.splitContainer2.TabIndex = 61;
             // 
             // FacturasVenta
             // 
@@ -833,26 +834,26 @@
             this.Text = "FACTURAS DE VENTA";
             this.Load += new System.EventHandler(this.FacturasVenta_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_q)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BSDocVentas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Doc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DSDetalleDoc)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PBClientes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dgv_ProductosDev)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BSDocDevol)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.PBArticulos)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.PBClientes)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DSDetalleDoc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BSDocDevol)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PBArticulos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.BSDocVentas)).EndInit();
             this.ResumeLayout(false);
 
         }

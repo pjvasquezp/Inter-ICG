@@ -34,7 +34,7 @@ namespace ICG_Inter.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\JOIN\\\\pruebxml\\\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\JOIN\\pruebxml\\")]
         public string PathFirmFEL {
             get {
                 return ((string)(this["PathFirmFEL"]));
@@ -43,7 +43,7 @@ namespace ICG_Inter.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PRINCIPAL")]
+        [global::System.Configuration.DefaultSettingValueAttribute("12")]
         public string Bodega {
             get {
                 return ((string)(this["Bodega"]));
@@ -70,7 +70,7 @@ namespace ICG_Inter.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("AGORA")]
+        [global::System.Configuration.DefaultSettingValueAttribute("AGORAF")]
         public string BDFirmado {
             get {
                 return ((string)(this["BDFirmado"]));
@@ -79,29 +79,10 @@ namespace ICG_Inter.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PPZ")]
-        public string SERIETIENDA {
-            get {
-                return ((string)(this["SERIETIENDA"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\Proyectos\\\\Inter-ICG\\\\Reportes\\\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Proyectos\\Inter-ICG\\Reportes\\")]
         public string PathReportes {
             get {
                 return ((string)(this["PathReportes"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.238.26.69;Initial Catalog=AGORA;User ID=sa;Password=masterkey;Pool" +
-            "ing=False")]
-        public string ConnStringSQL1 {
-            get {
-                return ((string)(this["ConnStringSQL1"]));
             }
         }
         
@@ -117,10 +98,29 @@ namespace ICG_Inter.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\\\Proyectos\\\\Personas\\\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Proyectos\\Personas\\")]
         public string PathImagCUST {
             get {
                 return ((string)(this["PathImagCUST"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("PEA")]
+        public string SERIETIENDA {
+            get {
+                return ((string)(this["SERIETIENDA"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.238.26.69;Initial Catalog=AGORAF;User ID=sa;Password=masterkey;Poo" +
+            "ling=False")]
+        public string ConnStringSQL1 {
+            get {
+                return ((string)(this["ConnStringSQL1"]));
             }
         }
     }

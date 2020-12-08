@@ -236,7 +236,7 @@ namespace ICG_Inter.Datos
                         withBlock.Descripcion = dr.GetString(18);
                         withBlock.Unidades = Int16.Parse(dr.GetDouble(21).ToString());
                         withBlock.Precio = decimal.Parse(dr.GetString(22).ToString());
-                        withBlock.Descuento = int.Parse(dr.GetDouble(24).ToString());
+                        withBlock.Descuento = decimal.Parse(dr.GetDouble(24).ToString());
                         withBlock.Total = Decimal.Parse(dr.GetDouble(25).ToString());
                         withBlock.Almacen = dr.GetString(30);
                         withBlock.CodigoArticulo = dr.GetInt32(49);
@@ -793,7 +793,7 @@ namespace ICG_Inter.Datos
 
             return notasCredito;
         }
-        public ListaNotasCredito ValidarDevolucion(DAConnectionSQL ObjDaConnexion,string SerieDoc, Int32 NumeroDoc ,string CodBar, int CantdadDev)
+        public ListaNotasCredito ValidarDevolucion(DAConnectionSQL ObjDaConnexion,string SerieDoc, Int32 NumeroDoc ,string CodBar, int CantdadDev, int Linea_Fact)
         {
             ListaNotasCredito ObjListaNotasCredito = new ListaNotasCredito();
             bool existe = false;
@@ -806,7 +806,7 @@ namespace ICG_Inter.Datos
 
             StrinSQL = "Select * ";
             StrinSQL = StrinSQL + " FROM NotaC_Join where Serie_Fact = '" + SerieDoc + "' and Numero_Fact = " + NumeroDoc + "  And ";
-            StrinSQL = StrinSQL + "CodBarra = '" + CodBar + "' ";
+            StrinSQL = StrinSQL + "CodBarra = '" + CodBar + "' and Linea_Fact = ' " + Linea_Fact + "'";
 
             cmd.CommandText = StrinSQL;
             SqlDataReader dr = cmd.ExecuteReader();
@@ -856,58 +856,90 @@ namespace ICG_Inter.Datos
 
             return ObjListaNotasCredito; //CodigoArticuloBD;
         }
-        public bool InsertarNotasCredito(DAConnectionSQL ObjDaConnexion, NotasCredito ObjNotasCredito, string TipoSerie, UserSistemas oUserSistemas)
+        public NotasCredito InsertarNotasCredito(DAConnectionSQL ObjDaConnexion, ListaNotasCredito ObjListaNotasCredito, string TipoSerie, UserSistemas oUserSistemas)
         {
-            bool ExisteNC = false;
-            bool exitoso = false;
             string StrinSQL = "";
-
-
+            Int32 NumNCR = 0;
+            NotasCredito notasCredito = new NotasCredito();
 
             SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.Text;
             cmd.Connection = ObjDaConnexion.Con;
-            
-            ObjNotasCredito.CodArticulo = BuscarCodigoArticulo(cmd, ObjNotasCredito.Referencia);
-            ObjNotasCredito.Numero = BuscarNumeroDoc(cmd, TipoSerie) + 1;
-
+            cmd.CommandType = CommandType.Text;
 
             //ExisteNC = ValidarDevolucion(cmd, ObjNotasCredito.Serie, ObjNotasCredito.Numero, ObjNotasCredito.CodBarra, ObjNotasCredito.UnidadesDevueltas);
 
-
-            StrinSQL = "INSERT INTO NotaC_Join ";
-            StrinSQL = StrinSQL + "(Fecha_Notac,Serie,Numero,Referencia,Descripcion,UnidadesVenta,UnidadesDevueltas, ";
-            StrinSQL = StrinSQL + "RazonDevolucion,Precio,Talla,Color,CodBarra,Almacen,NumLinea,Dtco,CodArticulo, ";
-            StrinSQL = StrinSQL + "Precio_Sin_Iva, Fecha_Fact, Serie_Fact , Numero_Fact,CODVENDEDOR, Linea_Fact ) ";
-            StrinSQL = StrinSQL + "VALUES ('" + DateTime.Now.Date.ToString("MM/dd/yyyy") + "','" + SerieTienda + TipoSerie + "'," + ObjNotasCredito.Numero + ",";
-            StrinSQL = StrinSQL + "'" + ObjNotasCredito.Referencia + "','" + ObjNotasCredito.Descripcion + "',"; 
-            StrinSQL = StrinSQL + ObjNotasCredito.Unidades + "," + ObjNotasCredito.UnidadesDevueltas + ",'" + ObjNotasCredito.RazonDevolucion + "',";
-            StrinSQL = StrinSQL + ObjNotasCredito.Precio + ",'" + ObjNotasCredito.Talla + "','";
-            StrinSQL = StrinSQL + ObjNotasCredito.CodColor + "','" + ObjNotasCredito.CodBarra + "','" + Bodega + "'," + ObjNotasCredito.NumLinea + ",'";
-            StrinSQL = StrinSQL + ObjNotasCredito.Descuento + "'," + ObjNotasCredito.CodArticulo + "," + ObjNotasCredito.Precio_Sin_iva + ",'"; 
-            StrinSQL = StrinSQL + ObjNotasCredito.Fecha_Fact.Date.ToString("MM/dd/yyyy") + "','" + ObjNotasCredito.Serie_Fact + "', ";
-            StrinSQL = StrinSQL + ObjNotasCredito.Num_Fact + ",'" + oUserSistemas.CODVENDEDOR + "', '" + ObjNotasCredito.Linea_Fact + "')";
-
-            cmd.CommandText = StrinSQL;                  
-
             try
             {
+
                 if (ObjDaConnexion.Con.State == ConnectionState.Closed)
                 {
-                    ObjDaConnexion.Open();                  
+                    ObjDaConnexion.Open();
                 }
+
+                NumNCR = BuscarNumeroDoc(cmd, TipoSerie) + 1;
+
+                cmd.Transaction = ObjDaConnexion.Tran;
+
+                cmd.Transaction = ObjDaConnexion.Con.BeginTransaction(); 
                 
+                //ObjDaConnexion.BeginTransaction();
+
+                foreach (var item in ObjListaNotasCredito)
+                {
+                    item.CodArticulo = BuscarCodigoArticulo(cmd, item.Referencia);
+
+
+                    StrinSQL = "INSERT INTO NotaC_Join ";
+                    StrinSQL = StrinSQL + "(Fecha_Notac,Serie,Numero,Referencia,Descripcion,UnidadesVenta,UnidadesDevueltas, ";
+                    StrinSQL = StrinSQL + "RazonDevolucion,Precio,Talla,Color,CodBarra,Almacen,NumLinea,Dtco,CodArticulo, ";
+                    StrinSQL = StrinSQL + "Precio_Sin_Iva, Fecha_Fact, Serie_Fact , Numero_Fact,CODVENDEDOR, Linea_Fact ) ";
+                    StrinSQL = StrinSQL + "VALUES ('" + DateTime.Now.Date.ToString("MM/dd/yyyy") + "','" + SerieTienda + TipoSerie + "'," + NumNCR + ",";
+                    StrinSQL = StrinSQL + "'" + item.Referencia + "','" + item.Descripcion + "',";
+                    StrinSQL = StrinSQL + item.Unidades + "," + item.UnidadesDevueltas + ",'" + item.RazonDevolucion + "',";
+                    StrinSQL = StrinSQL + item.Precio + ",'" + item.Talla + "','";
+                    StrinSQL = StrinSQL + item.CodColor + "','" + item.CodBarra + "','" + Bodega + "'," + item.NumLinea + ",'";
+                    StrinSQL = StrinSQL + item.Descuento + "'," + item.CodArticulo + "," + item.Precio_Sin_iva + ",'";
+                    StrinSQL = StrinSQL + item.Fecha_Fact.Date.ToString("MM/dd/yyyy") + "','" + item.Serie_Fact + "', ";
+                    StrinSQL = StrinSQL + item.Num_Fact + ",'" + oUserSistemas.CODVENDEDOR + "', '" + item.Linea_Fact + "')";
+
+                    cmd.CommandText = StrinSQL;
+
+                    cmd.ExecuteNonQuery();
+                }                    
+                             
+
+                StrinSQL = "JOIN_NC_CAB";
+                cmd.CommandText = StrinSQL;
+
                 cmd.ExecuteNonQuery();
 
-                exitoso = true;
+                cmd.CommandText = "select MAX(Serie) as Serie, MAX(NUMERO) as Numero from NotaC_Join where serie = '" + SerieTienda + TipoSerie + "'";
+
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    notasCredito.Serie = dr["Serie"].ToString();
+                    notasCredito.Numero = Convert.ToInt32(dr["NUMERO"]);
+                }
+
+                dr.Close();
+                //cmd.Transaction = ObjDaConnexion.Con.
+                cmd.Transaction.Commit(); //= ObjDaConnexion.Tran.Commit();
+
+                return notasCredito;
+                //exitoso = true;
             }
             catch (Exception ex)
-            {
+            {                
+                cmd.Transaction.Rollback(); //ObjDaConnexion.RollBackTransaction();
+                //dr.Close();
 
                 System.Windows.Forms.MessageBox.Show("Error al ejecutar el Qyery " + ex.Message,"Información",MessageBoxButtons.OK, MessageBoxIcon.Error);;
             }
 
-            return exitoso;
+            //return exitoso;
+            return notasCredito;
         }
         public bool BuscarDocumetoAFirmar(DAConnectionSQL ObjDaConnexion)
         {

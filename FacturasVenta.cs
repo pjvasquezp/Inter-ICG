@@ -100,7 +100,7 @@ namespace ICG_Inter
                 PBClientes.Image = Image.FromFile(RutaImagen);
             }
 
-            //if (System.IO.File.Exists(Settings.Default.PathImagCUST + MiObjCabecera.Codigo_Cliente.ToString() +  ".jpg"))
+            //if (System.IO.File.Exists(Settings.Default.PathImagCUST + MiObjCabecera.Codigo_Cliente.ToString() + ".jpg"))
             //{
             //    RutaImagen = Settings.Default.PathImagCUST + MiObjCabecera.Codigo_Cliente.ToString() + ".jpg";
             //    PBClientes.Image = Image.FromFile(RutaImagen);
@@ -182,7 +182,7 @@ namespace ICG_Inter
             ObjProductoDev.Talla = this.dgv_Doc.CurrentRow.Cells[4].Value.ToString();
             ObjProductoDev.Color = this.dgv_Doc.CurrentRow.Cells[5].Value.ToString();
             ObjProductoDev.UnidadesVenta = int.Parse(this.dgv_Doc.CurrentRow.Cells[6].Value.ToString());
-            ObjProductoDev.Precio = decimal.Parse(this.dgv_Doc.CurrentRow.Cells[8].Value.ToString());
+            ObjProductoDev.Precio = decimal.Parse(this.dgv_Doc.CurrentRow.Cells[10].Value.ToString());
             ObjProductoDev.Almacen = this.dgv_Doc.CurrentRow.Cells[12].Value.ToString();
             ObjProductoDev.Retornable = this.dgv_Doc.CurrentRow.Cells[11].Value.ToString();
             ObjProductoDev.CodBarra = this.dgv_Doc.CurrentRow.Cells[13].Value.ToString();
@@ -222,7 +222,7 @@ namespace ICG_Inter
                 {
                     if (ObjProductoDev.Procesado)
                     {
-                        ObjListaNCR = ObjProcDB.ValidarDevolucion(ObjDaConnexion, ObjProductoDev.Serie, ObjProductoDev.Numero, ObjProductoDev.CodBarra, ObjProductoDev.UnidadesDevueltas);
+                        ObjListaNCR = ObjProcDB.ValidarDevolucion(ObjDaConnexion, ObjProductoDev.Serie, ObjProductoDev.Numero, ObjProductoDev.CodBarra, ObjProductoDev.UnidadesDevueltas, ObjProductoDev.Linea_Fact);
                        // TotalProducDev = (from NotasCredito in ObjListaNCR where NotasCredito.UnidadesDevueltas != 0 select sum(NotasCredito));
                      
                         if (ObjListaNCR.Count > 0)
@@ -353,7 +353,7 @@ namespace ICG_Inter
                 {
                     ListaNotasCredito ObjListaNCR = new ListaNotasCredito();
                     ObjListaNCR = ObjProcDB.ValidarDevolucion(ObjDaConnexion, OProductosDevNCR.Serie, OProductosDevNCR.Numero, 
-                        OProductosDevNCR.CodBarra, OProductosDevNCR.UnidadesDevueltas);
+                        OProductosDevNCR.CodBarra, OProductosDevNCR.UnidadesDevueltas, OProductosDevNCR.Linea_Fact);
                     ConsultaDevolucion v1 = new ConsultaDevolucion(ObjListaNCR);
                     this.Hide();
                     v1.ShowDialog();
@@ -412,11 +412,13 @@ namespace ICG_Inter
             Int32 NumDocDocument = 0;
             Int32 NumDocActual = 0;
             int NumLinea = 1;
+            NotasCredito ObjNotaCreditoProc2 = new NotasCredito();
+            this.Cursor = Cursors.WaitCursor;
 
             foreach (DataGridViewRow Row in Dgv_ProductosDev.Rows)
             {
                 String strFila = Row.Index.ToString();
-                ListaNotasCredito ObjListaNCR = new ListaNotasCredito();
+                //ListaNotasCredito ObjListaNCR = new ListaNotasCredito();
                 NotasCredito ObjNotaCredito = new NotasCredito();
 
                 SerieFacDocumento = Row.Cells[0].Value.ToString();
@@ -435,24 +437,29 @@ namespace ICG_Inter
 
                 if (SerieFacActual != "" && NumDocActual != 0 && NumDocDocument != NumDocActual)
                 {
+                    //Procesa Nota de Credito  
+                    NotasCredito ObjNotaCreditoProc = new NotasCredito();
+                    //Exitoso = ObjProcDB.EjecutarNotasCredito(ObjDaConnexion);
 
+                    this.Cursor = Cursors.WaitCursor;
+                    ObjNotaCreditoProc = ObjProcDB.InsertarNotasCredito(ObjDaConnexion, ObjListaNotasCredito, TipoSerie, oUserSistemasLog);
 
-                    Exitoso = ObjProcDB.EjecutarNotasCredito(ObjDaConnexion);
+                    ObjListaNotasCredito.Clear();
 
-                    
-                    
-                    ObjNotaCredit = BusarUlimaNotaCredito();
-                    if (Exitoso)
+                    //ValidarProceso(Exitoso, SerieFacDocumento, NumDocDocument, NumLinea);
+
+                    //ObjNotaCredit = BusarUlimaNotaCredito();
+                    if (ObjNotaCreditoProc.Numero != 0)
                     {
-                        ObjBuildXml.ContruyeXML(ObjNotaCredit.Serie, ObjNotaCredit.Numero);
+                        ObjBuildXml.ContruyeXML(ObjNotaCreditoProc.Serie, ObjNotaCreditoProc.Numero);
                         
                         Process.Start(RutaExeFirmado + "llamarEXE.exe");
 
                         var stopwatch = Stopwatch.StartNew();
-                        Thread.Sleep(2000); //tiempo de pausa
+                        Thread.Sleep(8000); //tiempo de pausa
                         stopwatch.Stop();
 
-                        FrmPrintNCR MyFormPrintNCR = new FrmPrintNCR(ObjDaConnexion, ObjNotaCredit);   //(ObjListaNCR);
+                        FrmPrintNCR MyFormPrintNCR = new FrmPrintNCR(ObjDaConnexion, ObjNotaCreditoProc);   //(ObjListaNCR);
                         MyFormPrintNCR.Show();
                         this.Show();
 
@@ -467,7 +474,6 @@ namespace ICG_Inter
                             NumDocDocument + " No se Proceso correctamente",
                             "Información", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
 
                 }
 
@@ -500,10 +506,7 @@ namespace ICG_Inter
 
                 //ObjListaNCR = ObjProcDB.ValidarDevolucion(ObjNotaCredito.Serie, ObjNotaCredito.Numero, ObjNotaCredito.CodBarra, ObjNotaCredito.UnidadesDevueltas)
 
-                ObjListaNotasCredito.Add(ObjNotaCredito);
-                Exitoso = ObjProcDB.InsertarNotasCredito(ObjDaConnexion, ObjNotaCredito, TipoSerie, oUserSistemasLog);
-
-                ValidarProceso(Exitoso, SerieFacDocumento, NumDocDocument, NumLinea);                                
+                ObjListaNotasCredito.Add(ObjNotaCredito);                            
 
             }
                 ObjListaProductosDev.Clear();
@@ -512,11 +515,14 @@ namespace ICG_Inter
 
                 MessageBox.Show("Proceso Completado Correctamente ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
-                Exitoso = ObjProcDB.EjecutarNotasCredito(ObjDaConnexion);
+                //Exitoso = ObjProcDB.EjecutarNotasCredito(ObjDaConnexion);
+                this.Cursor = Cursors.WaitCursor;
+                ObjNotaCreditoProc2 = ObjProcDB.InsertarNotasCredito(ObjDaConnexion, ObjListaNotasCredito, TipoSerie, oUserSistemasLog);
+                ObjListaNotasCredito.Clear();
 
-                ObjNotaCredit = BusarUlimaNotaCredito();
+                //ObjNotaCredit = BusarUlimaNotaCredito();
 
-                ObjBuildXml.ContruyeXML(ObjNotaCredit.Serie, ObjNotaCredit.Numero);
+                ObjBuildXml.ContruyeXML(ObjNotaCreditoProc2.Serie, ObjNotaCreditoProc2.Numero);
                 try
                 {
                     Process.Start(RutaExeFirmado + "llamarEXE.exe");
@@ -526,14 +532,16 @@ namespace ICG_Inter
                     " Procesada Correctamente ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                     var stopwatch = Stopwatch.StartNew();
-                    Thread.Sleep(2000); //tiempo de pausa
+                    Thread.Sleep(8000); //tiempo de pausa
                     stopwatch.Stop();
 
-                    FrmPrintNCR MyFormPrintNCR = new FrmPrintNCR(ObjDaConnexion, ObjNotaCredit);   //(ObjListaNCR);
+                    FrmPrintNCR MyFormPrintNCR = new FrmPrintNCR(ObjDaConnexion, ObjNotaCreditoProc2);   //(ObjListaNCR);
                     MyFormPrintNCR.Show();
                     this.Show();
 
+                this.Cursor = Cursors.Default;
                 }
+                
                 catch (Exception)
                 {
 
@@ -567,6 +575,8 @@ namespace ICG_Inter
             }
 
         }
+
+
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             string Serie = "";
@@ -660,9 +670,7 @@ namespace ICG_Inter
                 MessageBox.Show("Esta Serie y/o Factura no esta se encuentra registrada", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-       
-
+               
         private void EliminarLinea(Object sender, EventArgs e)
         {
             string CodBarEliminar = "";
@@ -794,6 +802,28 @@ namespace ICG_Inter
                 }
 
 
+            }
+        }
+
+        private void Dgv_ProductosDev_DoubleClick(object sender, EventArgs e)
+        {
+            string NumSerie;
+            Int32 NumFactura = 0;
+            String CodigoBarras="";
+
+            NumSerie = this.Dgv_ProductosDev.CurrentRow.Cells[0].Value.ToString();
+            NumFactura = int.Parse(this.Dgv_ProductosDev.CurrentRow.Cells[1].Value.ToString());
+            CodigoBarras = this.Dgv_ProductosDev.CurrentRow.Cells[13].Value.ToString();
+
+            var result = MessageBox.Show("Desea Elimar esta Linea del Proceso " + "\r\n" +
+                                " Desea Verificar Devoluciones?", "Información", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                ObjListaProductosDev.RemoveAll(x => x.Serie == NumSerie && x.Numero == NumFactura && x.CodBarra == CodigoBarras);
+                 Dgv_ProductosDev.DataSource = null;
+                Dgv_ProductosDev.DataSource = ObjListaProductosDev;
+                Dgv_ProductosDev.Refresh();
             }
         }
     }

@@ -106,7 +106,7 @@ namespace ICG_Inter
 
                 else
                 {
-
+                    ProductoXCB ObjProductoCB = new ProductoXCB();
                     ObjProductoxCB = ObjProcDB.GetProductoxCodigo(ObjDaConnexion, txt_Codart.Text);
 
                     if (ObjProductoxCB.CodigoArticulo != null)
@@ -173,6 +173,8 @@ namespace ICG_Inter
 
                 else
                 {
+                    Cliente ObjCliente = new Cliente();
+
                     ObjCliente.CodCliente = Int32.Parse(Txt_CodCliente.Text);
                     ObjCliente = ObjProcDB.GetCliente(ObjDaConnexion,ObjCliente.CodCliente);
 
@@ -230,6 +232,17 @@ namespace ICG_Inter
             txt_Codart.Text = "";
             txtTalla.Text = "";
             TxtColor.Text = "";
+            ObjCliente = null;
+            ObjProductoxCB.BarCoder = null;
+            ObjProductoxCB.CodigoArticulo = null;
+            ObjProductoxCB.Color = null;
+            ObjProductoxCB.NombreArticulo = null;
+            ObjProductoxCB.Referencia = null;
+            ObjProductoxCB.Talla = null;
+            
+            CodCLiente = 0;
+            TxtCodArticulo.Text = "";
+            txtReferencia.Text = "";
         }
 
         private void BtnReportes_Click(object sender, EventArgs e)
