@@ -866,7 +866,7 @@ namespace ICG_Inter
                     }
                     if (!Exitoso)
                     {
-                        MessageBox.Show(" No Existe Documento " + codbarras ,"Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBox.Show(" No Existe el Artículo! " + codbarras ,"Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
                 else
