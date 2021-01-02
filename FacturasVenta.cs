@@ -854,13 +854,14 @@ namespace ICG_Inter
                         if (DocCod == codbarras)
                         {
                             Exitoso = true;
+                            dgv_Doc.Rows[Convert.ToInt32(strFila)].DefaultCellStyle.BackColor = Color.Green;
 
-                            //dgv_q.ClearSelection();
-
+                            //dgv_Doc.ClearSelection();
+                            dgv_Doc.Rows[Int16.Parse(strFila)].Selected = true;
                             dgv_Doc.Focus();
                             dgv_Doc.Refresh();
 
-                            dgv_q.FirstDisplayedScrollingRowIndex = Int16.Parse(strFila);
+                            dgv_Doc.FirstDisplayedScrollingRowIndex = Int16.Parse(strFila);
                         }
                     }
                     if (!Exitoso)
