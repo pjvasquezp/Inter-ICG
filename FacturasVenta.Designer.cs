@@ -67,6 +67,8 @@
             this.button9 = new System.Windows.Forms.Button();
             this.btn_aceptar = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.txt_CodBarras = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.PBClientes = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_vendedor2 = new System.Windows.Forms.TextBox();
@@ -95,7 +97,6 @@
             this.almacenDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tallaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.retornableDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Linea_Fact = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -219,7 +220,7 @@
             this.dgv_Doc.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_Doc.Location = new System.Drawing.Point(0, 0);
             this.dgv_Doc.Name = "dgv_Doc";
-            this.dgv_Doc.Size = new System.Drawing.Size(827, 299);
+            this.dgv_Doc.Size = new System.Drawing.Size(827, 276);
             this.dgv_Doc.TabIndex = 47;
             this.dgv_Doc.DoubleClick += new System.EventHandler(this.dgv_Doc_DoubleClick);
             // 
@@ -351,7 +352,7 @@
             // 
             // txtNumero
             // 
-            this.txtNumero.Location = new System.Drawing.Point(666, 7);
+            this.txtNumero.Location = new System.Drawing.Point(651, 7);
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(100, 20);
             this.txtNumero.TabIndex = 3;
@@ -360,7 +361,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(617, 10);
+            this.label9.Location = new System.Drawing.Point(598, 10);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(47, 13);
             this.label9.TabIndex = 58;
@@ -379,7 +380,7 @@
             // 
             // txtSerie
             // 
-            this.txtSerie.Location = new System.Drawing.Point(494, 7);
+            this.txtSerie.Location = new System.Drawing.Point(482, 7);
             this.txtSerie.Name = "txtSerie";
             this.txtSerie.Size = new System.Drawing.Size(100, 20);
             this.txtSerie.TabIndex = 2;
@@ -387,7 +388,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(460, 10);
+            this.label7.Location = new System.Drawing.Point(442, 10);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(34, 13);
             this.label7.TabIndex = 55;
@@ -440,6 +441,8 @@
             // panel6
             // 
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.txt_CodBarras);
+            this.panel6.Controls.Add(this.label10);
             this.panel6.Controls.Add(this.PBClientes);
             this.panel6.Controls.Add(this.label1);
             this.panel6.Controls.Add(this.txt_vendedor2);
@@ -458,8 +461,27 @@
             this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(827, 130);
+            this.panel6.Size = new System.Drawing.Size(827, 153);
             this.panel6.TabIndex = 51;
+            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel6_Paint);
+            // 
+            // txt_CodBarras
+            // 
+            this.txt_CodBarras.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txt_CodBarras.Location = new System.Drawing.Point(279, 119);
+            this.txt_CodBarras.Name = "txt_CodBarras";
+            this.txt_CodBarras.Size = new System.Drawing.Size(171, 20);
+            this.txt_CodBarras.TabIndex = 60;
+            this.txt_CodBarras.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txt_CodBarras_KeyPress);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(183, 122);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 13);
+            this.label10.TabIndex = 59;
+            this.label10.Text = "Codigo de Barra:";
             // 
             // PBClientes
             // 
@@ -528,7 +550,7 @@
             // 
             this.txt_hora.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txt_hora.Enabled = false;
-            this.txt_hora.Location = new System.Drawing.Point(97, 83);
+            this.txt_hora.Location = new System.Drawing.Point(97, 90);
             this.txt_hora.Name = "txt_hora";
             this.txt_hora.Size = new System.Drawing.Size(57, 20);
             this.txt_hora.TabIndex = 11;
@@ -536,7 +558,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(94, 67);
+            this.label6.Location = new System.Drawing.Point(94, 74);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(33, 13);
             this.label6.TabIndex = 10;
@@ -546,7 +568,7 @@
             // 
             this.txt_fecha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txt_fecha.Enabled = false;
-            this.txt_fecha.Location = new System.Drawing.Point(19, 83);
+            this.txt_fecha.Location = new System.Drawing.Point(19, 90);
             this.txt_fecha.Name = "txt_fecha";
             this.txt_fecha.Size = new System.Drawing.Size(72, 20);
             this.txt_fecha.TabIndex = 9;
@@ -554,7 +576,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 67);
+            this.label5.Location = new System.Drawing.Point(16, 74);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 8;
@@ -564,7 +586,7 @@
             // 
             this.txt_num.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txt_num.Enabled = false;
-            this.txt_num.Location = new System.Drawing.Point(97, 38);
+            this.txt_num.Location = new System.Drawing.Point(97, 51);
             this.txt_num.Name = "txt_num";
             this.txt_num.Size = new System.Drawing.Size(57, 20);
             this.txt_num.TabIndex = 7;
@@ -582,7 +604,7 @@
             // 
             this.txt_serie.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.txt_serie.Enabled = false;
-            this.txt_serie.Location = new System.Drawing.Point(19, 38);
+            this.txt_serie.Location = new System.Drawing.Point(19, 51);
             this.txt_serie.Name = "txt_serie";
             this.txt_serie.Size = new System.Drawing.Size(72, 20);
             this.txt_serie.TabIndex = 5;
@@ -590,7 +612,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 22);
+            this.label3.Location = new System.Drawing.Point(16, 29);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 13);
             this.label3.TabIndex = 4;
@@ -613,7 +635,6 @@
             this.almacenDataGridViewTextBoxColumn1,
             this.tallaDataGridViewTextBoxColumn1,
             this.colorDataGridViewTextBoxColumn1,
-            this.retornableDataGridViewTextBoxColumn,
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2,
             this.Linea_Fact});
@@ -702,13 +723,6 @@
             this.colorDataGridViewTextBoxColumn1.DataPropertyName = "Color";
             this.colorDataGridViewTextBoxColumn1.HeaderText = "Color";
             this.colorDataGridViewTextBoxColumn1.Name = "colorDataGridViewTextBoxColumn1";
-            // 
-            // retornableDataGridViewTextBoxColumn
-            // 
-            this.retornableDataGridViewTextBoxColumn.DataPropertyName = "Retornable";
-            this.retornableDataGridViewTextBoxColumn.HeaderText = "Retornable";
-            this.retornableDataGridViewTextBoxColumn.Name = "retornableDataGridViewTextBoxColumn";
-            this.retornableDataGridViewTextBoxColumn.Visible = false;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -817,7 +831,7 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.dgv_Doc);
             this.splitContainer2.Size = new System.Drawing.Size(827, 433);
-            this.splitContainer2.SplitterDistance = 130;
+            this.splitContainer2.SplitterDistance = 153;
             this.splitContainer2.TabIndex = 61;
             // 
             // FacturasVenta
@@ -938,5 +952,7 @@
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.TextBox txt_CodBarras;
+        private System.Windows.Forms.Label label10;
     }
 }

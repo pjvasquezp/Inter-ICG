@@ -826,5 +826,55 @@ namespace ICG_Inter
                 Dgv_ProductosDev.Refresh();
             }
         }
+
+        private void Panel6_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Txt_CodBarras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            bool Exitoso = false;
+            string codbarras = "";
+            if (e.KeyChar == (Char)13)
+            {
+                if (txt_CodBarras.Text != "")
+                {
+                    codbarras = txt_CodBarras.Text;
+
+                    foreach (DataGridViewRow Row in dgv_Doc.Rows)
+                    {
+                        String strFila = Row.Index.ToString();
+
+
+                        string DocCod = Row.Cells[13].Value.ToString();
+
+
+
+                        if (DocCod == codbarras)
+                        {
+                            Exitoso = true;
+
+                            //dgv_q.ClearSelection();
+
+                            dgv_Doc.Focus();
+                            dgv_Doc.Refresh();
+
+                            dgv_q.FirstDisplayedScrollingRowIndex = Int16.Parse(strFila);
+                        }
+                    }
+                    if (!Exitoso)
+                    {
+                        MessageBox.Show(" No Existe Documento " + codbarras ,"Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(" Debe ingresar el codigo de barras", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
+
+            }
+        }
     }
 }

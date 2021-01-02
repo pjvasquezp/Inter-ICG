@@ -12,7 +12,7 @@ namespace ICG_Inter.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.2.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -52,7 +52,7 @@ namespace ICG_Inter.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10.238.26.69")]
+        [global::System.Configuration.DefaultSettingValueAttribute("192.168.2.144")]
         public string ServidorFirmado {
             get {
                 return ((string)(this["ServidorFirmado"]));
@@ -88,8 +88,8 @@ namespace ICG_Inter.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.2.144\\MSSQLSERVER01;Initial Catalog=AGORA;User ID=sa;Password" +
-            "=B1Admin;Pooling=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=192.168.2.144\\MSSQLSERVER01;Initial Catalog=AGORAF;User ID=sa;Passwor" +
+            "d=B1Admin;Pooling=False")]
         public string ConnStringSQL2 {
             get {
                 return ((string)(this["ConnStringSQL2"]));
@@ -116,8 +116,8 @@ namespace ICG_Inter.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.238.26.69;Initial Catalog=AGORAF;User ID=sa;Password=masterkey;Poo" +
-            "ling=False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=10.238.26.69;Initial Catalog=AGORA;User ID=sa;Password=masterkey;Pool" +
+            "ing=False")]
         public string ConnStringSQL1 {
             get {
                 return ((string)(this["ConnStringSQL1"]));
